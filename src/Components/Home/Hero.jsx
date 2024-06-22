@@ -1,7 +1,7 @@
 import heroImg from "../../assets/Imgs/bazar-banner.png";
 function Hero() {
   return (
-    <div className=''>
+    <div className='pt-12'>
       <div
         className="bg-cover min-h-[500px]"
         style={{

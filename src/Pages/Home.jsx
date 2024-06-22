@@ -1,12 +1,13 @@
-import Hero from "../Components/Home/Hero"
-
+import Hero from "../Components/Home/Hero";
+import Stats from "../Components/Home/Stats";
 
 function Home() {
   return (
     <div>
-      <Hero/>
+      <Hero />
+      <Stats />
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

@@ -6,7 +6,7 @@ function Nav() {
   const [showSidebar, setShowSidebar] = useState(false);
   return (
     <div>
-      <div className="navbar z-10 bg-base-100">
+      <div className="navbar z-10 bg-base-100 fixed">
         <div className="flex-1 ml-6">
           <div
             onClick={() => setShowSidebar(!showSidebar)}
