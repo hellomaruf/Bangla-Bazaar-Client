@@ -1,3 +1,4 @@
+import Categoris from "../Components/Home/Categoris";
 import Hero from "../Components/Home/Hero";
 import Stats from "../Components/Home/Stats";
 
@@ -6,6 +7,7 @@ function Home() {
     <div>
       <Hero />
       <Stats />
+      <Categoris />
     </div>
   );
 }
