@@ -15,7 +15,7 @@ import { EffectFade, Autoplay } from "swiper/modules";
 
 function Offers() {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto py-10">
       <Swiper
         spaceBetween={30}
         effect={"fade"}
