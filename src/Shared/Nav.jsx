@@ -1,21 +1,17 @@
-import { useState } from "react";
 import { CgMenuLeft } from "react-icons/cg";
-import { RxCross1 } from "react-icons/rx";
+import logo from "../assets/Imgs/BanglaBazar.png";
 
 function Nav() {
-  const [showSidebar, setShowSidebar] = useState(false);
   return (
     <div>
       <div className="navbar z-10 bg-base-100 fixed">
         <div className="flex-1 ml-6">
-          <div
-            onClick={() => setShowSidebar(!showSidebar)}
-            className="text-2xl cursor-pointer"
-          >
-            {showSidebar ? <RxCross1 /> : <CgMenuLeft />}
-          </div>
-          <a className=" ml-4 text-2xl font-semibold">BanglaBazaar</a>
-          <div className=" w-full mx-6">
+          <label className="text-2xl cursor-pointer" htmlFor="my-drawer">
+            <CgMenuLeft />
+          </label>
+          {/* <a className=" ml-4 text-2xl font-semibold">BanglaBazaar</a> */}
+          <img className="w-56 ml-4" src={logo} alt="" />
+          {/* <div className=" w-full mx-6">
             <label className=" relative  w-full flex items-center gap-2">
               <input
                 type="text"
@@ -35,9 +31,10 @@ function Nav() {
                 />
               </svg>
             </label>
-          </div>
+          </div> */}
         </div>
         <div className="flex-none gap-2">
+          <button className="btn text-white bg-[#3aa753]">Sign In</button>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -73,14 +70,35 @@ function Nav() {
       </div>
       {/* sidebar */}
 
-      <div
+      {/* <div
         className={
           showSidebar
-            ? `left-0 bg-white mt-16 absolute w-[250px] mt-[calc(100% - 57.6px)]  md:fixed flex flex-col justify-between overflow-x-hidden space-y-6 px-2 py-4  inset-y-0  transform transition-all duration-700`
-            : `-left-[100%] bg-white mt-16 absolute w-[250px] mt-[calc(100% - 57.6px)]  md:fixed flex flex-col justify-between overflow-x-hidden space-y-6 px-2 py-4  inset-y-0  transform transition-all duration-700`
+            ? `left-0 z-10 bg-white mt-16 absolute w-[250px] mt-[calc(100% - 57.6px)]  md:fixed flex flex-col justify-between overflow-x-hidden space-y-6 px-2 py-4  inset-y-0  transform transition-all duration-700`
+            : `-left-[100%] z-10 bg-white mt-16 absolute w-[250px] mt-[calc(100% - 57.6px)]  md:fixed flex flex-col justify-between overflow-x-hidden space-y-6 px-2 py-4  inset-y-0  transform transition-all duration-700`
         }
       >
         hello
+      </div> */}
+
+      <div className="drawer">
+        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content"></div>
+        <div className="drawer-side">
+          <label
+            htmlFor="my-drawer"
+            aria-label="close sidebar"
+            className="drawer-overlay"
+          ></label>
+          <ul className="menu bg-base-100 text-base-content min-h-full w-80 p-4 pt-28">
+            {/* Sidebar content here */}
+            <li>
+              <a>Sidebar Item 1</a>
+            </li>
+            <li>
+              <a>Sidebar Item 2</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
