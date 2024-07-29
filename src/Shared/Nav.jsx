@@ -1,6 +1,14 @@
-import { CgMenuLeft } from "react-icons/cg";
+import { CgClose, CgMenuLeft } from "react-icons/cg";
 import logo from "../assets/Imgs/BanglaBazar.png";
-
+import fruitslogo from "../assets/Imgs/fruitlogo.png";
+import vegetable from "../assets/Imgs/vegetable.png";
+import dishclean from "../assets/Imgs/dish-soap.png";
+import toiletclean from "../assets/Imgs/toilet.png";
+import tea from "../assets/Imgs/green-tea.png";
+import drink from "../assets/Imgs/drink.png";
+import heathCare from "../assets/Imgs/cardiogram.png";
+import juice from "../assets/Imgs/orange-juice.png";
+import meat from '../assets/Imgs/meat.png'
 function Nav() {
   return (
     <div>
@@ -68,19 +76,8 @@ function Nav() {
           </div>
         </div>
       </div>
-      {/* sidebar */}
 
-      {/* <div
-        className={
-          showSidebar
-            ? `left-0 z-10 bg-white mt-16 absolute w-[250px] mt-[calc(100% - 57.6px)]  md:fixed flex flex-col justify-between overflow-x-hidden space-y-6 px-2 py-4  inset-y-0  transform transition-all duration-700`
-            : `-left-[100%] z-10 bg-white mt-16 absolute w-[250px] mt-[calc(100% - 57.6px)]  md:fixed flex flex-col justify-between overflow-x-hidden space-y-6 px-2 py-4  inset-y-0  transform transition-all duration-700`
-        }
-      >
-        hello
-      </div> */}
-
-      <div className="drawer">
+      <div className="drawer z-10">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content"></div>
         <div className="drawer-side">
@@ -89,14 +86,70 @@ function Nav() {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-base-100 text-base-content min-h-full w-80 p-4 pt-28">
-            {/* Sidebar content here */}
-            <li>
-              <a>Sidebar Item 1</a>
-            </li>
-            <li>
-              <a>Sidebar Item 2</a>
-            </li>
+          <ul className="menu bg-base-100 text-base-content min-h-full w-80 p-4 ">
+            <div className=" flex items-center ml-2 gap-4">
+              <label className="cursor-pointer" htmlFor="my-drawer">
+                <CgClose className="text-2xl" />
+              </label>
+              <img className="w-52" src={logo} alt="" />
+            </div>
+            <div className="mt-4">
+              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
+                <div className="">
+                  <img className="w-6" src={fruitslogo} alt="" />
+                  <a className="text-base">Fresh Fruits</a>
+                </div>
+              </li>
+              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
+                <div className="">
+                  <img className="w-6" src={vegetable} alt="" />
+                  <a className="text-base">Fresh Vegetables</a>
+                </div>
+              </li>
+              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
+                <div className="">
+                  <img className="w-6" src={dishclean} alt="" />
+                  <a className="text-base">Dish Washing</a>
+                </div>
+              </li>
+              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
+                <div className="">
+                  <img className="w-6" src={toiletclean} alt="" />
+                  <a className="text-base">Toilet Cleaners</a>
+                </div>
+              </li>
+              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
+                <div className="">
+                  <img className="w-6" src={tea} alt="" />
+                  <a className="text-base">Tea</a>
+                </div>
+              </li>
+              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
+                <div className="">
+                  <img className="w-6" src={drink} alt="" />
+                  <a className="text-base">Soft Drinks</a>
+                </div>
+              </li>
+
+              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
+                <div className="">
+                  <img className="w-6" src={heathCare} alt="" />
+                  <a className="text-base">HealthCare</a>
+                </div>
+              </li>
+              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
+                <div className="">
+                  <img className="w-6" src={juice} alt="" />
+                  <a className="text-base">Juice</a>
+                </div>
+              </li>
+              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
+                <div className="">
+                  <img className="w-6" src={meat} alt="" />
+                  <a className="text-base">Meat</a>
+                </div>
+              </li>
+            </div>
           </ul>
         </div>
       </div>

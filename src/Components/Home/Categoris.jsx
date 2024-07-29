@@ -73,7 +73,7 @@ function Categoris() {
       >
         {category?.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className=" text-center p-5 border-2 rounded-xl -z-10">
+            <div className=" text-center p-5 border-2 rounded-xl ">
               <img src={item?.categoryImg} alt="" />
               <h3>{item?.categoryName}</h3>
             </div>
