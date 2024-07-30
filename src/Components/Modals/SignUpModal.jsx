@@ -1,10 +1,13 @@
 import { Dialog, DialogPanel, DialogBackdrop } from "@headlessui/react";
 import logo from "../../assets/Imgs/BanglaBazar.png";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import upload from "../../assets/Imgs/upload.png";
+import { AuthContaxt } from "../../Services/AuthProvider";
 
 function SignUpModal({ isOpenSignUp, signUpClose }) {
   const [avatarURL, setAvatarURL] = useState(upload);
+  const { createNewUser } = useContext(AuthContaxt);
+  console.log(createNewUser);
   const fileUploadRef = useRef();
   const handleUploadImg = (e) => {
     e.preventDefault();
@@ -15,6 +18,23 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
     const cachedURL = URL.createObjectURL(uploadedFile);
     console.log(cachedURL, uploadedFile);
     setAvatarURL(cachedURL);
+  };
+
+  // user sing up
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password);
+    createNewUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div>
@@ -37,7 +57,7 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
                   <img className="w-40" src={logo} alt="" />
                 </div>
 
-                <form className="mt-6">
+                <form onSubmit={handleSignUp} className="mt-6">
                   {/* upload img */}
                   <div className=" mt-4 flex justify-center">
                     <button className="" onClick={handleUploadImg}>
@@ -58,6 +78,7 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
                     <label className="block text-sm text-gray-800 ">Name</label>
                     <input
                       type="text"
+                      name="name"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
                     />
                   </div>
@@ -67,6 +88,7 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
                     </label>
                     <input
                       type="text"
+                      name="email"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
                     />
                   </div>
@@ -86,6 +108,7 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
 
                     <input
                       type="password"
+                      name="password"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
                     />
                   </div>
