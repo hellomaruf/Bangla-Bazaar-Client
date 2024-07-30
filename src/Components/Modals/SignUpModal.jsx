@@ -1,36 +1,25 @@
 import { Dialog, DialogPanel, DialogBackdrop } from "@headlessui/react";
 import logo from "../../assets/Imgs/BanglaBazar.png";
-import SignUpModal from "./SignUpModal";
 import { useState } from "react";
-function SignInModal({ isOpenSignIn, signInClose }) {
-  let [isOpenSignUp, setIsOpenSignUp] = useState(false);
+import upload from "../../assets/Imgs/upload.png";
 
-  function signUpOpen() {
-    setIsOpenSignUp(true);
-  }
+function SignUpModal({ isOpenSignUp, signUpClose }) {
+  const [avatarURL, setAvatarURL] = useState(upload);
 
-  function signUpClose() {
-    setIsOpenSignUp(false);
-  }
   return (
     <div>
-      <SignUpModal
-        isOpenSignUp={isOpenSignUp}
-        signUpClose={signUpClose}
-        signUpOpen={signUpOpen}
-      />
       <Dialog
-        open={isOpenSignIn}
+        open={isOpenSignUp}
         as="div"
         className="relative z-10 focus:outline-none"
-        onClose={signInClose}
+        onClose={signUpClose}
       >
         <DialogBackdrop className="fixed inset-0 bg-black/30" />
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
             <DialogPanel
               transition
-              className="w-full max-w-md rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
+              className="w-full max-w-[470px] rounded-xl bg-white p-6 backdrop-blur-2xl duration-300 ease-out data-[closed]:transform-[scale(95%)] data-[closed]:opacity-0"
             >
               {/* SignInForm */}
               <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg ">
@@ -39,7 +28,18 @@ function SignInModal({ isOpenSignIn, signInClose }) {
                 </div>
 
                 <form className="mt-6">
+                  {/* upload img */}
+                  <div className=" mt-4 flex justify-center">
+                    <img className="w-24 rounded-full" src={avatarURL} alt="" />
+                  </div>
                   <div>
+                    <label className="block text-sm text-gray-800 ">Name</label>
+                    <input
+                      type="text"
+                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
+                    />
+                  </div>
+                  <div className="mt-4">
                     <label className="block text-sm text-gray-800 ">
                       Email
                     </label>
@@ -70,10 +70,10 @@ function SignInModal({ isOpenSignIn, signInClose }) {
 
                   <div className="mt-6">
                     <button
-                      onClick={signInClose}
+                      onClick={signUpClose}
                       className="w-full px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
                     >
-                      Sign In
+                      Sign Up
                     </button>
                   </div>
                 </form>
@@ -114,7 +114,6 @@ function SignInModal({ isOpenSignIn, signInClose }) {
                   Dont have an account?{" "}
                   <a
                     href="#"
-                    onClick={signUpOpen}
                     className="font-medium text-[#36A853]  hover:underline"
                   >
                     Create One
@@ -129,4 +128,4 @@ function SignInModal({ isOpenSignIn, signInClose }) {
   );
 }
 
-export default SignInModal;
+export default SignUpModal;

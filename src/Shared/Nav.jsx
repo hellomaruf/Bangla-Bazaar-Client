@@ -12,7 +12,7 @@ import meat from "../assets/Imgs/meat.png";
 import { useState } from "react";
 import SignInModal from "../Components/Modals/SignInModal";
 import { VscSignIn } from "react-icons/vsc";
-import profile from '../assets/Imgs/profile.jpeg'
+import profile from "../assets/Imgs/profile.jpeg";
 function Nav() {
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
 
@@ -23,6 +23,7 @@ function Nav() {
   function signInClose() {
     setIsOpenSignIn(false);
   }
+
   return (
     <div>
       <SignInModal
@@ -30,6 +31,7 @@ function Nav() {
         signInOpen={signInOpen}
         signInClose={signInClose}
       />
+     
       <div className="navbar z-10 bg-base-100 fixed">
         <div className="flex-1 ml-6">
           <label className="text-2xl cursor-pointer" htmlFor="my-drawer">
@@ -70,10 +72,7 @@ function Nav() {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src={profile}
-                />
+                <img alt="Tailwind CSS Navbar component" src={profile} />
               </div>
             </div>
             <ul
