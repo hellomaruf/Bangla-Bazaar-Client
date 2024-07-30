@@ -1,11 +1,21 @@
 import { Dialog, DialogPanel, DialogBackdrop } from "@headlessui/react";
 import logo from "../../assets/Imgs/BanglaBazar.png";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import upload from "../../assets/Imgs/upload.png";
 
 function SignUpModal({ isOpenSignUp, signUpClose }) {
   const [avatarURL, setAvatarURL] = useState(upload);
-
+  const fileUploadRef = useRef();
+  const handleUploadImg = (e) => {
+    e.preventDefault();
+    fileUploadRef.current.click();
+  };
+  const handleDisplayUploadedImg = () => {
+    const uploadedFile = fileUploadRef.current.files[0];
+    const cachedURL = URL.createObjectURL(uploadedFile);
+    console.log(cachedURL, uploadedFile);
+    setAvatarURL(cachedURL);
+  };
   return (
     <div>
       <Dialog
@@ -30,7 +40,19 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
                 <form className="mt-6">
                   {/* upload img */}
                   <div className=" mt-4 flex justify-center">
-                    <img className="w-24 rounded-full" src={avatarURL} alt="" />
+                    <button className="" onClick={handleUploadImg}>
+                      <img
+                        className="w-24 rounded-full"
+                        src={avatarURL}
+                        alt="avatar"
+                      />
+                    </button>
+                    <input
+                      onChange={handleDisplayUploadedImg}
+                      ref={fileUploadRef}
+                      type="file"
+                      className="hidden"
+                    />
                   </div>
                   <div>
                     <label className="block text-sm text-gray-800 ">Name</label>

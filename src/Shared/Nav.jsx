@@ -9,12 +9,15 @@ import drink from "../assets/Imgs/drink.png";
 import heathCare from "../assets/Imgs/cardiogram.png";
 import juice from "../assets/Imgs/orange-juice.png";
 import meat from "../assets/Imgs/meat.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SignInModal from "../Components/Modals/SignInModal";
 import { VscSignIn } from "react-icons/vsc";
 import profile from "../assets/Imgs/profile.jpeg";
+import { AuthContaxt } from "../Services/AuthProvider";
 function Nav() {
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
+  const {name} = useContext(AuthContaxt)
+  console.log(name);
 
   function signInOpen() {
     setIsOpenSignIn(true);
