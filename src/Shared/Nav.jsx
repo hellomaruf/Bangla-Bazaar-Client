@@ -8,16 +8,33 @@ import tea from "../assets/Imgs/green-tea.png";
 import drink from "../assets/Imgs/drink.png";
 import heathCare from "../assets/Imgs/cardiogram.png";
 import juice from "../assets/Imgs/orange-juice.png";
-import meat from '../assets/Imgs/meat.png'
+import meat from "../assets/Imgs/meat.png";
+import { useState } from "react";
+import SignInModal from "../Components/Modals/SignInModal";
+import { VscSignIn } from "react-icons/vsc";
+import profile from '../assets/Imgs/profile.jpeg'
 function Nav() {
+  let [isOpenSignIn, setIsOpenSignIn] = useState(false);
+
+  function signInOpen() {
+    setIsOpenSignIn(true);
+  }
+
+  function signInClose() {
+    setIsOpenSignIn(false);
+  }
   return (
     <div>
+      <SignInModal
+        isOpenSignIn={isOpenSignIn}
+        signInOpen={signInOpen}
+        signInClose={signInClose}
+      />
       <div className="navbar z-10 bg-base-100 fixed">
         <div className="flex-1 ml-6">
           <label className="text-2xl cursor-pointer" htmlFor="my-drawer">
             <CgMenuLeft />
           </label>
-          {/* <a className=" ml-4 text-2xl font-semibold">BanglaBazaar</a> */}
           <img className="w-56 ml-4" src={logo} alt="" />
           {/* <div className=" w-full mx-6">
             <label className=" relative  w-full flex items-center gap-2">
@@ -42,7 +59,10 @@ function Nav() {
           </div> */}
         </div>
         <div className="flex-none gap-2">
-          <button className="btn text-white bg-[#3aa753]">Sign In</button>
+          <button onClick={signInOpen} className="btn text-white bg-[#3aa753]">
+            Sign In
+            <VscSignIn className="text-xl" />
+          </button>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -52,7 +72,7 @@ function Nav() {
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  src={profile}
                 />
               </div>
             </div>
