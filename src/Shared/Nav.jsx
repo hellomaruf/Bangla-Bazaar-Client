@@ -13,14 +13,15 @@ import { useContext, useState } from "react";
 import SignInModal from "../Components/Modals/SignInModal";
 import profile from "../assets/Imgs/profile.jpeg";
 import { AuthContaxt } from "../Services/AuthProvider";
-import { ImSpinner9 } from "react-icons/im";
+// import { ImSpinner9 } from "react-icons/im";
+import { LuBell } from "react-icons/lu";
 import { IoCartOutline } from "react-icons/io5";
 import { IoMdLogOut } from "react-icons/io";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import toast from "react-hot-toast";
 function Nav() {
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
-  const { user, loading } = useContext(AuthContaxt);
-  console.log(user?.displayName);
+  const { user, logout, setUser } = useContext(AuthContaxt);
 
   function signInOpen() {
     setIsOpenSignIn(true);
@@ -29,6 +30,12 @@ function Nav() {
   function signInClose() {
     setIsOpenSignIn(false);
   }
+
+  const handleLogout = () => {
+    logout();
+    setUser(null);
+    toast.success("Successfully Logout!");
+  };
 
   return (
     <div>
@@ -49,8 +56,17 @@ function Nav() {
           <button>
             <IoCartOutline className="text-3xl mr-2 text-gray-900" />
           </button>
+          <button>
+            <LuBell className="text-2xl mr-2 text-gray-900" />
+          </button>
           {user ? (
-            <button className="btn bg-[#36a853] text-white">Logout<IoMdLogOut className="text-xl"/></button>
+            <button
+              onClick={handleLogout}
+              className="btn bg-[#36a853] text-white hidden"
+            >
+              Logout
+              <IoMdLogOut className="text-xl" />
+            </button>
           ) : (
             <button
               onClick={signInOpen}
@@ -60,44 +76,49 @@ function Nav() {
               <RiLogoutCircleLine className="text-xl" />
             </button>
           )}
-
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                {loading ? (
-                  <div className=" flex items-center justify-center ">
-                    <ImSpinner9 className=" text-2xl pt-1 animate-spin text-[#36A853]" />
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="">
+                <div className="flex items-center ">
+                  <div className="flex items-center gap-3 border-2 py-1 px-3 rounded-xl border-gray-300 hover:bg-gray-100 transition">
+                    <h4>Maruf Ahmed</h4>
+                    <div className="w-10 rounded-full ">
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        className="rounded-full"
+                        src={user ? user?.photoURL : profile}
+                      />
+                    </div>
                   </div>
-                ) : (
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={user ? user?.photoURL : profile}
-                  />
-                )}
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="mt-6 z-[1] p-2 shadow-xl menu menu-sm dropdown-content bg-base-100 rounded-xl w-64"
+              >
+                <li>
+                  <a className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li className="mt-2" onClick={handleLogout}>
+                  <a className="btn bg-[#36a853] text-white">
+                    Logout <IoMdLogOut className="text-xl" />
+                  </a>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
+          ) : (
+            <img
+              alt="Tailwind CSS Navbar component"
+              className="w-10 rounded-full"
+              src={user ? user?.photoURL : profile}
+            />
+          )}
         </div>
       </div>
 
