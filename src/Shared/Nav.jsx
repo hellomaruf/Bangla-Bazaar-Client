@@ -11,10 +11,12 @@ import juice from "../assets/Imgs/orange-juice.png";
 import meat from "../assets/Imgs/meat.png";
 import { useContext, useState } from "react";
 import SignInModal from "../Components/Modals/SignInModal";
-import { VscSignIn } from "react-icons/vsc";
 import profile from "../assets/Imgs/profile.jpeg";
 import { AuthContaxt } from "../Services/AuthProvider";
 import { ImSpinner9 } from "react-icons/im";
+import { IoCartOutline } from "react-icons/io5";
+import { IoMdLogOut } from "react-icons/io";
+import { RiLogoutCircleLine } from "react-icons/ri";
 function Nav() {
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const { user, loading } = useContext(AuthContaxt);
@@ -42,33 +44,23 @@ function Nav() {
             <CgMenuLeft />
           </label>
           <img className="w-56 ml-4" src={logo} alt="" />
-          {/* <div className=" w-full mx-6">
-            <label className=" relative  w-full flex items-center gap-2">
-              <input
-                type="text"
-                className="  grow py-2 px-4 outline-none rounded-xl border-2 border-gray-300 focus:border-[#3aa753]"
-                placeholder="Search"
-              />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="w-4 absolute right-4 h-4 opacity-70"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </label>
-          </div> */}
         </div>
         <div className="flex-none gap-2">
-          <button onClick={signInOpen} className="btn text-white bg-[#3aa753]">
-            Sign In
-            <VscSignIn className="text-xl" />
+          <button>
+            <IoCartOutline className="text-3xl mr-2 text-gray-900" />
           </button>
+          {user ? (
+            <button className="btn bg-[#36a853] text-white">Logout<IoMdLogOut className="text-xl"/></button>
+          ) : (
+            <button
+              onClick={signInOpen}
+              className="btn text-white bg-[#3aa753]"
+            >
+              Sign In
+              <RiLogoutCircleLine className="text-xl" />
+            </button>
+          )}
+
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
