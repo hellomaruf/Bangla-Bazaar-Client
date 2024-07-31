@@ -7,6 +7,8 @@ import img6 from "../../assets/Imgs/meat.webp";
 import img7 from "../../assets/Imgs/soft-drinks.webp";
 import img8 from "../../assets/Imgs/tea.webp";
 import img9 from "../../assets/Imgs/toilet-cleaners.webp";
+// import { IoIosArrowBack } from "react-icons/io";
+// import { IoIosArrowForward } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -67,7 +69,10 @@ function Categoris() {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        navigation={true}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
         modules={[Navigation, Autoplay]}
         className="mySwiper"
       >
@@ -79,6 +84,9 @@ function Categoris() {
             </div>
           </SwiperSlide>
         ))}
+
+        <div className="swiper-button-next"></div>
+        <div className="swiper-button-prev"></div>
       </Swiper>
     </div>
   );
