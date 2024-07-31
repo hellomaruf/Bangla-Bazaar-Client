@@ -14,10 +14,11 @@ import SignInModal from "../Components/Modals/SignInModal";
 import { VscSignIn } from "react-icons/vsc";
 import profile from "../assets/Imgs/profile.jpeg";
 import { AuthContaxt } from "../Services/AuthProvider";
+import { ImSpinner9 } from "react-icons/im";
 function Nav() {
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
-  const { user } = useContext(AuthContaxt);
-  console.log(user.displayName);
+  const { user, loading } = useContext(AuthContaxt);
+  console.log(user?.displayName);
 
   function signInOpen() {
     setIsOpenSignIn(true);
@@ -35,8 +36,8 @@ function Nav() {
         signInClose={signInClose}
       />
 
-      <div className="navbar z-10 bg-base-100 fixed">
-        <div className="flex-1 ml-6">
+      <div className="navbar z-10 bg-base-100 fixed pr-4">
+        <div className="flex-1 ml-6 ">
           <label className="text-2xl cursor-pointer" htmlFor="my-drawer">
             <CgMenuLeft />
           </label>
@@ -75,10 +76,16 @@ function Nav() {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src={user ? user?.photoURL : profile}
-                />
+                {loading ? (
+                  <div className=" flex items-center justify-center ">
+                    <ImSpinner9 className=" text-2xl pt-1 animate-spin text-[#36A853]" />
+                  </div>
+                ) : (
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={user ? user?.photoURL : profile}
+                  />
+                )}
               </div>
             </div>
             <ul
