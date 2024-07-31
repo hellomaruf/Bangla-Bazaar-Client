@@ -1,9 +1,12 @@
 import { Dialog, DialogPanel, DialogBackdrop } from "@headlessui/react";
 import logo from "../../assets/Imgs/BanglaBazar.png";
 import SignUpModal from "./SignUpModal";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContaxt } from "../../Services/AuthProvider";
+import toast from "react-hot-toast";
 function SignInModal({ isOpenSignIn, signInClose }) {
   let [isOpenSignUp, setIsOpenSignUp] = useState(false);
+  const { signInUser } = useContext(AuthContaxt);
 
   function signUpOpen() {
     setIsOpenSignUp(true);
@@ -12,6 +15,25 @@ function SignInModal({ isOpenSignIn, signInClose }) {
   function signUpClose() {
     setIsOpenSignUp(false);
   }
+
+  const handleSignInUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signInUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+        if (res.user) {
+          toast.success("Successfully SignIn!");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+  };
   return (
     <div>
       <SignUpModal
@@ -38,13 +60,14 @@ function SignInModal({ isOpenSignIn, signInClose }) {
                   <img className="w-40" src={logo} alt="" />
                 </div>
 
-                <form className="mt-6">
+                <form onSubmit={handleSignInUser} className="mt-6">
                   <div>
                     <label className="block text-sm text-gray-800 ">
                       Email
                     </label>
                     <input
                       type="text"
+                      name="email"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
                     />
                   </div>
@@ -64,6 +87,7 @@ function SignInModal({ isOpenSignIn, signInClose }) {
 
                     <input
                       type="password"
+                      name="password"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
                     />
                   </div>
