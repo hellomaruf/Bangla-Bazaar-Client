@@ -16,8 +16,8 @@ import profile from "../assets/Imgs/profile.jpeg";
 import { AuthContaxt } from "../Services/AuthProvider";
 function Nav() {
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
-  const {name} = useContext(AuthContaxt)
-  console.log(name);
+  const { user } = useContext(AuthContaxt);
+  console.log(user.displayName);
 
   function signInOpen() {
     setIsOpenSignIn(true);
@@ -34,7 +34,7 @@ function Nav() {
         signInOpen={signInOpen}
         signInClose={signInClose}
       />
-     
+
       <div className="navbar z-10 bg-base-100 fixed">
         <div className="flex-1 ml-6">
           <label className="text-2xl cursor-pointer" htmlFor="my-drawer">
@@ -75,7 +75,10 @@ function Nav() {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img alt="Tailwind CSS Navbar component" src={profile} />
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src={user ? user?.photoURL : profile}
+                />
               </div>
             </div>
             <ul

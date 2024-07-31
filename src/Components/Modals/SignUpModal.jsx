@@ -3,11 +3,14 @@ import logo from "../../assets/Imgs/BanglaBazar.png";
 import { useContext, useRef, useState } from "react";
 import upload from "../../assets/Imgs/upload.png";
 import { AuthContaxt } from "../../Services/AuthProvider";
+import { ImageUpload } from "../../Utils/imgUpload";
+import toast from "react-hot-toast";
 
 function SignUpModal({ isOpenSignUp, signUpClose }) {
   const [avatarURL, setAvatarURL] = useState(upload);
-  const { createNewUser } = useContext(AuthContaxt);
-  console.log(createNewUser);
+  const [image, setImage] = useState(Object);
+  console.log(image);
+  const { createNewUser, updateUserProfile } = useContext(AuthContaxt);
   const fileUploadRef = useRef();
   const handleUploadImg = (e) => {
     e.preventDefault();
@@ -18,19 +21,25 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
     const cachedURL = URL.createObjectURL(uploadedFile);
     console.log(cachedURL, uploadedFile);
     setAvatarURL(cachedURL);
+    setImage(uploadedFile);
   };
 
   // user sing up
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    const photo = await ImageUpload(image);
+    console.log(name, email, password, photo);
     createNewUser(email, password)
       .then((res) => {
-        console.log(res.user);
+        updateUserProfile(name, photo);
+        if (res.user) {
+          toast.success("Successfully SignUp!");
+          console.log(res.user);
+        }
       })
       .catch((error) => {
         console.log(error);
