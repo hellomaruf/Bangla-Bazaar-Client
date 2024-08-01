@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",
+    "@tanstack/react-query": "^5.51.16",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "firebase": "^10.12.4",

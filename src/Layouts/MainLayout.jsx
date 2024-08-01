@@ -1,13 +1,15 @@
-import { Outlet } from "react-router-dom"
-import Nav from "../Shared/Nav"
+import { Outlet } from "react-router-dom";
+import Nav from "../Shared/Nav";
+import Footer from "../Shared/Footer";
 
 function MainLayout() {
   return (
     <div>
-          <Nav />
-          <Outlet/>
+      <Nav />
+      <Outlet />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default MainLayout
+export default MainLayout;

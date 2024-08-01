@@ -5,7 +5,7 @@ import FAQs from "../Components/Home/FAQs";
 import Hero from "../Components/Home/Hero";
 import Offers from "../Components/Home/Offers";
 import Stats from "../Components/Home/Stats";
-import Footer from "../Shared/Footer";
+
 
 function Home() {
   return (
@@ -16,9 +16,7 @@ function Home() {
       <About />
       <Companis />
       <Offers />
-      {/* <FAQs/> */}
       <FAQs />
-      <Footer />
     </div>
   );
 }

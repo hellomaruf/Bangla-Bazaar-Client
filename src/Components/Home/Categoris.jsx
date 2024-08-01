@@ -16,6 +16,7 @@ import "swiper/css";
 // import required modules
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css/navigation";
+import { Link } from "react-router-dom";
 
 function Categoris() {
   const category = [
@@ -78,10 +79,12 @@ function Categoris() {
       >
         {category?.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className=" text-center p-5 border-2 rounded-xl ">
-              <img src={item?.categoryImg} alt="" />
-              <h3>{item?.categoryName}</h3>
-            </div>
+            <Link to={`/products/${item?.categoryName}`}>
+              <div className=" text-center p-5 border-2 rounded-xl hover:scale-95 hover:border-[#36A853] transition cursor-pointer">
+                <img src={item?.categoryImg} alt="" />
+                <h3>{item?.categoryName}</h3>
+              </div>
+            </Link>
           </SwiperSlide>
         ))}
 
