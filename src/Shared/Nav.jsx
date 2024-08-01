@@ -13,12 +13,12 @@ import { useContext, useState } from "react";
 import SignInModal from "../Components/Modals/SignInModal";
 import profile from "../assets/Imgs/profile.jpeg";
 import { AuthContaxt } from "../Services/AuthProvider";
-// import { ImSpinner9 } from "react-icons/im";
 import { LuBell } from "react-icons/lu";
 import { IoCartOutline } from "react-icons/io5";
 import { IoMdLogOut } from "react-icons/io";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 function Nav() {
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const { user, logout, setUser } = useContext(AuthContaxt);
@@ -50,7 +50,9 @@ function Nav() {
           <label className="text-2xl cursor-pointer" htmlFor="my-drawer">
             <CgMenuLeft />
           </label>
-          <img className="w-56 ml-4" src={logo} alt="" />
+          <Link to={"/"}>
+            <img className="w-56 ml-4" src={logo} alt="" />
+          </Link>
         </div>
         <div className="flex-none gap-2">
           <button>
