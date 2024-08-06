@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Spinner from "../../Utils/Spinner";
 import { Rate } from "antd";
 import { FiShoppingCart } from "react-icons/fi";
@@ -71,9 +71,12 @@ function Products() {
                     </button>
                   </Slide>
                 </div>
-                <button className=" bg-[#36a853] absolute  w-full text-white text-sm py-2 cursor-pointer text-center bottom-0">
+                <Link
+                  to={`/productDetails/${data?._id}`}
+                  className=" bg-[#36a853] absolute  w-full text-white text-sm py-2 cursor-pointer text-center bottom-0"
+                >
                   Details
-                </button>
+                </Link>
               </div>
             </div>
           ))}

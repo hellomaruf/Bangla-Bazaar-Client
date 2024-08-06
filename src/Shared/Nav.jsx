@@ -14,9 +14,10 @@ import SignInModal from "../Components/Modals/SignInModal";
 import profile from "../assets/Imgs/profile.jpeg";
 import { AuthContaxt } from "../Services/AuthProvider";
 import { LuBell } from "react-icons/lu";
-import { IoCartOutline } from "react-icons/io5";
+// import { IoCartOutline } from "react-icons/io5";
 import { IoMdLogOut } from "react-icons/io";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 function Nav() {
@@ -55,8 +56,10 @@ function Nav() {
           </Link>
         </div>
         <div className="flex-none gap-2">
-          <button>
-            <IoCartOutline className="text-3xl mr-2 text-gray-900" />
+          <button className="flex items-center mr-2">
+            {/* <IoCartOutline className="text-3xl mr-2 text-gray-900" /> */}
+            <HiOutlineShoppingBag className="text-2xl mr-2 text-gray-900" />
+            <h4>Cart</h4>
           </button>
           <button>
             <LuBell className="text-2xl mr-2 text-gray-900" />
