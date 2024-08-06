@@ -42,7 +42,7 @@ function Products() {
                     <p className="mt-1.5 text-sm text-gray-500 line-through">
                       ৳ {data?.price?.oldPrice}
                     </p>
-                    <p className="mt-1.5 text-sm text-gray-900">
+                    <p className="mt-1.5  text-gray-900">
                       ৳ {data?.price?.latestPrice}
                     </p>
                     <p className="mt-1.5 text-sm text-red-500">
@@ -54,7 +54,7 @@ function Products() {
                     {data?.productName}
                   </h3>
                   <div className="flex items-center gap-2">
-                    <Rate defaultValue={data?.rating} />{" "}
+                    <Rate  style={{ fontSize: '16px' }} className="text-orange-400" defaultValue={data?.rating} />{" "}
                     <p className="text-sm">({data?.rating})</p>
                   </div>
                 </div>
