@@ -20,6 +20,7 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { PlaceholdersAndVanishInput } from "../Components/ui/placeholders-and-vanish-input";
 function Nav() {
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const { user, logout, setUser } = useContext(AuthContaxt);
@@ -38,6 +39,23 @@ function Nav() {
     toast.success("Successfully Logout!");
   };
 
+  const placeholders = [
+    "What's the first rule of Fight Club?",
+    "Who is Tyler Durden?",
+    "Where is Andrew Laeddis Hiding?",
+    "Write a Javascript method to reverse a string",
+    "How to assemble your own PC?",
+  ];
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitted");
+  };
+
   return (
     <div>
       <SignInModal
@@ -54,7 +72,15 @@ function Nav() {
           <Link to={"/"}>
             <img className="w-56 ml-4" src={logo} alt="" />
           </Link>
+
+          {/* Search input */}
+          <PlaceholdersAndVanishInput
+            placeholders={placeholders}
+            onChange={handleChange}
+            onSubmit={onSubmit}
+          />
         </div>
+
         <div className="flex-none gap-2">
           <button className="flex items-center mr-2">
             {/* <IoCartOutline className="text-3xl mr-2 text-gray-900" /> */}
