@@ -19,12 +19,23 @@ import { IoMdLogOut } from "react-icons/io";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import { PlaceholdersAndVanishInput } from "../Components/ui/placeholders-and-vanish-input";
 function Nav() {
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const { user, logout, setUser } = useContext(AuthContaxt);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
+  // input search placeholder************
+  const placeholders = [
+    "Search Fresh Groceries....",
+    "Search Organic Foods....",
+    "Where is Andrew Laeddis Hiding?",
+    "Write a Javascript method to reverse a string",
+    "How to assemble your own PC?",
+  ];
   function signInOpen() {
     setIsOpenSignIn(true);
   }
@@ -39,21 +50,17 @@ function Nav() {
     toast.success("Successfully Logout!");
   };
 
-  const placeholders = [
-    "What's the first rule of Fight Club?",
-    "Who is Tyler Durden?",
-    "Where is Andrew Laeddis Hiding?",
-    "Write a Javascript method to reverse a string",
-    "How to assemble your own PC?",
-  ];
-
   const handleChange = (e) => {
     console.log(e.target.value);
+    setQuery(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     console.log("submitted");
+    if (query.trim()) {
+      navigate(`/search/${query}`);
+    }
   };
 
   return (
