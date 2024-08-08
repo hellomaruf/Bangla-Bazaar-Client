@@ -7,6 +7,12 @@ import { Rate } from "antd";
 import { Slide } from "react-awesome-reveal";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaRegHeart } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import img1 from "../../assets/Imgs/_mpimage.webp";
+import { Autoplay} from "swiper/modules";
 
 function SearchProducts() {
   const location = useLocation();
@@ -37,11 +43,36 @@ function SearchProducts() {
   }, [query, allProduct]);
 
   return (
-    <div className="mt-28 max-w-7xl mx-auto">
+    <div className="mt-24 max-w-7xl mx-auto">
       {isLoading ? (
         <Spinner />
       ) : (
         <div className="">
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
+            className="mySwiper mb-6"
+          >
+            <SwiperSlide>
+              <img className="w-full" src={img1} alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="w-full" src={img1} alt="" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img className="w-full" src={img1} alt="" />
+            </SwiperSlide>
+          </Swiper>
+          <div className="mb-6">
+            <h5 className="text-gray-600">
+              {filteredData?.length} items found for <strong>{query}</strong>
+            </h5>
+          </div>
           <div className="grid grid-cols-5 gap-4">
             {filteredData?.map((data, index) => (
               <div key={index} className="overflow-hidden relative group">

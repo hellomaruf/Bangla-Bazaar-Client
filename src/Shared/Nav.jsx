@@ -51,13 +51,11 @@ function Nav() {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setQuery(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("submitted");
     if (query.trim()) {
       navigate(`/search/${query}`);
     }
