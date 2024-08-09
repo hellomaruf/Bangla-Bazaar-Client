@@ -24,7 +24,7 @@ import { Slide } from "react-awesome-reveal";
 import Spinner from "../../Utils/Spinner";
 function ProductDetails() {
   const { id } = useParams();
-  console.log(id);
+
   const { data: productDetailsData, isLoading } = useQuery({
     queryKey: ["productDetailsData"],
     queryFn: async () => {
@@ -34,6 +34,8 @@ function ProductDetails() {
       return data;
     },
   });
+ 
+  
   const { data: relatedProducts } = useQuery({
     queryKey: ["relatedProducts"],
     queryFn: async () => {
@@ -205,7 +207,7 @@ function ProductDetails() {
                         className="group relative block overflow-hidden  border border-gray-200"
                       >
                         <img
-                          src="https://i.ibb.co/tQP5f0k/red-grapes.webp"
+                          src={ data?.productImg}
                           alt=""
                           className=" w-full object-cover transition duration-500 group-hover:scale-105 h-52 p-4 "
                         />
@@ -246,7 +248,7 @@ function ProductDetails() {
                         </div>
                         <Link
                           to={`/productDetails/${data?._id}`}
-                          className=" bg-[#36a853] absolute  w-full text-white text-sm py-2 cursor-pointer text-center bottom-0"
+                          className=" bg-[#36a853] hover:bg-[#2f9047] transition absolute  w-full text-white text-sm py-2 cursor-pointer text-center bottom-0"
                         >
                           Details
                         </Link>

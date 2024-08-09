@@ -9,7 +9,7 @@ function SplashScreen() {
         <div className="flex items-center  justify-center gap-2">
           <div className="w-6 h-6 border-2 border-dashed rounded-full animate-spin border-gray-400"></div>
           <h2 className="text-base  text-gray-400">
-            Please Wait.....
+            Please Wait
           </h2>
         </div>
       </div>

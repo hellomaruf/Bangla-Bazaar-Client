@@ -81,7 +81,7 @@ function SearchProducts() {
                   className="group relative block overflow-hidden  border border-gray-200"
                 >
                   <img
-                    src="https://i.ibb.co/tQP5f0k/red-grapes.webp"
+                    src={ data?.productImg}
                     alt=""
                     className=" w-full object-cover transition duration-500 group-hover:scale-105 h-52 p-4 "
                   />
