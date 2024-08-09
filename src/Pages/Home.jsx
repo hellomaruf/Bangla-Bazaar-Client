@@ -6,7 +6,6 @@ import Hero from "../Components/Home/Hero";
 import Offers from "../Components/Home/Offers";
 import Stats from "../Components/Home/Stats";
 
-
 function Home() {
   return (
     <div>
