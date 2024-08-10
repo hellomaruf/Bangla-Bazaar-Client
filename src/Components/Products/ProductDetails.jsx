@@ -13,17 +13,18 @@ import { MdOutlineKeyboardReturn } from "react-icons/md";
 import { RiAwardLine } from "react-icons/ri";
 import { Swiper, SwiperSlide } from "swiper/react";
 import rating from "../../assets/Imgs/ratings.png";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
-// import required modules
 import { Pagination, Autoplay } from "swiper/modules";
 import { Slide } from "react-awesome-reveal";
 import Spinner from "../../Utils/Spinner";
+import { AuthContaxt } from "../../Services/AuthProvider";
+import { useContext } from "react";
+
 function ProductDetails() {
   const { id } = useParams();
+  const { user } = useContext(AuthContaxt);
+  console.log(user?.displayName);
 
   const { data: productDetailsData, isLoading } = useQuery({
     queryKey: ["productDetailsData"],
@@ -34,8 +35,8 @@ function ProductDetails() {
       return data;
     },
   });
- 
-  
+  console.log(productDetailsData);
+
   const { data: relatedProducts } = useQuery({
     queryKey: ["relatedProducts"],
     queryFn: async () => {
@@ -48,6 +49,26 @@ function ProductDetails() {
     },
   });
 
+  const handleCart = async () => {
+    const userEmail = user?.email;
+    const userName = user?.displayName;
+    const addToCartProduct = productDetailsData;
+    const addToCartProductInfo = {
+      userEmail,
+      userName,
+      addToCartProduct,
+    };
+    console.log(addToCartProductInfo);
+    await axios
+      .post(
+        `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
+        addToCartProductInfo
+      )
+      .then((res) => console.log(res.data))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="">
       {isLoading ? (
@@ -71,7 +92,10 @@ function ProductDetails() {
                   {productDetailsData?.productName}
                 </h2>
                 <div className="flex items-center gap-3 pt-3">
-                  <Rate className="text-orange-400" defaultValue={productDetailsData?.rating}></Rate>
+                  <Rate
+                    className="text-orange-400"
+                    defaultValue={productDetailsData?.rating}
+                  ></Rate>
                   <p className="text-sm">({productDetailsData?.rating})</p>
                   <p className="text-sm">18 Reviews</p>
                 </div>
@@ -126,7 +150,10 @@ function ProductDetails() {
                   </div>
                 </div>
                 <div className="mt-3">
-                  <button className="btn text-white bg-[#36a853]">
+                  <button
+                    onClick={handleCart}
+                    className="btn text-white bg-[#36a853] hover:bg-[#30984a] "
+                  >
                     <FiShoppingCart className="text-xl" />
                     Add to Cart
                   </button>
@@ -207,7 +234,7 @@ function ProductDetails() {
                         className="group h-full relative block overflow-hidden  border border-gray-200"
                       >
                         <img
-                          src={ data?.productImg}
+                          src={data?.productImg}
                           alt=""
                           className=" w-full object-cover transition duration-500 group-hover:scale-105 h-52 p-4 "
                         />
@@ -229,7 +256,11 @@ function ProductDetails() {
                             {data?.productName}
                           </h3>
                           <div className="flex items-center gap-2">
-                            <Rate  style={{ fontSize: '14px' }} className="text-orange-400 text-xs" defaultValue={data?.rating} />{" "}
+                            <Rate
+                              style={{ fontSize: "14px" }}
+                              className="text-orange-400 text-xs"
+                              defaultValue={data?.rating}
+                            />{" "}
                             <p className="text-sm">({data?.rating})</p>
                           </div>
                         </div>
