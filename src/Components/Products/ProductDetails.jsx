@@ -20,6 +20,7 @@ import { Slide } from "react-awesome-reveal";
 import Spinner from "../../Utils/Spinner";
 import { AuthContaxt } from "../../Services/AuthProvider";
 import { useContext } from "react";
+import toast from "react-hot-toast";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -64,7 +65,16 @@ function ProductDetails() {
         `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
         addToCartProductInfo
       )
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        if (res.data) {
+          toast(
+            `${productDetailsData?.productName} Added in Cart Successfully!`,
+            {
+              duration: 6000,
+            }
+          );
+        }
+      })
       .catch((error) => {
         console.log(error);
       });

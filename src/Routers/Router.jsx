@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Products from "../Components/Products/Products";
 import ProductDetails from "../Components/Products/ProductDetails";
 import SearchProducts from "../Components/Products/SearchProducts";
+import Cart from "../Components/Cart/Cart";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
         path: "/search/:itemName",
         element: <SearchProducts />,
       },
+      {
+        path: '/cart',
+        element:<Cart/>
+      }
     ],
   },
 ]);
