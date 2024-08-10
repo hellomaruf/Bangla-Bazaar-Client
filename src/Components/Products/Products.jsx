@@ -26,10 +26,10 @@ function Products() {
       ) : (
         <div className="grid grid-cols-5 gap-4">
           {productData?.map((data, index) => (
-            <div key={index} className="overflow-hidden relative group">
+            <div key={index} className="overflow-hidden relative group h-full">
               <a
                 href="#"
-                className="group relative block overflow-hidden  border border-gray-200"
+                className="group relative block overflow-hidden h-full  border border-gray-200"
               >
                 <img
                   src={ data?.productImg}
@@ -50,7 +50,7 @@ function Products() {
                     </p>
                   </div>
 
-                  <h3 className=" text-lg font-medium text-gray-900">
+                  <h3 className=" text-md font-medium text-gray-900 py-2">
                     {data?.productName}
                   </h3>
                   <div className="flex items-center gap-2">

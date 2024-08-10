@@ -197,14 +197,14 @@ function ProductDetails() {
                 className="mySwiper"
               >
                 {relatedProducts?.slice(0, 10).map((data, index) => (
-                  <SwiperSlide className="my-10" key={index}>
+                  <SwiperSlide className="my-10 h-full" key={index}>
                     <div
                       key={index}
-                      className="overflow-hidden relative group "
+                      className="overflow-hidden h-full relative group "
                     >
                       <a
                         href="#"
-                        className="group relative block overflow-hidden  border border-gray-200"
+                        className="group h-full relative block overflow-hidden  border border-gray-200"
                       >
                         <img
                           src={ data?.productImg}
@@ -212,7 +212,7 @@ function ProductDetails() {
                           className=" w-full object-cover transition duration-500 group-hover:scale-105 h-52 p-4 "
                         />
 
-                        <div className="relative bg-white p-6 space-y-1">
+                        <div className="relative bg-white p-6 h-full space-y-1">
                           <div className=" flex items-center gap-4">
                             <p className="mt-1.5 text-sm text-gray-500 line-through">
                               ৳ {data?.price?.oldPrice}
@@ -225,7 +225,7 @@ function ProductDetails() {
                             </p>
                           </div>
 
-                          <h3 className=" text-lg font-medium text-gray-900">
+                          <h3 className=" text-md py-2 font-medium text-gray-900">
                             {data?.productName}
                           </h3>
                           <div className="flex items-center gap-2">
