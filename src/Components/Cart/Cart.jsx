@@ -3,9 +3,23 @@ import { IoBookmarksSharp, IoLocationOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 import useCart from "../../Hooks/useCart";
+import { useState } from "react";
 
 function Cart() {
   const { cartData } = useCart();
+  const [amount, setAmount] = useState(1);
+  console.log(cartData);
+
+  const sumOfLatestPrice = cartData
+    ?.map((item) => item.addToCartProduct.price.latestPrice)
+    .reduce((sum, price) => sum + price, 0);
+
+  // const setDecrease = () => {
+  //   amount > 1 ? setAmount(amount - 1) : setAmount(1)
+  // }
+  // const setIncrease = () => {
+
+  // }
 
   return (
     <div className="mt-28 max-w-7xl mx-auto">
@@ -55,13 +69,39 @@ function Cart() {
                         </h4>
                       </div>
                     </div>
-                    <div className="">
+                    <div className="flex flex-col justify-between items-end">
                       <div className="flex items-center gap-2">
                         <button>
                           <FaHeart className="text-lg text-gray-400 hover:text-[#36A853]" />
                         </button>
                         <button>
-                          <MdDelete className="text-xl text-red-500 hover:text-red-600" />
+                          <MdDelete className="text-xl text-gray-400 hover:text-red-600" />
+                        </button>
+                      </div>
+                      <div className="flex items-center">
+                        <button
+                          onClick={() => {
+                            amount < data?.addToCartProduct?.quantity
+                              ? setAmount(amount + 1)
+                              : setAmount(data?.addToCartProduct?.quantity);
+                          }}
+                          className="h-8 w-8 bg-slate-300"
+                        >
+                          +
+                        </button>
+                        <input
+                          type="number"
+                          value={amount}
+                          id="Line2Qty"
+                          className="h-8 w-12 rounded border-gray-200 bg-gray-100 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                        />
+                        <button
+                          onClick={() => {
+                            amount > 1 ? setAmount(amount - 1) : setAmount(1);
+                          }}
+                          className="h-8 w-8 bg-slate-300"
+                        >
+                          -
                         </button>
                       </div>
                     </div>
@@ -86,12 +126,18 @@ function Cart() {
             </h2>
             <div className="mt-2">
               <div className="flex items-center justify-between space-y-3">
-                <h5 className="text-gray-500">Subtotal ({cartData?.length} items)</h5>
-                <h6 className="text-lg font-medium text-gray-500">৳ 100</h6>
+                <h5 className="text-gray-500">
+                  Subtotal ({cartData?.length} items)
+                </h5>
+                <h6 className="text-lg font-medium text-gray-500">
+                  ৳ {sumOfLatestPrice > 0 ? sumOfLatestPrice : 0}
+                </h6>
               </div>
               <div className="flex items-center justify-between">
                 <h5 className="text-gray-500">Shipping Fee</h5>
-                <h6 className="text-lg font-medium text-gray-500">৳ 55</h6>
+                <h6 className="text-lg font-medium text-gray-500">
+                  ৳ {cartData?.length > 0 ? 110 : 0}
+                </h6>
               </div>
             </div>
             <div className="flex my-4">
@@ -108,7 +154,9 @@ function Cart() {
               <h5 className="text-lg font-semibold">Total</h5>
               <h6 className="text-lg font-semibold text-[#36A853]">৳ 55</h6>
             </div>
-            <button className="btn w-full mt-4 text-[#36A853] border-2 hover:bg-[#36A853] hover:text-white hover:border-white border-[#36A853] bg-white">Proceed to Checkout</button>
+            <button className="btn w-full mt-4 text-[#36A853] border-2 hover:bg-[#36A853] hover:text-white hover:border-white border-[#36A853] bg-white">
+              Proceed to Checkout
+            </button>
           </div>
         </div>
       </div>
