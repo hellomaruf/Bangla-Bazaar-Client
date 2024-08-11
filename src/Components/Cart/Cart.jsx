@@ -1,27 +1,11 @@
-import { useContext } from "react";
-import { AuthContaxt } from "../../Services/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { Rate } from "antd";
-import { IoBookmarksSharp } from "react-icons/io5";
+import { IoBookmarksSharp, IoLocationOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
+import useCart from "../../Hooks/useCart";
 
 function Cart() {
-  const { user } = useContext(AuthContaxt);
-  const email = user?.email;
-  console.log(email, import.meta.env.VITE_LOCALHOST_URL);
-
-  const { data: cartData } = useQuery({
-    queryKey: ["cartData"],
-    queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_LOCALHOST_URL}/cartProduct/${email}`
-      );
-      return data;
-    },
-  });
-  console.log(cartData);
+  const { cartData } = useCart();
 
   return (
     <div className="mt-28 max-w-7xl mx-auto">
@@ -74,7 +58,7 @@ function Cart() {
                     <div className="">
                       <div className="flex items-center gap-2">
                         <button>
-                          <FaHeart className="text-lg text-gray-600 hover:text-[#36A853]" />
+                          <FaHeart className="text-lg text-gray-400 hover:text-[#36A853]" />
                         </button>
                         <button>
                           <MdDelete className="text-xl text-red-500 hover:text-red-600" />
@@ -87,8 +71,45 @@ function Cart() {
             ))}
           </div>
         </div>
-        <div className="col-span-2 border h-[400px] border-gray-400 p-4">
-          world
+        <div className="col-span-2 border h-[420px] border-gray-400 p-4">
+          <div className="">
+            <h3 className="text-gray-400 text-sm font-medium">Location</h3>
+            <div className="flex items-center gap-2 pt-2 text-gray-600">
+              <IoLocationOutline className="text-xl" />
+              <h4> Add Shipping Address</h4>
+            </div>
+          </div>
+          <hr className="my-6 border-gray-400" />
+          <div className="">
+            <h2 className="text-gray-500 font-semibold text-lg">
+              Order Summary
+            </h2>
+            <div className="mt-2">
+              <div className="flex items-center justify-between space-y-3">
+                <h5 className="text-gray-500">Subtotal ({cartData?.length} items)</h5>
+                <h6 className="text-lg font-medium text-gray-500">৳ 100</h6>
+              </div>
+              <div className="flex items-center justify-between">
+                <h5 className="text-gray-500">Shipping Fee</h5>
+                <h6 className="text-lg font-medium text-gray-500">৳ 55</h6>
+              </div>
+            </div>
+            <div className="flex my-4">
+              <input
+                type="text"
+                placeholder="Enter Voucher Code"
+                className=" input-bordered border placeholder:text-sm pl-4 focus:border-[#36A853] rounded-l-full w-full max-w-xs rounded-none outline-none "
+              />
+              <button className="btn rounded-none bg-[#36A853] text-white rounded-r-full">
+                Apply
+              </button>
+            </div>
+            <div className="flex items-center justify-between">
+              <h5 className="text-lg font-semibold">Total</h5>
+              <h6 className="text-lg font-semibold text-[#36A853]">৳ 55</h6>
+            </div>
+            <button className="btn w-full mt-4 text-[#36A853] border-2 hover:bg-[#36A853] hover:text-white hover:border-white border-[#36A853] bg-white">Proceed to Checkout</button>
+          </div>
         </div>
       </div>
     </div>

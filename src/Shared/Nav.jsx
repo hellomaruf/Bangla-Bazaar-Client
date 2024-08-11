@@ -22,7 +22,11 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import { PlaceholdersAndVanishInput } from "../Components/ui/placeholders-and-vanish-input";
+import useCart from "../Hooks/useCart";
 function Nav() {
+  const {  cartLength } = useCart();
+  console.log( cartLength);
+
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const { user, logout, setUser } = useContext(AuthContaxt);
   const [query, setQuery] = useState("");
@@ -87,11 +91,23 @@ function Nav() {
         </div>
 
         <div className="flex-none gap-2">
-          <button className="flex items-center mr-2">
-            {/* <IoCartOutline className="text-3xl mr-2 text-gray-900" /> */}
-            <HiOutlineShoppingBag className="text-2xl mr-2 text-gray-900" />
+          <Link to={"/cart"} className="flex items-center mr-2 relative">
+            <div className="relative">
+              <HiOutlineShoppingBag className="text-2xl mr-2 text-gray-900" />
+              {
+                cartLength > 0 &&  <div className="absolute -top-1 right-1 ">
+                <span className="relative flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 text-white text-[10px] items-center justify-center">
+                    { cartLength}
+                  </span>
+                </span>
+              </div>
+              }
+             
+            </div>
             <h4>Cart</h4>
-          </button>
+          </Link>
           <button>
             <LuBell className="text-2xl mr-2 text-gray-900" />
           </button>

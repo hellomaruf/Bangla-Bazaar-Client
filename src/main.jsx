@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <RouterProvider router={router}></RouterProvider>
-        <Toaster position="top-right" />
+        <Toaster  position="bottom-right" />
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>

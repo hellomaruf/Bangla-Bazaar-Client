@@ -21,8 +21,10 @@ import Spinner from "../../Utils/Spinner";
 import { AuthContaxt } from "../../Services/AuthProvider";
 import { useContext } from "react";
 import toast from "react-hot-toast";
+import useCart from "../../Hooks/useCart";
 
 function ProductDetails() {
+  const {refetch} = useCart()
   const { id } = useParams();
   const { user } = useContext(AuthContaxt);
   console.log(user?.displayName);
@@ -73,6 +75,7 @@ function ProductDetails() {
               duration: 6000,
             }
           );
+          refetch()
         }
       })
       .catch((error) => {
