@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export function PlaceholdersAndVanishInput({
   placeholders,
@@ -16,37 +16,37 @@ export function PlaceholdersAndVanishInput({
   };
 
   const handleVisibilityChange = () => {
-    if (document.visibilityState !== 'visible' && intervalRef.current) {
+    if (document.visibilityState !== "visible" && intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
-    } else if (document.visibilityState === 'visible') {
+    } else if (document.visibilityState === "visible") {
       startAnimation();
     }
   };
 
   useEffect(() => {
     startAnimation();
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, [placeholders]);
 
   const canvasRef = useRef(null);
   const newDataRef = useRef([]);
   const inputRef = useRef(null);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [animating, setAnimating] = useState(false);
 
   const draw = useCallback(() => {
     if (!inputRef.current) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     canvas.width = 800;
@@ -54,9 +54,9 @@ export function PlaceholdersAndVanishInput({
     ctx.clearRect(0, 0, 800, 800);
     const computedStyles = getComputedStyle(inputRef.current);
 
-    const fontSize = parseFloat(computedStyles.getPropertyValue('font-size'));
+    const fontSize = parseFloat(computedStyles.getPropertyValue("font-size"));
     ctx.font = `${fontSize * 2}px ${computedStyles.fontFamily}`;
-    ctx.fillStyle = '#FFF';
+    ctx.fillStyle = "#FFF";
     ctx.fillText(value, 16, 40);
 
     const imageData = ctx.getImageData(0, 0, 800, 800);
@@ -118,7 +118,7 @@ export function PlaceholdersAndVanishInput({
           }
         }
         newDataRef.current = newArr;
-        const ctx = canvasRef.current?.getContext('2d');
+        const ctx = canvasRef.current?.getContext("2d");
         if (ctx) {
           ctx.clearRect(pos, 0, 800, 800);
           newDataRef.current.forEach((t) => {
@@ -135,7 +135,7 @@ export function PlaceholdersAndVanishInput({
         if (newDataRef.current.length > 0) {
           animateFrame(pos - 8);
         } else {
-          setValue('');
+          setValue("");
           setAnimating(false);
         }
       });
@@ -144,7 +144,7 @@ export function PlaceholdersAndVanishInput({
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !animating) {
+    if (e.key === "Enter" && !animating) {
       vanishAndSubmit();
     }
   };
@@ -153,7 +153,7 @@ export function PlaceholdersAndVanishInput({
     setAnimating(true);
     draw();
 
-    const value = inputRef.current?.value || '';
+    const value = inputRef.current?.value || "";
     if (value && inputRef.current) {
       const maxX = newDataRef.current.reduce(
         (prev, current) => (current.x > prev ? current.x : prev),
@@ -172,13 +172,13 @@ export function PlaceholdersAndVanishInput({
   return (
     <form
       className={`w-full relative max-w-3xl mx-auto bg-white  h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 ${
-        value && 'bg-gray-50'
+        value && "bg-gray-50"
       }`}
       onSubmit={handleSubmit}
     >
       <canvas
         className={`absolute pointer-events-none text-base transform scale-50 top-[20%] left-2 sm:left-8 origin-top-left filter invert dark:invert-0 pr-20 ${
-          !animating ? 'opacity-0' : 'opacity-100'
+          !animating ? "opacity-0" : "opacity-100"
         }`}
         ref={canvasRef}
       />
@@ -194,45 +194,16 @@ export function PlaceholdersAndVanishInput({
         value={value}
         type="text"
         className={`w-full relative text-sm sm:text-base z-50 border-none  bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20 ${
-          animating && 'text-transparent dark:text-transparent'
+          animating && "text-transparent dark:text-transparent"
         }`}
       />
 
       <button
         disabled={!value}
         type="submit"
-        className="absolute right-2 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full disabled:bg-gray-300 disabled:text-white bg-[#36A853]  transition duration-200 flex items-center justify-center"
+        className="absolute right-2 top-1/2 z-50 -translate-y-1/2 p-2 px-4 text-white rounded-full disabled:bg-gray-200 disabled:text-gray-500 bg-[#36A853]  transition duration-200 flex items-center justify-center"
       >
-        <motion.svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="text-white h-4 w-4"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <motion.path
-            d="M5 12l14 0"
-            initial={{
-              strokeDasharray: '50%',
-              strokeDashoffset: '50%',
-            }}
-            animate={{
-              strokeDashoffset: value ? 0 : '50%',
-            }}
-            transition={{
-              duration: 0.3,
-              ease: 'linear',
-            }}
-          />
-          <path d="M13 18l6 -6" />
-          <path d="M13 6l6 6" />
-        </motion.svg>
+        Search
       </button>
 
       <div className="absolute inset-0 flex items-center rounded-full pointer-events-none">
@@ -254,7 +225,7 @@ export function PlaceholdersAndVanishInput({
               }}
               transition={{
                 duration: 0.3,
-                ease: 'linear',
+                ease: "linear",
               }}
               className="dark:text-zinc-500 text-sm sm:text-base font-normal text-neutral-500 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
             >

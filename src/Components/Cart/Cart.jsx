@@ -71,7 +71,7 @@ function Cart() {
             ))}
           </div>
         </div>
-        <div className="col-span-2 border h-[420px] border-gray-400 p-4">
+        <div className="col-span-2 border h-[420px]  border-gray-400 p-4">
           <div className="">
             <h3 className="text-gray-400 text-sm font-medium">Location</h3>
             <div className="flex items-center gap-2 pt-2 text-gray-600">
