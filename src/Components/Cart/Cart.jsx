@@ -3,23 +3,15 @@ import { IoBookmarksSharp, IoLocationOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 import useCart from "../../Hooks/useCart";
-import { useState } from "react";
 
 function Cart() {
   const { cartData } = useCart();
-  const [amount, setAmount] = useState(1);
+
   console.log(cartData);
 
   const sumOfLatestPrice = cartData
     ?.map((item) => item.addToCartProduct.price.latestPrice)
     .reduce((sum, price) => sum + price, 0);
-
-  // const setDecrease = () => {
-  //   amount > 1 ? setAmount(amount - 1) : setAmount(1)
-  // }
-  // const setIncrease = () => {
-
-  // }
 
   return (
     <div className="mt-28 max-w-7xl mx-auto">
@@ -80,25 +72,25 @@ function Cart() {
                       </div>
                       <div className="flex items-center">
                         <button
-                          onClick={() => {
-                            amount < data?.addToCartProduct?.quantity
-                              ? setAmount(amount + 1)
-                              : setAmount(data?.addToCartProduct?.quantity);
-                          }}
+                          // onClick={() => {
+                          //   amount < data?.addToCartProduct?.quantity
+                          //     ? setAmount(amount + 1)
+                          //     : setAmount(data?.addToCartProduct?.quantity);
+                          // }}
                           className="h-8 w-8 bg-slate-300"
                         >
                           +
                         </button>
                         <input
                           type="number"
-                          value={amount}
+                          value={data?.orderCount}
                           id="Line2Qty"
                           className="h-8 w-12 rounded border-gray-200 bg-gray-100 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
                         />
                         <button
-                          onClick={() => {
-                            amount > 1 ? setAmount(amount - 1) : setAmount(1);
-                          }}
+                          // onClick={() => {
+                          //   amount > 1 ? setAmount(amount - 1) : setAmount(1);
+                          // }}
                           className="h-8 w-8 bg-slate-300"
                         >
                           -
