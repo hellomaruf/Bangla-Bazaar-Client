@@ -3,6 +3,7 @@ import { IoBookmarksSharp, IoLocationOutline } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 import useCart from "../../Hooks/useCart";
+import axios from "axios";
 
 function Cart() {
   const { cartData } = useCart();
@@ -13,6 +14,16 @@ function Cart() {
     ?.map((item) => item.addToCartProduct.price.latestPrice)
     .reduce((sum, price) => sum + price, 0);
 
+  const handleIncrementOrder = async (id) => {
+    await axios
+      .put(`${import.meta.env.VITE_LOCALHOST_URL}/incrementOrder/${id}`)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="mt-28 max-w-7xl mx-auto">
       <div className="grid grid-cols-6 gap-5">
@@ -77,6 +88,7 @@ function Cart() {
                           //     ? setAmount(amount + 1)
                           //     : setAmount(data?.addToCartProduct?.quantity);
                           // }}
+                          onClick={() => handleIncrementOrder(data?._id)}
                           className="h-8 w-8 bg-slate-300"
                         >
                           +
