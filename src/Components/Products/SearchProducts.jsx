@@ -35,7 +35,20 @@ function SearchProducts() {
   // Changing State when volume increases/decreases
   const rangeSelector = (event, newValue) => {
     setValue(newValue);
-    console.log(newValue);
+    const minPrice = newValue?.[0];
+    const maxPrice = newValue?.[1];
+    if (minPrice) {
+      const filtered = allProduct?.filter(
+        (item) => item?.price?.latestPrice >= minPrice
+      );
+      setFilteredData(filtered);
+    }
+    if (maxPrice) {
+      const filtered = allProduct?.filter(
+        (item) => item?.price?.latestPrice <= maxPrice
+      );
+      setFilteredData(filtered);
+    }
   };
   const { data: allProduct, isLoading } = useQuery({
     queryKey: ["allProduct"],
@@ -46,6 +59,7 @@ function SearchProducts() {
       return data;
     },
   });
+  console.log(allProduct);
 
   // Added search functionality by city name*****************
   useEffect(() => {
@@ -91,15 +105,18 @@ function SearchProducts() {
               {filteredData?.length} items found for <strong>{query}</strong>
             </h5>
           </div>
-            <div className="grid grid-cols-9 gap-3">
-              {/************************ Filtering ************************/}
+          <div className="grid grid-cols-9 gap-3">
+            {/************************ Filtering ************************/}
             <div className="col-span-7">
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-4 gap-4 h-full">
                 {filteredData?.map((data, index) => (
-                  <div key={index} className="overflow-hidden relative group">
+                  <div
+                    key={index}
+                    className="overflow-hidden relative group h-full"
+                  >
                     <a
                       href="#"
-                      className="group relative block overflow-hidden  border border-gray-200"
+                      className="group relative block overflow-hidden  border h-full border-gray-200"
                     >
                       <img
                         src={data?.productImg}
@@ -156,11 +173,13 @@ function SearchProducts() {
                 ))}
               </div>
             </div>
-              <div className="col-span-2 p-4 border">
-                <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-[12px] font-semibold text-gray-500">Filtering</h2>
-                  <FiFilter className="text-[14px] text-gray-500"/>
-                </div>
+            <div className="col-span-2 p-4 border">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-[12px] font-semibold text-gray-500">
+                  Filtering
+                </h2>
+                <FiFilter className="text-[14px] text-gray-500" />
+              </div>
               <div className="">
                 <CustomSlider
                   className="text-[#36A853] text-sm"
@@ -174,21 +193,21 @@ function SearchProducts() {
                   {" "}
                   Price Range between {value[0]} /- and {value[1]} /-
                 </span>
-                </div>
-                <select
-                  // onChange={(e) => setSelectedCategory(e.target.value)}
-                  // value={selectedCategory}
-                  id="category"
-                  className="bg-gray-50 border  border-gray-300 text-gray-900 text-sm mt-3 rounded-lg  block w-full p-2.5 "
-                >
-                  <option value={""} selected>
-                    All Category
-                  </option>
-                  <option value="Tea">Tea</option>
-                  <option value="Milk">Milk</option>
-                  <option value="Oil">Oil</option>
-                  <option value="Rice">Rice</option>
-                </select>
+              </div>
+              <select
+                // onChange={(e) => setSelectedCategory(e.target.value)}
+                // value={selectedCategory}
+                id="category"
+                className="bg-gray-50 border  border-gray-300 text-gray-900 text-sm mt-3 rounded-lg  block w-full p-2.5 "
+              >
+                <option value={""} selected>
+                  All Category
+                </option>
+                <option value="Tea">Tea</option>
+                <option value="Milk">Milk</option>
+                <option value="Oil">Oil</option>
+                <option value="Rice">Rice</option>
+              </select>
             </div>
           </div>
         </div>
