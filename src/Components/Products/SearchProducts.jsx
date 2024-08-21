@@ -20,6 +20,8 @@ function SearchProducts() {
   const location = useLocation();
   const query = location?.pathname.split("/")[2];
   const [filteredData, setFilteredData] = useState([]);
+  console.log(filteredData);
+  
   const CustomSlider = styled(Slider)({
     color: "#36A853", // This sets the color for both the track and thumb
     "& .MuiSlider-thumb": {
@@ -38,13 +40,13 @@ function SearchProducts() {
     const minPrice = newValue?.[0];
     const maxPrice = newValue?.[1];
     if (minPrice) {
-      const filtered = allProduct?.filter(
+      const filtered = filteredData?.filter(
         (item) => item?.price?.latestPrice >= minPrice
       );
       setFilteredData(filtered);
     }
     if (maxPrice) {
-      const filtered = allProduct?.filter(
+      const filtered = filteredData?.filter(
         (item) => item?.price?.latestPrice <= maxPrice
       );
       setFilteredData(filtered);
