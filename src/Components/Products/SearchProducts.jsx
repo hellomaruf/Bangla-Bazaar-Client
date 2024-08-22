@@ -61,7 +61,6 @@ function SearchProducts() {
       return data;
     },
   });
-  console.log(allProduct);
 
   // Added search functionality by city name*****************
   useEffect(() => {
