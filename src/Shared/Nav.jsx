@@ -21,11 +21,14 @@ import { HiOutlineShoppingBag } from "react-icons/hi2";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
+import { FaRegLightbulb, FaRegStar } from "react-icons/fa";
+import { AiOutlineProduct } from "react-icons/ai";
+import { MdBorderBottom, MdOutlineAccountCircle, MdOutlineSell } from "react-icons/md";
 import { PlaceholdersAndVanishInput } from "../Components/ui/placeholders-and-vanish-input";
 import useCart from "../Hooks/useCart";
 function Nav() {
-  const {  cartLength } = useCart();
-  console.log( cartLength);
+  const { cartLength } = useCart();
+  console.log(cartLength);
 
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const { user, logout, setUser } = useContext(AuthContaxt);
@@ -94,17 +97,16 @@ function Nav() {
           <Link to={"/cart"} className="flex items-center mr-2 relative">
             <div className="relative">
               <HiOutlineShoppingBag className="text-2xl mr-2 text-gray-900" />
-              {
-                cartLength > 0 &&  <div className="absolute -top-1 right-1 ">
-                <span className="relative flex h-4 w-4">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 text-white text-[10px] items-center justify-center">
-                    { cartLength}
+              {cartLength > 0 && (
+                <div className="absolute -top-1 right-1 ">
+                  <span className="relative flex h-4 w-4">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 text-white text-[10px] items-center justify-center">
+                      {cartLength}
+                    </span>
                   </span>
-                </span>
-              </div>
-              }
-             
+                </div>
+              )}
             </div>
             <h4>Cart</h4>
           </Link>
@@ -148,14 +150,36 @@ function Nav() {
                 tabIndex={0}
                 className="mt-6 z-[1] p-2 shadow-xl menu menu-sm dropdown-content bg-base-100 rounded-xl w-64"
               >
-                <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
+                <li className="">
+                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <MdOutlineAccountCircle className="text-xl" /> My Profile
                   </a>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <MdOutlineSell  className="text-xl" /> Sell On BanglaBazar
+                   
+                  </a>
+                </li>
+                <li className="">
+                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <MdBorderBottom  className="text-xl" />  Orders
+                  </a>
+                </li>
+                <li className="">
+                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <FaRegLightbulb  className="text-xl" />  Wishlist
+                  </a>
+                </li>
+                <li className="">
+                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <AiOutlineProduct  className="text-xl" />  Bestselling Products
+                  </a>
+                </li>
+                <li className="">
+                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <FaRegStar className="text-xl" />  Rating
+                  </a>
                 </li>
                 <li className="mt-2" onClick={handleLogout}>
                   <a className="btn bg-[#36a853] text-white">
