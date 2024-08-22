@@ -20,8 +20,10 @@ function SearchProducts() {
   const location = useLocation();
   const query = location?.pathname.split("/")[2];
   const [filteredData, setFilteredData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
   console.log(filteredData);
-  
+
   const CustomSlider = styled(Slider)({
     color: "#36A853", // This sets the color for both the track and thumb
     "& .MuiSlider-thumb": {
@@ -74,6 +76,19 @@ function SearchProducts() {
       setFilteredData(filtered);
     }
   }, [query, allProduct]);
+
+  // Added Category Functionality --------------------------------->
+  console.log(selectedCategory);
+  useEffect(() => {
+    if (selectedCategory) {
+      // setFilteredData(filteredData)
+      const filtered = allProduct?.filter(
+        (item) => item?.categoryName === selectedCategory
+      );
+      setFilteredData(filtered);
+    }
+  }, [selectedCategory, allProduct]);
+  console.log(filteredData);
 
   return (
     <div className="mt-24 max-w-7xl mx-auto">
@@ -196,18 +211,21 @@ function SearchProducts() {
                 </span>
               </div>
               <select
-                // onChange={(e) => setSelectedCategory(e.target.value)}
-                // value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                value={selectedCategory}
                 id="category"
                 className="bg-gray-50 border  border-gray-300 text-gray-900 text-sm mt-3 rounded-lg  block w-full p-2.5 "
               >
                 <option value={""} selected>
                   All Category
                 </option>
-                <option value="Tea">Tea</option>
-                <option value="Milk">Milk</option>
-                <option value="Oil">Oil</option>
-                <option value="Rice">Rice</option>
+                <option value="Fresh Fruits">Fresh Fruits</option>
+                <option value="Fresh Vegetables">Fresh Vegetables</option>
+                <option value="Dish Washing">Dish Washing</option>
+                <option value="HealthCare">HealthCare</option>
+                <option value="Meat">Meat</option>
+                <option value="Soft Drinks">Soft Drinks</option>
+                <option value="Toilet Cleaners">Toilet Cleaners</option>
               </select>
             </div>
           </div>
