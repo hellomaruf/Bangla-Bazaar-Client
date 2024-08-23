@@ -24,7 +24,7 @@ import toast from "react-hot-toast";
 import useCart from "../../Hooks/useCart";
 
 function ProductDetails() {
-  const {refetch} = useCart()
+  const { refetch } = useCart();
   const { id } = useParams();
   const { user } = useContext(AuthContaxt);
   console.log(user?.displayName);
@@ -56,10 +56,12 @@ function ProductDetails() {
     const userEmail = user?.email;
     const userName = user?.displayName;
     const addToCartProduct = productDetailsData;
+    const orderCount = 1;
     const addToCartProductInfo = {
       userEmail,
       userName,
       addToCartProduct,
+      orderCount,
     };
     console.log(addToCartProductInfo);
     await axios
@@ -75,7 +77,7 @@ function ProductDetails() {
               duration: 6000,
             }
           );
-          refetch()
+          refetch();
         }
       })
       .catch((error) => {

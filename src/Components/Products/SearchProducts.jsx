@@ -78,7 +78,6 @@ function SearchProducts() {
   }, [query, allProduct]);
 
   // Added Category Functionality --------------------------------->
-  console.log(selectedCategory);
   useEffect(() => {
     if (selectedCategory) {
       // setFilteredData(filteredData)
@@ -88,7 +87,7 @@ function SearchProducts() {
       setFilteredData(filtered);
     }
   }, [selectedCategory, allProduct]);
-  console.log(filteredData);
+ 
 
   return (
     <div className="mt-24 max-w-7xl mx-auto">

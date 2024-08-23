@@ -6,7 +6,7 @@ import useCart from "../../Hooks/useCart";
 import axios from "axios";
 
 function Cart() {
-  const { cartData } = useCart();
+  const { cartData, refetch } = useCart();
 
   console.log(cartData);
 
@@ -19,10 +19,23 @@ function Cart() {
       .put(`${import.meta.env.VITE_LOCALHOST_URL}/incrementOrder/${id}`)
       .then((res) => {
         console.log(res.data);
+        refetch();
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleDecrementOrder = async (id) => {
+    await axios
+    .put(`${import.meta.env.VITE_LOCALHOST_URL}/decrementOrder/${id}`)
+    .then((res) => {
+      console.log(res.data);
+      refetch();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
   return (
     <div className="mt-28 max-w-7xl mx-auto">
@@ -83,13 +96,8 @@ function Cart() {
                       </div>
                       <div className="flex items-center">
                         <button
-                          // onClick={() => {
-                          //   amount < data?.addToCartProduct?.quantity
-                          //     ? setAmount(amount + 1)
-                          //     : setAmount(data?.addToCartProduct?.quantity);
-                          // }}
                           onClick={() => handleIncrementOrder(data?._id)}
-                          className="h-8 w-8 bg-slate-300"
+                          className="h-8 w-8 bg-gray-300 hover:bg-slate-400 hover:text-white transition rounded-l-full"
                         >
                           +
                         </button>
@@ -97,13 +105,11 @@ function Cart() {
                           type="number"
                           value={data?.orderCount}
                           id="Line2Qty"
-                          className="h-8 w-12 rounded border-gray-200 bg-gray-100 p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                          className="h-8 w-12 rounded border-gray-200 bg-gray-100  p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
                         />
                         <button
-                          // onClick={() => {
-                          //   amount > 1 ? setAmount(amount - 1) : setAmount(1);
-                          // }}
-                          className="h-8 w-8 bg-slate-300"
+                          onClick={() => handleDecrementOrder(data?._id)}
+                          className="h-8 w-8 bg-gray-300 hover:bg-slate-400 hover:text-white transition rounded-r-full"
                         >
                           -
                         </button>
