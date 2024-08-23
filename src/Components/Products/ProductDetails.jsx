@@ -38,7 +38,7 @@ function ProductDetails() {
       return data;
     },
   });
-  console.log(productDetailsData);
+  console.log(productDetailsData?.price?.latestPrice);
 
   const { data: relatedProducts } = useQuery({
     queryKey: ["relatedProducts"],
@@ -57,11 +57,13 @@ function ProductDetails() {
     const userName = user?.displayName;
     const addToCartProduct = productDetailsData;
     const orderCount = 1;
+    const totalLatestPrice = productDetailsData?.price?.latestPrice;
     const addToCartProductInfo = {
       userEmail,
       userName,
       addToCartProduct,
       orderCount,
+      totalLatestPrice,
     };
     console.log(addToCartProductInfo);
     await axios

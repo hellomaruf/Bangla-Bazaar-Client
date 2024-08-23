@@ -7,11 +7,10 @@ import axios from "axios";
 
 function Cart() {
   const { cartData, refetch } = useCart();
-
   console.log(cartData);
 
   const sumOfLatestPrice = cartData
-    ?.map((item) => item.addToCartProduct.price.latestPrice)
+    ?.map((item) => item.totalLatestPrice)
     .reduce((sum, price) => sum + price, 0);
 
   const handleIncrementOrder = async (id) => {
@@ -28,14 +27,14 @@ function Cart() {
 
   const handleDecrementOrder = async (id) => {
     await axios
-    .put(`${import.meta.env.VITE_LOCALHOST_URL}/decrementOrder/${id}`)
-    .then((res) => {
-      console.log(res.data);
-      refetch();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .put(`${import.meta.env.VITE_LOCALHOST_URL}/decrementOrder/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        refetch();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="mt-28 max-w-7xl mx-auto">
@@ -72,7 +71,7 @@ function Cart() {
                       </div>
                       <div className="flex items-center gap-2 py-3">
                         <h2 className="text-2xl text-[#36A853]">
-                          ৳ {data?.addToCartProduct?.price?.latestPrice}
+                          ৳ {data?.addToCartProduct?.price?.latestPrice}{" "}
                         </h2>
                         <h2 className="text-sm line-through text-gray-500">
                           ৳ {data?.addToCartProduct?.price?.oldPrice}
