@@ -145,7 +145,7 @@ function Cart() {
               <div className="flex items-center justify-between">
                 <h5 className="text-gray-500">Shipping Fee</h5>
                 <h6 className="text-lg font-medium text-gray-500">
-                  ৳ {cartData?.length > 0 ? 110 : 0}
+                  ৳ {cartData?.length > 0 ? 90 : 0}
                 </h6>
               </div>
             </div>
@@ -153,6 +153,7 @@ function Cart() {
               <input
                 type="text"
                 placeholder="Enter Voucher Code"
+                disabled
                 className=" input-bordered border placeholder:text-sm pl-4 focus:border-[#36A853] rounded-l-full w-full max-w-xs rounded-none outline-none "
               />
               <button className="btn rounded-none bg-[#36A853] text-white rounded-r-full">
@@ -161,7 +162,7 @@ function Cart() {
             </div>
             <div className="flex items-center justify-between">
               <h5 className="text-lg font-semibold">Total</h5>
-              <h6 className="text-lg font-semibold text-[#36A853]">৳ 55</h6>
+              <h6 className="text-lg font-semibold text-[#36A853]">৳ { sumOfLatestPrice + 90}</h6>
             </div>
             <button className="btn w-full mt-4 text-[#36A853] border-2 hover:bg-[#36A853] hover:text-white hover:border-white border-[#36A853] bg-white">
               Proceed to Checkout
