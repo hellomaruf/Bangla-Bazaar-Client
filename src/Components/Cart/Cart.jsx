@@ -4,14 +4,15 @@ import { MdDelete } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 import useCart from "../../Hooks/useCart";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import useTotalPrice from "../../Hooks/useTotalPrice";
 
 function Cart() {
   const { cartData, refetch } = useCart();
   console.log(cartData);
 
-  const sumOfLatestPrice = cartData
-    ?.map((item) => item.totalLatestPrice)
-    .reduce((sum, price) => sum + price, 0);
+  const {sumOfLatestPrice} = useTotalPrice()
+  console.log(sumOfLatestPrice);
 
   const handleIncrementOrder = async (id) => {
     await axios
@@ -164,9 +165,9 @@ function Cart() {
               <h5 className="text-lg font-semibold">Total</h5>
               <h6 className="text-lg font-semibold text-[#36A853]">৳ { sumOfLatestPrice + 90}</h6>
             </div>
-            <button className="btn w-full mt-4 text-[#36A853] border-2 hover:bg-[#36A853] hover:text-white hover:border-white border-[#36A853] bg-white">
+            <Link to={'/proceed-to-checkout'} className="btn w-full mt-4 text-[#36A853] border-2 hover:bg-[#36A853] hover:text-white hover:border-white border-[#36A853] bg-white">
               Proceed to Checkout
-            </button>
+            </Link>
           </div>
         </div>
       </div>

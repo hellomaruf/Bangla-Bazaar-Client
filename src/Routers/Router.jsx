@@ -5,6 +5,7 @@ import Products from "../Components/Products/Products";
 import ProductDetails from "../Components/Products/ProductDetails";
 import SearchProducts from "../Components/Products/SearchProducts";
 import Cart from "../Components/Cart/Cart";
+import ProceedToCheckout from "../Pages/ProceedToCheckout";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -27,9 +28,13 @@ export const router = createBrowserRouter([
         element: <SearchProducts />,
       },
       {
-        path: '/cart',
-        element:<Cart/>
-      }
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/proceed-to-checkout",
+        element: <ProceedToCheckout />,
+      },
     ],
   },
 ]);
