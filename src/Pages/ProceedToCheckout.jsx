@@ -1,14 +1,63 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import useTotalPrice from "../Hooks/useTotalPrice";
+import axios from "axios";
+import useCart from "../Hooks/useCart";
 
 function ProceedToCheckout() {
   const { sumOfLatestPrice } = useTotalPrice();
+  const [payInfo, setPayInfo] = useState(null);
+  const { cartData } = useCart();
+  console.log(cartData);
+  const productName = cartData?.map(
+    (item) => item?.addToCartProduct?.productName
+  );
+  // console.log(productName);
+
+  const handlePaymentInfo = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const phoneNumber = form.number.value;
+    const email = form.email.value;
+    const address = form.address.value;
+    const colony = form.colony.value;
+    const ammount = sumOfLatestPrice + 90;
+    const paymentInfo = {
+      name,
+      phoneNumber,
+      email,
+      address,
+      colony,
+      ammount,
+      productName,
+    };
+    setPayInfo(paymentInfo);
+  };
+  const handleCreatePayment = () => {
+    axios
+      .post(`${import.meta.env.VITE_LOCALHOST_URL}/create-payment`, payInfo)
+      .then((res) => {
+        console.log(res.data);
+        const redirectURL = res.data.paymentUrl;
+        if (redirectURL) {
+          window.location.replace(redirectURL);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  console.log(payInfo);
 
   return (
     <div className="mt-28 max-w-7xl mx-auto">
-      <div className="grid grid-cols-6 gap-5 items-center justify-center">
-        <div className="col-span-4">
-          <form action="#" className=" grid grid-cols-6 gap-6">
+      <div className="grid grid-cols-6 gap-5 items-start">
+        <div className="col-span-4 border p-6 border-gray-400">
+          <form
+            onSubmit={handlePaymentInfo}
+            action="#"
+            className=" grid grid-cols-6 gap-6"
+          >
             <div className="col-span-6">
               <label
                 htmlFor="Email"
@@ -94,9 +143,14 @@ function ProceedToCheckout() {
                 className="mt-1 w-full py-3 px-4 rounded-md border border-gray-300 bg-white text-sm text-gray-700 outline-none focus:border-[#36A853]"
               />
             </div>
+            <div className="flex">
+              <button className="btn bg-[#36A853] text-white">
+                Save Details
+              </button>
+            </div>
           </form>
         </div>
-        <div className="col-span-2 border h-[250px] mt-8 border-gray-300 p-4 rounded-md">
+        <div className="col-span-2 border h-[250px] border-gray-400 p-4 ">
           <div className="">
             <h2 className="text-gray-500 font-semibold text-lg">
               Order Summary
@@ -124,12 +178,13 @@ function ProceedToCheckout() {
                 ৳ {sumOfLatestPrice + 90}
               </h6>
             </div>
-            <Link
-              to={"/proceed-to-checkout"}
-              className="btn w-full mt-4 text-white border-2 bg-[#36A853] hover:text-white hover:border-white border-[#36A853] "
+            <button
+              onClick={handleCreatePayment}
+              disabled={!payInfo}
+              className="btn w-full mt-4  text-white border-2 bg-[#36A853] hover:text-white hover:border-white border-[#36A853] "
             >
               Proceed to Pay
-            </Link>
+            </button>
           </div>
         </div>
       </div>
