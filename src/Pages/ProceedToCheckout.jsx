@@ -22,6 +22,7 @@ function ProceedToCheckout() {
     const address = form.address.value;
     const colony = form.colony.value;
     const ammount = sumOfLatestPrice + 90;
+    const orderDate = new Date().toDateString()
     const paymentInfo = {
       name,
       phoneNumber,
@@ -30,6 +31,7 @@ function ProceedToCheckout() {
       colony,
       ammount,
       productName,
+      orderDate
     };
     setPayInfo(paymentInfo);
   };
