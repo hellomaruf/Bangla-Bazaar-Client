@@ -6,6 +6,9 @@ import ProductDetails from "../Components/Products/ProductDetails";
 import SearchProducts from "../Components/Products/SearchProducts";
 import Cart from "../Components/Cart/Cart";
 import ProceedToCheckout from "../Pages/ProceedToCheckout";
+import SuccessPayment from "../Pages/Payment/SuccessPayment";
+import FailPayment from "../Pages/Payment/FailPayment";
+import CanclePayment from "../Pages/Payment/CanclePayment";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +37,18 @@ export const router = createBrowserRouter([
       {
         path: "/proceed-to-checkout",
         element: <ProceedToCheckout />,
+      },
+      {
+        path: "/success-payment",
+        element: <SuccessPayment />,
+      },
+      {
+        path: "/fail-payment",
+        element: <FailPayment />,
+      },
+      {
+        path: "/cancle-payment",
+        element: <CanclePayment />,
       },
     ],
   },
