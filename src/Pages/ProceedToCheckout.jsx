@@ -55,10 +55,37 @@ function ProceedToCheckout() {
     <div className="mt-28 max-w-7xl mx-auto">
       <div className="grid grid-cols-6 gap-5 items-start">
         <div className="col-span-4 border p-6 border-gray-400">
-          <form
+          {
+            payInfo?   <div className="">
+            <div className="mb-5">
+              <h2 className="text-lg font-medium">Shipping & Billing</h2>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <h3>Name :</h3>
+                <p>{ payInfo?.name}</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <h3>Email :</h3>
+                <p>{ payInfo?.email}</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <h3>Phone :</h3>
+                <p>{ payInfo?.phoneNumber}</p>
+              </div>
+              <div className="flex items-center justify-between">
+                <h3>Address :</h3>
+                <p>{payInfo?.address},{ payInfo?.colony}</p>
+              </div>
+              <div className="flex">
+
+              <h4 className="bg-green-500 text-white text-sm rounded-full px-3">HOME</h4>
+              </div>
+            </div>
+          </div> :   <form
             onSubmit={handlePaymentInfo}
             action="#"
-            className=" grid grid-cols-6 gap-6"
+            className=" grid grid-cols-6 gap-6 "
           >
             <div className="col-span-6">
               <label
@@ -151,6 +178,10 @@ function ProceedToCheckout() {
               </button>
             </div>
           </form>
+          }
+        
+
+       
         </div>
         <div className="col-span-2 border h-[250px] border-gray-400 p-4 ">
           <div className="">
