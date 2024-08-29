@@ -23,7 +23,11 @@ import { Link, useNavigate } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import { FaRegLightbulb, FaRegStar } from "react-icons/fa";
 import { AiOutlineProduct } from "react-icons/ai";
-import { MdBorderBottom, MdOutlineAccountCircle, MdOutlineSell } from "react-icons/md";
+import {
+  MdBorderBottom,
+  MdOutlineAccountCircle,
+  MdOutlineSell,
+} from "react-icons/md";
 import { PlaceholdersAndVanishInput } from "../Components/ui/placeholders-and-vanish-input";
 import useCart from "../Hooks/useCart";
 function Nav() {
@@ -151,34 +155,36 @@ function Nav() {
                 className="mt-6 z-[1] p-2 shadow-xl menu menu-sm dropdown-content bg-base-100 rounded-xl w-64"
               >
                 <li className="">
-                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
-                  <MdOutlineAccountCircle className="text-xl" /> My Profile
-                  </a>
+                 
+                    <Link to={"/profile"} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                      <MdOutlineAccountCircle className="text-xl" /> My Profile
+                    </Link>
+                
                 </li>
                 <li>
                   <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
-                  <MdOutlineSell  className="text-xl" /> Sell On BanglaBazar
-                   
+                    <MdOutlineSell className="text-xl" /> Sell On BanglaBazar
                   </a>
                 </li>
                 <li className="">
                   <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
-                  <MdBorderBottom  className="text-xl" />  Orders
+                    <MdBorderBottom className="text-xl" /> Orders
                   </a>
                 </li>
                 <li className="">
                   <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
-                  <FaRegLightbulb  className="text-xl" />  Wishlist
+                    <FaRegLightbulb className="text-xl" /> Wishlist
                   </a>
                 </li>
                 <li className="">
                   <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
-                  <AiOutlineProduct  className="text-xl" />  Bestselling Products
+                    <AiOutlineProduct className="text-xl" /> Bestselling
+                    Products
                   </a>
                 </li>
                 <li className="">
                   <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
-                  <FaRegStar className="text-xl" />  Rating
+                    <FaRegStar className="text-xl" /> Rating
                   </a>
                 </li>
                 <li className="mt-2" onClick={handleLogout}>

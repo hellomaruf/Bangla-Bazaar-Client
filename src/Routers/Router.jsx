@@ -9,6 +9,7 @@ import ProceedToCheckout from "../Pages/ProceedToCheckout";
 import SuccessPayment from "../Pages/Payment/SuccessPayment";
 import FailPayment from "../Pages/Payment/FailPayment";
 import CanclePayment from "../Pages/Payment/CanclePayment";
+import Profile from "../Pages/Profile";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
         path: "/cancle-payment",
         element: <CanclePayment />,
       },
+      {
+        path: '/profile',
+        element:<Profile/>
+      }
     ],
   },
 ]);

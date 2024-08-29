@@ -54,7 +54,7 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
       });
 
     await axios
-      .post(`${import.meta.env.VITE_LOCALHOST_URL}/user`, userInfo)
+      .post(`${import.meta.env.VITE_LOCALHOST_URL}/users`, userInfo)
       .then((res) => {
         console.log(res.data);
       })
