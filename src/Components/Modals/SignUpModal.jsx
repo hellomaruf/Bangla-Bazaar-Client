@@ -10,7 +10,6 @@ import axios from "axios";
 function SignUpModal({ isOpenSignUp, signUpClose }) {
   const [avatarURL, setAvatarURL] = useState(upload);
   const [image, setImage] = useState(Object);
-  console.log(image);
   const { createNewUser, updateUserProfile } = useContext(AuthContaxt);
   const fileUploadRef = useRef();
   const handleUploadImg = (e) => {
@@ -24,6 +23,7 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
     setAvatarURL(cachedURL);
     setImage(uploadedFile);
   };
+  console.log(image);
 
   // user sing up
   const handleSignUp = async (e) => {
@@ -33,6 +33,7 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
     const email = form.email.value;
     const password = form.password.value;
     const photo = await ImageUpload(image);
+
     console.log(name, email, password, photo);
     const userInfo = {
       name,

@@ -1,15 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContaxt } from "../Services/AuthProvider";
-import upload from '../assets/Imgs/upload.png'
+// import upload from "../assets/Imgs/upload.png";
+// import { ImageUpload } from "../Utils/imgUpload";
 
 function Profile() {
   const { user } = useContext(AuthContaxt);
   const email = user?.email;
-  const [avatarURL, setAvatarURL] = useState(upload);
-  const [image, setImage] = useState(Object);
-  const fileUploadRef = useRef();
+//   const [avatarURL, setAvatarURL] = useState(upload);
+//   const [image, setImage] = useState(Object);
+//   console.log(image);
+
+//   const fileUploadRef = useRef();
+  const [gender, setGender] = useState("");
   const { data: userData } = useQuery({
     queryKey: "userdata",
     queryFn: async () => {
@@ -19,21 +23,47 @@ function Profile() {
       return data;
     },
   });
-  // Upload img Functionality------------------------------>
-  const handleUploadImg = (e) => {
-    e.preventDefault();
-    fileUploadRef.current.click();
-  };
-  const handleDisplayUploadedImg = () => {
-    const uploadedFile = fileUploadRef.current.files[0];
-    const cachedURL = URL.createObjectURL(uploadedFile);
-    console.log(cachedURL, uploadedFile);
-    setAvatarURL(cachedURL);
-    setImage(uploadedFile);
-  };
   const profileImage = userData?.photo;
   const userName = userData?.name;
   const userEmail = userData?.email;
+  // Upload img Functionality------------------------------>
+//   const handleUploadImg = (e) => {
+//     e.preventDefault();
+//     fileUploadRef.current.click();
+//   };
+//   const handleDisplayUploadedImg = () => {
+//     const uploadedFile = fileUploadRef.current.files[0];
+//     const cachedURL = URL.createObjectURL(uploadedFile);
+//     console.log(cachedURL, uploadedFile);
+//     setAvatarURL(cachedURL);
+//     setImage(uploadedFile);
+//   };
+
+  // Update profile--------------------->
+  const handleGender = (e) => {
+    setGender(e.target.value);
+  };
+
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phoneNum = form.number.value;
+    const dateOfBirth = form.date.value;
+    // const photo = await ImageUpload(image);
+    // console.log(photo);
+
+    const userUpdateInfo = {
+      name,
+      email,
+    //   photo,
+      phoneNum,
+      dateOfBirth,
+      gender,
+    };
+    console.log(userUpdateInfo);
+  };
 
   return (
     <div className="mt-28 max-w-7xl mx-auto">
@@ -65,7 +95,11 @@ function Profile() {
 
         {/******************** User update form ********************/}
         <div className="col-span-4 border border-gray-400 p-6">
-          <form action="#" className="mt-8 grid grid-cols-6 gap-6">
+          <form
+            onSubmit={handleUpdateProfile}
+            action="#"
+            className="mt-8 grid grid-cols-6 gap-6"
+          >
             <div className="col-span-6">
               <label
                 htmlFor="FirstName"
@@ -76,8 +110,8 @@ function Profile() {
 
               <input
                 type="text"
-                id="FirstName"
-                name="first_name"
+                id="Name"
+                name="name"
                 defaultValue={userName}
                 className="mt-1 w-full p-3 outline-none border focus:border-[#36A853] rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
@@ -136,6 +170,7 @@ function Profile() {
                       name="radio-10"
                       className="radio checked:bg-[#36A853]"
                       value={"male"}
+                      onChange={handleGender}
                       defaultChecked
                     />
                   </label>
@@ -145,6 +180,7 @@ function Profile() {
                     <span className="label-text">Female</span>
                     <input
                       type="radio"
+                      onChange={handleGender}
                       name="radio-10"
                       className="radio checked:bg-[#36A853]"
                       value="female"
@@ -178,7 +214,7 @@ function Profile() {
               </label>
 
               {/* upload img */}
-              <div className=" mt-4 ">
+              {/* <div className=" mt-4 ">
                 <button className="" onClick={handleUploadImg}>
                   <img
                     className="w-24 rounded-full"
@@ -192,7 +228,7 @@ function Profile() {
                   type="file"
                   className="hidden"
                 />
-              </div>
+              </div> */}
             </div>
 
             <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
