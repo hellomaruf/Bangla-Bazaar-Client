@@ -28,8 +28,10 @@
     "react-image-magnifier": "^1.0.0",
     "react-image-magnify": "^2.7.4",
     "react-router-dom": "^6.23.1",
+    "react-scrollbars-custom": "^4.1.1",
     "swiper": "^11.1.4",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^2.4.0",
+    "tailwind-scrollbar": "^3.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

@@ -3,17 +3,17 @@ import Nav from "../Shared/Nav";
 import Footer from "../Shared/Footer";
 import { useEffect, useState } from "react";
 import SplashScreen from "../Pages/SplashScreen";
-
+import '../Style/customScroll.css'
 function MainLayout() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 2000);
   }, []);
   return (
-    <div>
+    <div className="custom-scrollbar">
       {loading ? (
         <SplashScreen />
       ) : (
