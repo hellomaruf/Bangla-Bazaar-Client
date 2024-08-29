@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useTotalPrice from "../Hooks/useTotalPrice";
 import axios from "axios";
 import useCart from "../Hooks/useCart";
+import { AuthContaxt } from "../Services/AuthProvider";
 
 function ProceedToCheckout() {
+  const { user } = useContext(AuthContaxt);
+  console.log(user);
+
   const { sumOfLatestPrice } = useTotalPrice();
   const [payInfo, setPayInfo] = useState(null);
   const { cartData } = useCart();
@@ -105,6 +109,8 @@ function ProceedToCheckout() {
                   type="text"
                   id="name"
                   name="name"
+                  defaultValue={user?.displayName}
+                  disabled
                   placeholder="Enter Full Name"
                   className="mt-1 w-full py-3 px-4 rounded-md border border-gray-300 bg-white text-sm text-gray-700 outline-none focus:border-[#36A853]"
                 />
@@ -138,6 +144,8 @@ function ProceedToCheckout() {
                   type="email"
                   id="email"
                   name="email"
+                  defaultValue={user?.email}
+                  disabled
                   placeholder="Enter Email Address"
                   className="mt-1 w-full py-3 px-4 rounded-md border border-gray-300 bg-white text-sm text-gray-700 outline-none focus:border-[#36A853]"
                 />
