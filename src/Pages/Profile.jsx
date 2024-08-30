@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContaxt } from "../Services/AuthProvider";
-// import upload from "../assets/Imgs/upload.png";
-// import { ImageUpload } from "../Utils/imgUpload";
+import upload from "../assets/Imgs/upload.png";
+import { ImageUpload } from "../Utils/imgUpload";
 
 function Profile() {
   const { user } = useContext(AuthContaxt);
   const email = user?.email;
-//   const [avatarURL, setAvatarURL] = useState(upload);
-//   const [image, setImage] = useState(Object);
-//   console.log(image);
+  const [avatarURL, setAvatarURL] = useState(upload);
+  const [image, setImage] = useState(Object);
+  console.log(image);
 
-//   const fileUploadRef = useRef();
+  const fileUploadRef = useRef();
   const [gender, setGender] = useState("");
   const { data: userData } = useQuery({
     queryKey: "userdata",
@@ -27,17 +27,17 @@ function Profile() {
   const userName = userData?.name;
   const userEmail = userData?.email;
   // Upload img Functionality------------------------------>
-//   const handleUploadImg = (e) => {
-//     e.preventDefault();
-//     fileUploadRef.current.click();
-//   };
-//   const handleDisplayUploadedImg = () => {
-//     const uploadedFile = fileUploadRef.current.files[0];
-//     const cachedURL = URL.createObjectURL(uploadedFile);
-//     console.log(cachedURL, uploadedFile);
-//     setAvatarURL(cachedURL);
-//     setImage(uploadedFile);
-//   };
+  const handleUploadImg = (e) => {
+    e.preventDefault();
+    fileUploadRef.current.click();
+  };
+  const handleDisplayUploadedImg = () => {
+    const uploadedFile = fileUploadRef.current.files[0];
+    const cachedURL = URL.createObjectURL(uploadedFile);
+    console.log(cachedURL, uploadedFile);
+    setAvatarURL(cachedURL);
+    setImage(uploadedFile);
+  };
 
   // Update profile--------------------->
   const handleGender = (e) => {
@@ -51,13 +51,13 @@ function Profile() {
     const email = form.email.value;
     const phoneNum = form.number.value;
     const dateOfBirth = form.date.value;
-    // const photo = await ImageUpload(image);
-    // console.log(photo);
+    const photo = await ImageUpload(image);
+    console.log(photo);
 
     const userUpdateInfo = {
       name,
       email,
-    //   photo,
+      photo,
       phoneNum,
       dateOfBirth,
       gender,
@@ -214,7 +214,7 @@ function Profile() {
               </label>
 
               {/* upload img */}
-              {/* <div className=" mt-4 ">
+              <div className=" mt-4 ">
                 <button className="" onClick={handleUploadImg}>
                   <img
                     className="w-24 rounded-full"
@@ -228,7 +228,7 @@ function Profile() {
                   type="file"
                   className="hidden"
                 />
-              </div> */}
+              </div>
             </div>
 
             <div className="col-span-6 sm:flex sm:items-center sm:gap-4">

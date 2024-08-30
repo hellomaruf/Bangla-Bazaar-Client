@@ -16,9 +16,7 @@ function FAQs() {
               open
             >
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-gray-50 p-4 text-gray-900">
-                <h2 className="font-medium">
-                  Lorem ipsum dolor sit amet consectetur adipisicing?
-                </h2>
+                <h2 className="font-medium">What is your policy on refunds?</h2>
 
                 <svg
                   className="size-5 shrink-0 transition duration-300 group-open:-rotate-180"
@@ -37,18 +35,21 @@ function FAQs() {
               </summary>
 
               <p className="mt-4 px-4 leading-relaxed text-gray-700">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic
-                veritatis molestias culpa in, recusandae laboriosam neque
-                aliquid libero nesciunt voluptate dicta quo officiis explicabo
-                consequuntur distinctio corporis earum similique!
+                We offer a refund or return policy of seven (7) days on most
+                unopened or unspoilt packaged products. <br />
+                1. For perishable products such as milk, fruits, and fresh
+                vegetables, we have a 1 (one) day return policy. <br />
+                2. Diaper items must be returned for refunds before 10% or 3
+                pieces (whichever comes first) have been used. <br />
+                3. Certain products; Face Mask, Disposable Vinyl Gloves, Alcohol
+                Pads, and Covid Testing Kits are not acceptable for refund or
+                return either opened or unopened. <br />
               </p>
             </details>
 
             <details className="group [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-gray-50 p-4 text-gray-900">
-                <h2 className="font-medium">
-                  Lorem ipsum dolor sit amet consectetur adipisicing?
-                </h2>
+                <h2 className="font-medium">What are your delivery hours?</h2>
 
                 <svg
                   className="size-5 shrink-0 transition duration-300 group-open:-rotate-180"
@@ -67,17 +68,13 @@ function FAQs() {
               </summary>
 
               <p className="mt-4 px-4 leading-relaxed text-gray-700">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic
-                veritatis molestias culpa in, recusandae laboriosam neque
-                aliquid libero nesciunt voluptate dicta quo officiis explicabo
-                consequuntur distinctio corporis earum similique!
+                We deliver from 7.30 am to 11 pm every day. You can choose from
+                available slots to find something that is convenient for you.
               </p>
             </details>
             <details className="group [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-gray-50 p-4 text-gray-900">
-                <h2 className="font-medium">
-                  Lorem ipsum dolor sit amet consectetur adipisicing?
-                </h2>
+                <h2 className="font-medium">What about the prices?</h2>
 
                 <svg
                   className="size-5 shrink-0 transition duration-300 group-open:-rotate-180"
@@ -96,17 +93,15 @@ function FAQs() {
               </summary>
 
               <p className="mt-4 px-4 leading-relaxed text-gray-700">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic
-                veritatis molestias culpa in, recusandae laboriosam neque
-                aliquid libero nesciunt voluptate dicta quo officiis explicabo
-                consequuntur distinctio corporis earum similique!
+                Our prices are our own but we try our best to offer them to you
+                at or below market prices. Our prices are the same as the local
+                market and we are working hard to get them even lower! If you
+                feel that any product is priced unfairly, please let us know.
               </p>
             </details>
             <details className="group [&_summary::-webkit-details-marker]:hidden">
               <summary className="flex cursor-pointer items-center justify-between gap-1.5 rounded-lg bg-gray-50 p-4 text-gray-900">
-                <h2 className="font-medium">
-                  Lorem ipsum dolor sit amet consectetur adipisicing?
-                </h2>
+                <h2 className="font-medium">Do you serve my area?</h2>
 
                 <svg
                   className="size-5 shrink-0 transition duration-300 group-open:-rotate-180"
@@ -125,10 +120,8 @@ function FAQs() {
               </summary>
 
               <p className="mt-4 px-4 leading-relaxed text-gray-700">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic
-                veritatis molestias culpa in, recusandae laboriosam neque
-                aliquid libero nesciunt voluptate dicta quo officiis explicabo
-                consequuntur distinctio corporis earum similique!
+                We are currently serving in three big cities of Bangladesh
+                including Dhaka, Chattogram, Jashore.
               </p>
             </details>
           </div>
