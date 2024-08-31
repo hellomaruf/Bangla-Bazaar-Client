@@ -14,13 +14,11 @@ import SignInModal from "../Components/Modals/SignInModal";
 import profile from "../assets/Imgs/profile.jpeg";
 import { AuthContaxt } from "../Services/AuthProvider";
 import { LuBell } from "react-icons/lu";
-// import { IoCartOutline } from "react-icons/io5";
 import { IoMdLogOut } from "react-icons/io";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
 import { FaRegLightbulb, FaRegStar } from "react-icons/fa";
 import { AiOutlineProduct } from "react-icons/ai";
 import {
@@ -30,10 +28,11 @@ import {
 } from "react-icons/md";
 import { PlaceholdersAndVanishInput } from "../Components/ui/placeholders-and-vanish-input";
 import useCart from "../Hooks/useCart";
+import useUser from "../Hooks/useUser";
+
 function Nav() {
   const { cartLength } = useCart();
-  console.log(cartLength);
-
+  const { userData } = useUser();
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
   const { user, logout, setUser } = useContext(AuthContaxt);
   const [query, setQuery] = useState("");
@@ -139,12 +138,12 @@ function Nav() {
               <div tabIndex={0} role="button" className="">
                 <div className="flex items-center ">
                   <div className="flex items-center gap-3 border-2 py-1 px-3 rounded-xl border-gray-300 hover:bg-gray-100 transition">
-                    <h4>Maruf Ahmed</h4>
+                    <h4>{user && userData?.name}</h4>
                     <div className="w-10 rounded-full ">
                       <img
                         alt="Tailwind CSS Navbar component"
                         className="rounded-full"
-                        src={user ? user?.photoURL : profile}
+                        src={user ? userData?.photo : profile}
                       />
                     </div>
                   </div>
@@ -155,11 +154,12 @@ function Nav() {
                 className="mt-6 z-[1] p-2 shadow-xl menu menu-sm dropdown-content bg-base-100 rounded-xl w-64"
               >
                 <li className="">
-                 
-                    <Link to={"/profile"} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
-                      <MdOutlineAccountCircle className="text-xl" /> My Profile
-                    </Link>
-                
+                  <Link
+                    to={"/profile"}
+                    className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                  >
+                    <MdOutlineAccountCircle className="text-xl" /> My Profile
+                  </Link>
                 </li>
                 <li>
                   <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
@@ -198,7 +198,7 @@ function Nav() {
             <img
               alt="Tailwind CSS Navbar component"
               className="w-10 rounded-full"
-              src={user ? user?.photoURL : profile}
+              src={user ? userData?.photo : profile}
             />
           )}
         </div>

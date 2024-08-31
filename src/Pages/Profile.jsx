@@ -1,32 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext, useRef, useState } from "react";
-import { AuthContaxt } from "../Services/AuthProvider";
+import { useRef, useState } from "react";
+// import { ImSpinner6 } from "react-icons/im";
 import upload from "../assets/Imgs/upload.png";
 import { ImageUpload } from "../Utils/imgUpload";
 import toast from "react-hot-toast";
+import useUser from "../Hooks/useUser";
+import { CgSpinnerTwo } from "react-icons/cg";
 
 function Profile() {
-  const { user } = useContext(AuthContaxt);
-  const email = user?.email;
+  const { userData, refetch } = useUser();
   const [avatarURL, setAvatarURL] = useState(upload);
   const [image, setImage] = useState(Object);
-  console.log(image);
-
   const fileUploadRef = useRef();
   const [gender, setGender] = useState("");
-  const { data: userData, refetch } = useQuery({
-    queryKey: "userdata",
-    queryFn: async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_LOCALHOST_URL}/user/${email}`
-      );
-      return data;
-    },
-  });
   const profileImage = userData?.photo;
   const userName = userData?.name;
   const userEmail = userData?.email;
+  const [loading, setLoading] = useState(false);
   // Upload img Functionality------------------------------>
   const handleUploadImg = (e) => {
     e.preventDefault();
@@ -46,6 +36,7 @@ function Profile() {
   };
 
   const handleUpdateProfile = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -74,6 +65,7 @@ function Profile() {
         if (res.data.modifiedCount === 1) {
           toast.success("Your Profile Update Successfully!");
           refetch();
+          setLoading(false);
         }
       })
       .catch((error) => {
@@ -189,7 +181,6 @@ function Profile() {
                       className="radio checked:bg-[#36A853]"
                       value={"male"}
                       onChange={handleGender}
-                    
                     />
                   </label>
                 </div>
@@ -250,7 +241,11 @@ function Profile() {
             </div>
 
             <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-              <button className="btn bg-[#36A853] text-white">
+              <button
+                disabled={loading}
+                className="btn disabled:bg-gray-400 disabled:text-gray-200 bg-[#36A853] text-white"
+              >
+                {loading && <CgSpinnerTwo className="text-xl animate-spin" />}
                 Save Changes
               </button>
             </div>
