@@ -4,6 +4,7 @@ import { useContext, useRef, useState } from "react";
 import { AuthContaxt } from "../Services/AuthProvider";
 import upload from "../assets/Imgs/upload.png";
 import { ImageUpload } from "../Utils/imgUpload";
+import toast from "react-hot-toast";
 
 function Profile() {
   const { user } = useContext(AuthContaxt);
@@ -14,7 +15,7 @@ function Profile() {
 
   const fileUploadRef = useRef();
   const [gender, setGender] = useState("");
-  const { data: userData } = useQuery({
+  const { data: userData, refetch } = useQuery({
     queryKey: "userdata",
     queryFn: async () => {
       const { data } = await axios.get(
@@ -63,6 +64,22 @@ function Profile() {
       gender,
     };
     console.log(userUpdateInfo);
+    axios
+      .patch(
+        `${import.meta.env.VITE_LOCALHOST_URL}/update-profile`,
+        userUpdateInfo
+      )
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount === 1) {
+          toast.success("Your Profile Update Successfully!");
+          refetch();
+        }
+      })
+      .catch((error) => {
+        toast.error(error.message);
+        refetch();
+      });
   };
 
   return (
@@ -130,6 +147,7 @@ function Profile() {
                 type="email"
                 id="Email"
                 name="email"
+                disabled
                 defaultValue={userEmail}
                 className="mt-1 w-full p-3 outline-none border focus:border-[#36A853] rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
@@ -171,7 +189,7 @@ function Profile() {
                       className="radio checked:bg-[#36A853]"
                       value={"male"}
                       onChange={handleGender}
-                      defaultChecked
+                    
                     />
                   </label>
                 </div>
