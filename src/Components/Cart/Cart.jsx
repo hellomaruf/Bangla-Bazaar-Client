@@ -176,7 +176,7 @@ function Cart() {
             <div className="flex items-center justify-between">
               <h5 className="text-lg font-semibold">Total</h5>
               <h6 className="text-lg font-semibold text-[#36A853]">
-                ৳ {sumOfLatestPrice + 90}
+                ৳ {sumOfLatestPrice + (cartData?.length > 0 ? 90 : 0)}
               </h6>
             </div>
             <Link
