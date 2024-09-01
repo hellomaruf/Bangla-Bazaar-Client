@@ -6,12 +6,13 @@ import useCart from "../../Hooks/useCart";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import useTotalPrice from "../../Hooks/useTotalPrice";
+import emptycart from "../../assets/Imgs/emptycart.png";
 
 function Cart() {
   const { cartData, refetch } = useCart();
   console.log(cartData);
 
-  const {sumOfLatestPrice} = useTotalPrice()
+  const { sumOfLatestPrice } = useTotalPrice();
   console.log(sumOfLatestPrice);
 
   const handleIncrementOrder = async (id) => {
@@ -120,6 +121,17 @@ function Cart() {
               </div>
             ))}
           </div>
+          {cartData.length < 1 && (
+            <div className=" py-10">
+              <div className="flex flex-col items-center justify-center ">
+                <img className="w-[270px]" src={emptycart} alt="" />
+                <h3 className="text-2xl mt-4 text-gray-600 font-semibold">
+                  Your Basket is lonely
+                </h3>
+                <h5 className="text-gray-500">Add some items to cheer it up</h5>
+              </div>
+            </div>
+          )}
         </div>
         <div className="col-span-2 border h-[420px]  border-gray-400 p-4">
           <div className="">
@@ -163,9 +175,15 @@ function Cart() {
             </div>
             <div className="flex items-center justify-between">
               <h5 className="text-lg font-semibold">Total</h5>
-              <h6 className="text-lg font-semibold text-[#36A853]">৳ { sumOfLatestPrice + 90}</h6>
+              <h6 className="text-lg font-semibold text-[#36A853]">
+                ৳ {sumOfLatestPrice + 90}
+              </h6>
             </div>
-            <Link to={'/proceed-to-checkout'} className="btn w-full mt-4 text-[#36A853] border-2 hover:bg-[#36A853] hover:text-white hover:border-white border-[#36A853] bg-white">
+            <Link
+              disabled={cartData?.length < 1}
+              to={"/proceed-to-checkout"}
+              className="btn w-full mt-4 disabled:text-gray-200 disabled:bg-gray-400 text-[#36A853] border-2 hover:bg-[#36A853] hover:text-white hover:border-white border-[#36A853] bg-white"
+            >
               Proceed to Checkout
             </Link>
           </div>

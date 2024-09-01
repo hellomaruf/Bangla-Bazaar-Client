@@ -29,6 +29,7 @@ import {
 import { PlaceholdersAndVanishInput } from "../Components/ui/placeholders-and-vanish-input";
 import useCart from "../Hooks/useCart";
 import useUser from "../Hooks/useUser";
+import Spinner2 from "../Utils/Spinner2";
 
 function Nav() {
   const { cartLength } = useCart();
@@ -137,16 +138,20 @@ function Nav() {
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="">
                 <div className="flex items-center ">
-                  <div className="flex items-center gap-3 border-2 py-1 px-3 rounded-xl border-gray-300 hover:bg-gray-100 transition">
-                    <h4>{user && userData?.name}</h4>
-                    <div className="w-10 rounded-full ">
-                      <img
-                        alt="Img"
-                        className="rounded-full"
-                        src={user ? userData?.photo : profile}
-                      />
+                  {userData ? (
+                    <div className="flex items-center gap-3 border-2 py-1 px-3 rounded-xl border-gray-300 hover:bg-gray-100 transition">
+                      <h4>{user && userData?.name}</h4>
+                      <div className="w-10 rounded-full ">
+                        <img
+                          alt="Img"
+                          className="rounded-full"
+                          src={user ? userData?.photo : profile}
+                        />
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <Spinner2 />
+                  )}
                 </div>
               </div>
               <ul
@@ -167,7 +172,10 @@ function Nav() {
                   </a>
                 </li>
                 <li className="">
-                  <Link to={'/orders'} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <Link
+                    to={"/orders"}
+                    className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                  >
                     <MdBorderBottom className="text-xl" /> Orders
                   </Link>
                 </li>

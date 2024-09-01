@@ -17,7 +17,7 @@ function Profile() {
   const profileImage = userData?.photo;
   const userName = userData?.name;
   const userEmail = userData?.email;
-  const {ordersData} = useOrders()
+  const { ordersData } = useOrders();
   const [loading, setLoading] = useState(false);
   // Upload img Functionality------------------------------>
   const handleUploadImg = (e) => {
@@ -98,7 +98,9 @@ function Profile() {
             <div className="">
               <div className="flex items-center justify-between bg-gray-50 p-4">
                 <h3 className="font-medium ">Total Orders</h3>
-                <h3 className="font-semibold text-[#36A853]">{ ordersData?.length}</h3>
+                <h3 className="font-semibold text-[#36A853]">
+                  {ordersData?.length}
+                </h3>
               </div>
             </div>
           </div>
@@ -245,7 +247,9 @@ function Profile() {
             <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
               <button
                 disabled={loading}
-                className="btn disabled:bg-gray-400 disabled:text-gray-200 bg-[#36A853] text-white"
+                className={`btn disabled:bg-gray-400 ${
+                  loading && "disabled:cursor-not-allowed"
+                }  disabled:text-gray-200 bg-[#36A853] text-white `}
               >
                 {loading && <CgSpinnerTwo className="text-xl animate-spin" />}
                 Save Changes
