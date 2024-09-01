@@ -141,7 +141,7 @@ function Nav() {
                     <h4>{user && userData?.name}</h4>
                     <div className="w-10 rounded-full ">
                       <img
-                        alt="Tailwind CSS Navbar component"
+                        alt="Img"
                         className="rounded-full"
                         src={user ? userData?.photo : profile}
                       />
@@ -167,9 +167,9 @@ function Nav() {
                   </a>
                 </li>
                 <li className="">
-                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <Link to={'/orders'} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
                     <MdBorderBottom className="text-xl" /> Orders
-                  </a>
+                  </Link>
                 </li>
                 <li className="">
                   <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">

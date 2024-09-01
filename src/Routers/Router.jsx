@@ -10,6 +10,7 @@ import SuccessPayment from "../Pages/Payment/SuccessPayment";
 import FailPayment from "../Pages/Payment/FailPayment";
 import CanclePayment from "../Pages/Payment/CanclePayment";
 import Profile from "../Pages/Profile";
+import Orders from "../Pages/Orders";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -52,9 +53,13 @@ export const router = createBrowserRouter([
         element: <CanclePayment />,
       },
       {
-        path: '/profile',
-        element:<Profile/>
-      }
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
+      },
     ],
   },
 ]);

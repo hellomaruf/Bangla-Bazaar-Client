@@ -6,6 +6,7 @@ import { ImageUpload } from "../Utils/imgUpload";
 import toast from "react-hot-toast";
 import useUser from "../Hooks/useUser";
 import { CgSpinnerTwo } from "react-icons/cg";
+import useOrders from "../Hooks/useOrders";
 
 function Profile() {
   const { userData, refetch } = useUser();
@@ -16,6 +17,7 @@ function Profile() {
   const profileImage = userData?.photo;
   const userName = userData?.name;
   const userEmail = userData?.email;
+  const {ordersData} = useOrders()
   const [loading, setLoading] = useState(false);
   // Upload img Functionality------------------------------>
   const handleUploadImg = (e) => {
@@ -96,7 +98,7 @@ function Profile() {
             <div className="">
               <div className="flex items-center justify-between bg-gray-50 p-4">
                 <h3 className="font-medium ">Total Orders</h3>
-                <h3 className="font-semibold text-[#36A853]">12</h3>
+                <h3 className="font-semibold text-[#36A853]">{ ordersData?.length}</h3>
               </div>
             </div>
           </div>
