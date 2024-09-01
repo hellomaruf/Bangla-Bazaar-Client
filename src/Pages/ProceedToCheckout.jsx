@@ -15,6 +15,9 @@ function ProceedToCheckout() {
   const productName = cartData?.map(
     (item) => item?.addToCartProduct?.productName
   );
+  const productImg = cartData?.map(
+    (item) => item?.addToCartProduct?.productImg
+  );
   // console.log(productName);
 
   const handlePaymentInfo = (e) => {
@@ -35,6 +38,7 @@ function ProceedToCheckout() {
       colony,
       ammount,
       productName,
+      productImg,
       orderDate,
     };
     setPayInfo(paymentInfo);

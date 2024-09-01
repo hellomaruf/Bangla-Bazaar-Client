@@ -6,7 +6,7 @@ import axios from "axios";
 function useOrders() {
   const { user } = useContext(AuthContaxt);
   const email = user?.email;
-  const { data: ordersData } = useQuery({
+  const { data: ordersData , isLoading} = useQuery({
     queryKey: ["ordersData"],
     queryFn: async () => {
       const { data } = await axios.get(
@@ -15,7 +15,7 @@ function useOrders() {
       return data;
     },
   });
-  return { ordersData };
+  return { ordersData, isLoading };
 }
 
 export default useOrders;
