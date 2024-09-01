@@ -115,6 +115,7 @@ function ProceedToCheckout() {
                   name="name"
                   defaultValue={user?.displayName}
                   disabled
+                  required
                   placeholder="Enter Full Name"
                   className="mt-1 w-full py-3 px-4 rounded-md border border-gray-300 bg-white text-sm text-gray-700 outline-none focus:border-[#36A853]"
                 />
@@ -130,6 +131,7 @@ function ProceedToCheckout() {
                 <input
                   type="number"
                   id="number"
+                  required
                   name="number"
                   placeholder="Enter Phone Number"
                   className="mt-1 w-full py-3 px-4 rounded-md border border-gray-300 bg-white text-sm text-gray-700 outline-none focus:border-[#36A853]"
@@ -150,6 +152,7 @@ function ProceedToCheckout() {
                   name="email"
                   defaultValue={user?.email}
                   disabled
+                  required
                   placeholder="Enter Email Address"
                   className="mt-1 w-full py-3 px-4 rounded-md border border-gray-300 bg-white text-sm text-gray-700 outline-none focus:border-[#36A853]"
                 />
@@ -168,6 +171,7 @@ function ProceedToCheckout() {
                   type="text"
                   id="address"
                   name="address"
+                  required
                   placeholder="For Example : House# 123, Street# 123, ABC Road"
                   className="mt-1 w-full py-3 px-4 rounded-md border border-gray-300 bg-white text-sm text-gray-700 outline-none focus:border-[#36A853]"
                 />
@@ -185,6 +189,7 @@ function ProceedToCheckout() {
                   type="text"
                   id="colony"
                   name="colony"
+                  required
                   placeholder="Please Enter"
                   className="mt-1 w-full py-3 px-4 rounded-md border border-gray-300 bg-white text-sm text-gray-700 outline-none focus:border-[#36A853]"
                 />

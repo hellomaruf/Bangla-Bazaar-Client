@@ -11,6 +11,7 @@ import FailPayment from "../Pages/Payment/FailPayment";
 import CanclePayment from "../Pages/Payment/CanclePayment";
 import Profile from "../Pages/Profile";
 import Orders from "../Pages/Orders";
+import WishList from "../Pages/WishList";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
       {
         path: "/orders",
         element: <Orders />,
+      },
+      {
+        path: "/wishlist",
+        element: <WishList />,
       },
     ],
   },

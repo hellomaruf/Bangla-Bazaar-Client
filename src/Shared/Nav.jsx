@@ -180,9 +180,9 @@ function Nav() {
                   </Link>
                 </li>
                 <li className="">
-                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <Link to={'/wishlist'} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
                     <FaRegLightbulb className="text-xl" /> Wishlist
-                  </a>
+                  </Link>
                 </li>
                 <li className="">
                   <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
