@@ -125,6 +125,7 @@ function Profile() {
                 type="text"
                 id="Name"
                 name="name"
+                required
                 defaultValue={userName}
                 className="mt-1 w-full p-3 outline-none border focus:border-[#36A853] rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
@@ -144,6 +145,7 @@ function Profile() {
                 id="Email"
                 name="email"
                 disabled
+                required
                 defaultValue={userEmail}
                 className="mt-1 w-full p-3 outline-none border focus:border-[#36A853] rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
@@ -160,6 +162,7 @@ function Profile() {
               <input
                 type="number"
                 id="number"
+                required
                 name="number"
                 placeholder="Enter Your Phone Number"
                 className="mt-1 w-full p-3 outline-none border focus:border-[#36A853] rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
@@ -193,6 +196,7 @@ function Profile() {
                     <span className="label-text">Female</span>
                     <input
                       type="radio"
+                      required
                       onChange={handleGender}
                       name="radio-10"
                       className="radio checked:bg-[#36A853]"
@@ -214,6 +218,7 @@ function Profile() {
               <input
                 type="date"
                 id="date"
+                required
                 name="date"
                 className="mt-1 w-full p-3 outline-none border focus:border-[#36A853] rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
@@ -239,6 +244,7 @@ function Profile() {
                   onChange={handleDisplayUploadedImg}
                   ref={fileUploadRef}
                   type="file"
+                  required
                   className="hidden"
                 />
               </div>

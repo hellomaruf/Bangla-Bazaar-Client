@@ -4,9 +4,9 @@ import img3 from "../../assets/Imgs/fresh-vegetables.webp";
 import img4 from "../../assets/Imgs/healthCare.webp";
 import img5 from "../../assets/Imgs/juice.webp";
 import img6 from "../../assets/Imgs/meat.webp";
-import img7 from "../../assets/Imgs/soft-drinks.webp";
-import img8 from "../../assets/Imgs/tea.webp";
+import img8 from "../../assets/Imgs/kitchen-appliances.webp";
 import img9 from "../../assets/Imgs/toilet-cleaners.webp";
+import img10 from "../../assets/Imgs/plain-biscuits.webp";
 // import { IoIosArrowBack } from "react-icons/io";
 // import { IoIosArrowForward } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -25,6 +25,10 @@ function Categoris() {
       categoryName: "Dish Washing",
     },
     {
+      categoryImg: img10,
+      categoryName: "Snacks",
+    },
+    {
       categoryImg: img2,
       categoryName: "Fresh Fruits",
     },
@@ -37,20 +41,16 @@ function Categoris() {
       categoryName: "HealthCare",
     },
     {
+      categoryImg: img8,
+      categoryName: "Kitchen",
+    },
+    {
       categoryImg: img5,
-      categoryName: "Juice",
+      categoryName: "Drinks",
     },
     {
       categoryImg: img6,
       categoryName: "Meat",
-    },
-    {
-      categoryImg: img7,
-      categoryName: "Soft Drinks",
-    },
-    {
-      categoryImg: img8,
-      categoryName: "Tea",
     },
     {
       categoryImg: img9,
