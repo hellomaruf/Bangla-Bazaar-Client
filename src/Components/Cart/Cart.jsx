@@ -53,7 +53,7 @@ function Cart() {
           .delete(`${import.meta.env.VITE_LOCALHOST_URL}/delete-cart/${id}`)
           .then((res) => {
             if (res.data) {
-              toast.success("Cart Delete Successfully!");
+              toast.success("Delete Successfully!");
               refetch();
            
             }
