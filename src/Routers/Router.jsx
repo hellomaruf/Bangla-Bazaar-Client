@@ -12,6 +12,8 @@ import CanclePayment from "../Pages/Payment/CanclePayment";
 import Profile from "../Pages/Profile";
 import Orders from "../Pages/Orders";
 import WishList from "../Pages/WishList";
+import BestSellingPro from "../Pages/BestSellingPro";
+import Rating from "../Pages/Rating";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -65,6 +67,14 @@ export const router = createBrowserRouter([
         path: "/wishlist",
         element: <WishList />,
       },
+      {
+        path: '/best-selling-product',
+        element:<BestSellingPro/>
+      },
+      {
+        path: '/rating',
+        element:<Rating/>
+      }
     ],
   },
 ]);

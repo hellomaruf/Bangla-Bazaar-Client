@@ -185,15 +185,15 @@ function Nav() {
                   </Link>
                 </li>
                 <li className="">
-                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <Link to={'/best-selling-product'} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
                     <AiOutlineProduct className="text-xl" /> Bestselling
                     Products
-                  </a>
+                  </Link>
                 </li>
                 <li className="">
-                  <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <Link to={'/rating'} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
                     <FaRegStar className="text-xl" /> Rating
-                  </a>
+                  </Link>
                 </li>
                 <li className="mt-2" onClick={handleLogout}>
                   <a className="btn bg-[#36a853] text-white">
