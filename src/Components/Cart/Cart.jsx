@@ -12,10 +12,7 @@ import Swal from "sweetalert2";
 
 function Cart() {
   const { cartData, refetch } = useCart();
-  console.log(cartData);
-
   const { sumOfLatestPrice } = useTotalPrice();
-  console.log(sumOfLatestPrice);
 
   const handleIncrementOrder = async (id) => {
     await axios
@@ -58,11 +55,7 @@ function Cart() {
             if (res.data) {
               toast.success("Cart Delete Successfully!");
               refetch();
-              // Swal.fire({
-              //   title: "Deleted!",
-              //   text: "Your file has been deleted.",
-              //   icon: "success",
-              // });
+           
             }
           })
           .catch((error) => {
