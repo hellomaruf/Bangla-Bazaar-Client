@@ -7,6 +7,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import useTotalPrice from "../../Hooks/useTotalPrice";
 import emptycart from "../../assets/Imgs/emptycart.png";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 function Cart() {
   const { cartData, refetch } = useCart();
@@ -38,6 +40,39 @@ function Cart() {
         console.log(error);
       });
   };
+
+  const handleDelete = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this item?",
+      // icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#36A853",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axios
+          .delete(`${import.meta.env.VITE_LOCALHOST_URL}/delete-cart/${id}`)
+          .then((res) => {
+            if (res.data) {
+              toast.success("Cart Delete Successfully!");
+              refetch();
+              // Swal.fire({
+              //   title: "Deleted!",
+              //   text: "Your file has been deleted.",
+              //   icon: "success",
+              // });
+            }
+          })
+          .catch((error) => {
+            console.log(error.message);
+            refetch();
+          });
+      }
+    });
+  };
+
   return (
     <div className="mt-28 max-w-7xl mx-auto">
       <div className="grid grid-cols-6 gap-5">
@@ -91,7 +126,7 @@ function Cart() {
                         <button>
                           <FaHeart className="text-lg text-gray-400 hover:text-[#36A853]" />
                         </button>
-                        <button>
+                        <button onClick={() => handleDelete(data?._id)}>
                           <MdDelete className="text-xl text-gray-400 hover:text-red-600" />
                         </button>
                       </div>
@@ -121,7 +156,7 @@ function Cart() {
               </div>
             ))}
           </div>
-          {cartData.length < 1 && (
+          {cartData?.length < 1 && (
             <div className=" py-10">
               <div className="flex flex-col items-center justify-center ">
                 <img className="w-[270px]" src={emptycart} alt="" />

@@ -2,8 +2,8 @@ import useOrders from "../Hooks/useOrders";
 import Spinner from "./../Utils/Spinner";
 import emptycart from "../assets/Imgs/emptycart.png";
 function Orders() {
+  let count = 1
   const { ordersData, isLoading } = useOrders();
-  console.log(ordersData);
 
   return (
     <div className="mt-28 mb-28">
@@ -33,7 +33,7 @@ function Orders() {
                       {/* <th>{item?.authorName}</th> */}
                       <td>
                         {item?.productName?.map((item, index) => (
-                          <h3 key={index}>{item}</h3>
+                          <h3 key={index}><span className="font-semibold">{ count++}.  </span>{item}</h3>
                         ))}
                       </td>
                       <td>Qty- {item?.productName?.length}</td>
