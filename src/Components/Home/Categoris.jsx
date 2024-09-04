@@ -22,7 +22,7 @@ function Categoris() {
   const category = [
     {
       categoryImg: img1,
-      categoryName: "Dish Washing",
+      categoryName: "Dish ",
     },
     {
       categoryImg: img10,
