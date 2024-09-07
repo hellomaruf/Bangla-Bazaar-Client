@@ -22,7 +22,7 @@ function Categoris() {
   const category = [
     {
       categoryImg: img1,
-      categoryName: "DishWashing",
+      categoryName: "DishWash",
     },
     {
       categoryImg: img10,
@@ -60,51 +60,55 @@ function Categoris() {
   return (
     <div className="max-w-7xl mx-auto py-10 -z-10">
       <h2 className="text-2xl text-center pb-8">Categories</h2>
+      <div className="mx-4">
+
       <Swiper
         slidesPerView={3}
-        spaceBetween={20}
-  breakpoints={{
-    640: {
-      slidesPerView: 4,
-      spaceBetween: 20,
-    },
-    768: {
-      slidesPerView: 4,
-      spaceBetween: 20,
-    },
-    1024: {
-      slidesPerView: 6,
-      spaceBetween: 20,
-    },
-  }}
-  pagination={{
-    clickable: true,
-  }}
-  autoplay={{
-    delay: 2500,
-    disableOnInteraction: false,
-  }}
-  navigation={{
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  }}
-  modules={[Navigation, Autoplay]}
-  className="mySwiper"
->
-  {category?.map((item, index) => (
-    <SwiperSlide className="h-full" key={index}>
-      <Link className="h-full" to={`/products/${item?.categoryName}`}>
-        <div className="text-center h-full p-5 border-2 rounded-xl hover:scale-95 hover:border-[#36A853] transition cursor-pointer">
-          <img src={item?.categoryImg} alt="" />
-          <h3>{item?.categoryName}</h3>
-        </div>
-      </Link>
-    </SwiperSlide>
-  ))}
+        spaceBetween={10}
+        breakpoints={{
+          640: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 20,
+          },
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        modules={[Navigation, Autoplay]}
+        className="mySwiper "
+      >
+        {category?.map((item, index) => (
+          <SwiperSlide className="h-full" key={index}>
+            <Link className="h-full" to={`/products/${item?.categoryName}`}>
+              <div className="text-center h-full p-5 border-2 rounded-xl hover:scale-95 hover:border-[#36A853] transition cursor-pointer">
+                <img src={item?.categoryImg} alt="" />
+                <h3 className="text-sm md:text-base">{item?.categoryName}</h3>
+              </div>
+            </Link>
+          </SwiperSlide>
+        ))}
 
-  <div className="swiper-button-next"></div>
-  <div className="swiper-button-prev"></div>
-</Swiper>;
+        <div className="swiper-button-next"></div>
+        <div className="swiper-button-prev"></div>
+      </Swiper>
+      </div>
+      
     </div>
   );
 }
