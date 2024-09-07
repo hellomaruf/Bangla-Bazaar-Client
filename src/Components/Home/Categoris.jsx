@@ -22,7 +22,7 @@ function Categoris() {
   const category = [
     {
       categoryImg: img1,
-      categoryName: "Dish ",
+      categoryName: "Dish Washing",
     },
     {
       categoryImg: img10,
@@ -59,7 +59,7 @@ function Categoris() {
   ];
   return (
     <div className="max-w-7xl mx-auto py-10 -z-10">
-      <h2 className="text-2xl text-center pb-8">Categoris</h2>
+      <h2 className="text-2xl text-center pb-8">Categories</h2>
       <Swiper
         slidesPerView={6}
         spaceBetween={30}

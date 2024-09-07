@@ -7,7 +7,6 @@ import toiletclean from "../assets/Imgs/toilet.png";
 import tea from "../assets/Imgs/green-tea.png";
 import drink from "../assets/Imgs/drink.png";
 import heathCare from "../assets/Imgs/cardiogram.png";
-import juice from "../assets/Imgs/orange-juice.png";
 import meat from "../assets/Imgs/meat.png";
 import { useContext, useState } from "react";
 import SignInModal from "../Components/Modals/SignInModal";
@@ -180,18 +179,27 @@ function Nav() {
                   </Link>
                 </li>
                 <li className="">
-                  <Link to={'/wishlist'} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <Link
+                    to={"/wishlist"}
+                    className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                  >
                     <FaRegLightbulb className="text-xl" /> Wishlist
                   </Link>
                 </li>
                 <li className="">
-                  <Link to={'/best-selling-product'} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <Link
+                    to={"/best-selling-product"}
+                    className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                  >
                     <AiOutlineProduct className="text-xl" /> Bestselling
                     Products
                   </Link>
                 </li>
                 <li className="">
-                  <Link to={'/rating'} className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <Link
+                    to={"/rating"}
+                    className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                  >
                     <FaRegStar className="text-xl" /> Rating
                   </Link>
                 </li>
@@ -230,59 +238,54 @@ function Nav() {
             </div>
             <div className="mt-4">
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <div className="">
+                <Link to={"/products/Fresh Fruits"} className="">
                   <img className="w-6" src={fruitslogo} alt="" />
                   <a className="text-base">Fresh Fruits</a>
-                </div>
+                </Link>
               </li>
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <div className="">
+                <Link to={"/products/Fresh Vegetables"} className="">
                   <img className="w-6" src={vegetable} alt="" />
                   <a className="text-base">Fresh Vegetables</a>
-                </div>
+                </Link>
               </li>
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <div className="">
+                <Link to={"/products/Dish Washing"} className="">
                   <img className="w-6" src={dishclean} alt="" />
                   <a className="text-base">Dish Washing</a>
-                </div>
+                </Link>
               </li>
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <div className="">
+                <Link to={"/products/Toilet Cleaners"} className="">
                   <img className="w-6" src={toiletclean} alt="" />
                   <a className="text-base">Toilet Cleaners</a>
-                </div>
+                </Link>
               </li>
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <div className="">
+                <Link to={"/products/Snacks"} className="">
                   <img className="w-6" src={tea} alt="" />
-                  <a className="text-base">Tea</a>
-                </div>
+                  <a className="text-base">Snacks</a>
+                </Link>
               </li>
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <div className="">
+                <Link to={"/products/Drinks"} className="">
                   <img className="w-6" src={drink} alt="" />
-                  <a className="text-base">Soft Drinks</a>
-                </div>
+                  <a className="text-base">Drinks</a>
+                </Link>
               </li>
 
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <div className="">
+                <Link to={"/products/HealthCare"} className="">
                   <img className="w-6" src={heathCare} alt="" />
                   <a className="text-base">HealthCare</a>
-                </div>
+                </Link>
               </li>
+
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <div className="">
-                  <img className="w-6" src={juice} alt="" />
-                  <a className="text-base">Juice</a>
-                </div>
-              </li>
-              <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <div className="">
+                <Link to={"/products/Meat"} className="">
                   <img className="w-6" src={meat} alt="" />
                   <a className="text-base">Meat</a>
-                </div>
+                </Link>
               </li>
             </div>
           </ul>
