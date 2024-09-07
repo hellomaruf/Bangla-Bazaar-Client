@@ -5,11 +5,11 @@ function FAQs() {
   return (
     <div className="max-w-7xl py-10 mx-auto">
       <h2 className="text-2xl text-center pb-8">FAQs & Client Says</h2>
-      <div className="grid grid-cols-6 ">
-        <div className=" col-span-2 ">
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-6 mx-4 ">
+        <div className=" col-span-1 md:col-span-2 ">
           <CardStack items={CARDS} />
         </div>
-        <div className=" col-span-4">
+        <div className=" col-span-1 md:col-span-4">
           <div className="space-y-4">
             <details
               className="group [&_summary::-webkit-details-marker]:hidden"
@@ -34,7 +34,7 @@ function FAQs() {
                 </svg>
               </summary>
 
-              <p className="mt-4 px-4 leading-relaxed text-gray-700">
+              <p className="mt-4 px-4 leading-relaxed text-gray-700 text-sm">
                 We offer a refund or return policy of seven (7) days on most
                 unopened or unspoilt packaged products. <br />
                 1. For perishable products such as milk, fruits, and fresh
@@ -67,7 +67,7 @@ function FAQs() {
                 </svg>
               </summary>
 
-              <p className="mt-4 px-4 leading-relaxed text-gray-700">
+              <p className="mt-4 px-4 leading-relaxed text-gray-700 text-sm">
                 We deliver from 7.30 am to 11 pm every day. You can choose from
                 available slots to find something that is convenient for you.
               </p>
@@ -92,7 +92,7 @@ function FAQs() {
                 </svg>
               </summary>
 
-              <p className="mt-4 px-4 leading-relaxed text-gray-700">
+              <p className="mt-4 px-4 leading-relaxed text-gray-700 text-sm">
                 Our prices are our own but we try our best to offer them to you
                 at or below market prices. Our prices are the same as the local
                 market and we are working hard to get them even lower! If you
@@ -118,8 +118,8 @@ function FAQs() {
                   />
                 </svg>
               </summary>
-
-              <p className="mt-4 px-4 leading-relaxed text-gray-700">
+ 
+              <p className="mt-4 px-4 leading-relaxed text-gray-700 text-sm">
                 We are currently serving in three big cities of Bangladesh
                 including Dhaka, Chattogram, Jashore.
               </p>

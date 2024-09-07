@@ -16,30 +16,32 @@ import { EffectFade, Autoplay } from "swiper/modules";
 function Offers() {
   return (
     <div className="max-w-7xl mx-auto py-10">
-      <Swiper
-        spaceBetween={30}
-        effect={"fade"}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        modules={[EffectFade, Autoplay]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img className="w-full rounded-2xl" src={offers1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-full rounded-2xl" src={offers} />
-        </SwiperSlide>
+      <div className=" mx-4">
+        <Swiper
+          spaceBetween={30}
+          effect={"fade"}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          modules={[EffectFade, Autoplay]}
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <img className="w-full rounded-2xl" src={offers1} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full rounded-2xl" src={offers} />
+          </SwiperSlide>
 
-        <SwiperSlide>
-          <img className="w-full rounded-2xl" src={offers2} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-full rounded-2xl" src={offers3} />
-        </SwiperSlide>
-      </Swiper>
+          <SwiperSlide>
+            <img className="w-full rounded-2xl" src={offers2} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img className="w-full rounded-2xl" src={offers3} />
+          </SwiperSlide>
+        </Swiper>
+      </div>
     </div>
   );
 }
