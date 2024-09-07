@@ -3,7 +3,8 @@ import Nav from "../Shared/Nav";
 import Footer from "../Shared/Footer";
 import { useEffect, useState } from "react";
 import SplashScreen from "../Pages/SplashScreen";
-import '../Style/customScroll.css'
+import "../Style/customScroll.css";
+import MobileMenu from "../Shared/MobileMenu";
 function MainLayout() {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -19,6 +20,9 @@ function MainLayout() {
       ) : (
         <div className="">
           <Nav />
+          <div className="block lg:hidden">
+            <MobileMenu />
+          </div>
           <Outlet />
           <Footer />
         </div>

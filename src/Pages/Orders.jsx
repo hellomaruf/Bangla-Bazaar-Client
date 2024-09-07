@@ -12,39 +12,38 @@ function Orders() {
           {isLoading ? (
             <Spinner />
           ) : (
-            <div className="overflow-x-auto max-w-7xl mx-auto  ">
-              <table className="table">
-                <tbody>
-                  {ordersData?.map((item, index) => (
-                    <tr
-                      className=" hover:shadow-md space-y-4 hover border bg-gray-50"
-                      key={index}
-                    >
-                      <th className="flex space-x-2">
-                        {item?.productImg?.map((item, index) => (
-                          <img
-                            className="w-[60px] shadow-md rounded-full"
-                            key={index}
-                            src={item}
-                            alt=""
-                          />
-                        ))}
-                      </th>
-                      {/* <th>{item?.authorName}</th> */}
-                      <td>
-                        {item?.productName?.map((item, index) => (
-                          <h3 key={index}><span className="font-semibold">{ count++}.  </span>{item}</h3>
-                        ))}
-                      </td>
-                      <td>Qty- {item?.productName?.length}</td>
-                      <td>৳ {item?.ammount}</td>
-                      <td>Pay ID- {item?.paymentID.slice(0, 5)}</td>
-                      <td className="text-green-600">{item?.status}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <div className="overflow-x-auto max-w-7xl w-full mx-auto">
+            <table className="table table-auto min-w-max w-full">
+              <tbody>
+                {ordersData?.map((item, index) => (
+                  <tr className="hover:shadow-md hover:border bg-gray-50" key={index}>
+                    <th className="flex space-x-2">
+                      {item?.productImg?.map((img, imgIndex) => (
+                        <img
+                          className="w-[60px] shadow-md rounded-full"
+                          key={imgIndex}
+                          src={img}
+                          alt=""
+                        />
+                      ))}
+                    </th>
+                    <td>
+                      {item?.productName?.map((name, nameIndex) => (
+                        <h3 key={nameIndex}>
+                          <span className="font-semibold">{count ++}. </span>{name}
+                        </h3>
+                      ))}
+                    </td>
+                    <td>Qty- {item?.productName?.length}</td>
+                    <td>৳ {item?.ammount}</td>
+                    <td>Pay ID- {item?.paymentID.slice(0, 5)}</td>
+                    <td className="text-green-600 whitespace-nowrap">{item?.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
           )}
         </div>
       ) : (

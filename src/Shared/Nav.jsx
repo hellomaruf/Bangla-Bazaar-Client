@@ -20,6 +20,8 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegLightbulb, FaRegStar } from "react-icons/fa";
 import { AiOutlineProduct } from "react-icons/ai";
+import { CiMenuKebab } from "react-icons/ci";
+
 import {
   MdBorderBottom,
   MdOutlineAccountCircle,
@@ -81,10 +83,10 @@ function Nav() {
 
       <div className="navbar z-10 bg-base-100 fixed pr-4">
         <div className="flex-1 ml-6 ">
-          <label className="text-2xl cursor-pointer" htmlFor="my-drawer">
+          <label className="text-2xl cursor-pointer mr-4" htmlFor="my-drawer">
             <CgMenuLeft />
           </label>
-          <Link to={"/"}>
+          <Link className="hidden lg:block" to={"/"}>
             <img className="w-56 ml-4" src={logo} alt="" />
           </Link>
 
@@ -96,7 +98,7 @@ function Nav() {
           />
         </div>
 
-        <div className="flex-none gap-2">
+        <div className="flex-none hidden lg:flex gap-2">
           <Link to={"/cart"} className="flex items-center mr-2 relative">
             <div className="relative">
               <HiOutlineShoppingBag className="text-2xl mr-2 text-gray-900" />
@@ -218,6 +220,78 @@ function Nav() {
             />
           )}
         </div>
+
+        <div className="lg:hidden block">
+          <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="">
+              <div className="flex items-center ">
+                {userData ? (
+                  <div className="mx-2 cursor-pointer">
+                    <CiMenuKebab className=" text-2xl" />
+                  </div>
+                ) : (
+                  <Spinner2 />
+                )}
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="mt-6 z-[1] p-2 shadow-xl menu menu-sm dropdown-content bg-base-100 rounded-xl w-64"
+            >
+              <li className="">
+                <Link
+                  to={"/profile"}
+                  className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                >
+                  <MdOutlineAccountCircle className="text-xl" /> My Profile
+                </Link>
+              </li>
+              <li>
+                <a className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]">
+                  <MdOutlineSell className="text-xl" /> Sell On BanglaBazar
+                </a>
+              </li>
+              <li className="">
+                <Link
+                  to={"/orders"}
+                  className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                >
+                  <MdBorderBottom className="text-xl" /> Orders
+                </Link>
+              </li>
+              <li className="">
+                <Link
+                  to={"/wishlist"}
+                  className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                >
+                  <FaRegLightbulb className="text-xl" /> Wishlist
+                </Link>
+              </li>
+              <li className="">
+                <Link
+                  to={"/best-selling-product"}
+                  className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                >
+                  <AiOutlineProduct className="text-xl" /> Bestselling Products
+                </Link>
+              </li>
+              <li className="">
+                <Link
+                  to={"/rating"}
+                  className=" py-3 text-sm hover:bg-slate-100 hover:text-[#36A853]"
+                >
+                  <FaRegStar className="text-xl" /> Rating
+                </Link>
+              </li>
+              <li className="mt-2" onClick={handleLogout}>
+                <a className="btn bg-[#36a853] text-white">
+                  Logout <IoMdLogOut className="text-xl" />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
       </div>
 
       <div className="drawer z-10">
@@ -291,6 +365,9 @@ function Nav() {
           </ul>
         </div>
       </div>
+
+    
+      
     </div>
   );
 }
