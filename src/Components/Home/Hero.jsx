@@ -10,13 +10,14 @@ function Hero() {
           backgroundImage: `url(${heroImg})`,
         }}
       >
-        <div className=" flex items-center min-h-[500px] max-w-7xl  mx-auto ">
-          <div className=" ">
+        <div className=" flex items-center min-h-[500px] max-w-7xl  mx-auto 
+         ">
+          <div className="mx-4 ">
             <FlipWords
-              className="max-w-xl text-5xl font-bold pb-2 z-0"
+              className="max-w-xl text-4xl md:text-5xl font-bold pb-2 z-0"
               words={words}
             />
-            <h1 className="mb-5 text-gray-900 max-w-xl text-5xl font-bold">
+            <h1 className="mb-5 text-gray-900 max-w-xl text-4xl md:text-5xl font-bold ">
               {" "}
               Delivered with Love
             </h1>

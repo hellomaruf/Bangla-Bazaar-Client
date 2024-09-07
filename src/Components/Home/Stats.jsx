@@ -5,8 +5,8 @@ import img4 from "../../assets/Imgs/pay.png";
 function Stats() {
   return (
     <div className="max-w-7xl mx-auto my-10">
-      <div className=" flex items-center justify-center gap-6">
-        <div className="flex rounded-xl p-6 gap-5  border-2 border-gray-300  items-center justify-center">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-4 items-center justify-center gap-4 ">
+        <div className="flex rounded-xl  p-6 gap-5  border-2 border-gray-300  items-center justify-center">
           <img className="w-10" src={img1} alt="" />
           <p className="text-xl">
             <span className="font-bold text-[#3aa753]">+15000 products</span> to
