@@ -62,11 +62,11 @@ function Products() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-4 gap-2 md:gap-4">
           {productData?.map((data, index) => (
             <div key={index} className="overflow-hidden relative group h-full">
-              <a
-                href="#"
+              <Link
+                to={`/productDetails/${data?._id}`}
                 className="group relative block overflow-hidden h-full  border border-gray-200"
               >
                 <img
@@ -76,33 +76,33 @@ function Products() {
                 />
 
                 <div className="relative bg-white p-6 space-y-1">
-                  <div className=" flex items-center gap-4">
-                    <p className="mt-1.5 text-sm text-gray-500 line-through">
+                  <div className=" flex items-center gap-4 ">
+                    <p className="mt-1.5 text-xs md:text-sm text-gray-500 line-through ">
                       ৳ {data?.price?.oldPrice}
                     </p>
-                    <p className="mt-1.5  text-gray-900">
+                    <p className="mt-1.5 text-xs md:text-sm text-gray-900">
                       ৳ {data?.price?.latestPrice}
                     </p>
-                    <p className="mt-1.5 text-sm text-red-500">
+                  </div>
+                    <p className="mt-1.5 text-xs md:text-sm text-red-500">
                       {data?.price?.off} %
                     </p>
-                  </div>
 
-                  <h3 className=" text-md font-medium text-gray-900 py-2">
+                  <h3 className=" text-sm lg:text-base font-medium text-gray-900 py-2">
                     {data?.productName}
                   </h3>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
                     <Rate
-                      style={{ fontSize: "16px" }}
+                      style={{ fontSize: "12px" }}
                       className="text-orange-400"
                       defaultValue={data?.rating}
                     />{" "}
-                    <p className="text-sm">({data?.rating})</p>
+                    <p className="text-xs md:text-sm">({data?.rating})</p>
                   </div>
                 </div>
-              </a>
+              </Link>
               {/* Overlay section */}
-              <div className="left-0 absolute  text-white top-[100%] duration-500 opacity-0 group-hover:opacity-100 group-hover:top-0  w-full h-full bg-[#36a853]/50 group-hover:backdrop-blur-md">
+              <div className="left-0 hidden md:flex  absolute  text-white top-[100%] duration-500 opacity-0 group-hover:opacity-100 group-hover:top-0  w-full h-full bg-[#36a853]/50 group-hover:backdrop-blur-md">
                 <div className="flex items-center justify-center gap-2 absolute top-[40%] left-1/3">
                   <Slide direction="down" duration={1000}>
                     <button
