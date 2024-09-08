@@ -78,8 +78,8 @@ function Profile() {
 
   return (
     <div className="mt-28 max-w-7xl mx-auto">
-      <div className="grid grid-cols-6 gap-4 ">
-        <div className="col-span-2 border border-gray-400 ">
+      <div className="grid grid-cols-1 md:grid-cols-6 mx-4 gap-4 ">
+        <div className="col-span-1 md:col-span-2 border border-gray-400 ">
           <div className=" p-6">
             <div className="flex items-center justify-center">
               <img
@@ -107,7 +107,7 @@ function Profile() {
         </div>
 
         {/******************** User update form ********************/}
-        <div className="col-span-4 border border-gray-400 p-6">
+        <div className="col-span-1 md:col-span-4 border border-gray-400 p-6">
           <form
             onSubmit={handleUpdateProfile}
             action="#"
@@ -253,7 +253,7 @@ function Profile() {
             <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
               <button
                 disabled={loading}
-                className={`btn disabled:bg-gray-400 ${
+                className={`btn disabled:bg-gray-400 w-full sm:w-auto ${
                   loading && "disabled:cursor-not-allowed"
                 }  disabled:text-gray-200 bg-[#36A853] text-white `}
               >
