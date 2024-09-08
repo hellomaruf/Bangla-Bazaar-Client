@@ -55,7 +55,6 @@ function Cart() {
             if (res.data) {
               toast.success("Delete Successfully!");
               refetch();
-           
             }
           })
           .catch((error) => {
@@ -68,21 +67,21 @@ function Cart() {
 
   return (
     <div className="mt-28 max-w-7xl mx-auto">
-      <div className="grid grid-cols-6 gap-5">
-        <div className="col-span-4">
+      <div className="grid grid-cols-1 lg:grid-cols-6 gap-5 mx-4">
+        <div className="col-span-1 lg:col-span-4 ">
           <div className="">
             {cartData?.map((data, index) => (
               <div className=" mb-4" key={index}>
                 <div className="grid grid-cols-6 items-center border border-gray-400  ">
-                  <div className="col-span-1 p-4 ">
+                  <div className="col-span-2 md:col-span-1 p-4  ">
                     <img src={data?.addToCartProduct?.productImg} alt="" />
                   </div>
-                  <div className="col-span-5  p-4 flex justify-between">
+                  <div className="col-span-4 md:col-span-5  p-4 flex justify-between">
                     <div className="">
-                      <h2 className="font-semibold pb-2">
+                      <h2 className="font-semibold pb-2 text-sm md:text-base">
                         {data?.addToCartProduct?.productName}
                       </h2>
-                      <h4 className="text-sm">
+                      <h4 className="text-xs md:text-sm">
                         Category :{" "}
                         <span className="font-medium text-[#36A853]">
                           {" "}
@@ -100,7 +99,7 @@ function Cart() {
                         </p>
                       </div>
                       <div className="flex items-center gap-2 py-3">
-                        <h2 className="text-2xl text-[#36A853]">
+                        <h2 className="text-xl md:text-2xl text-[#36A853]">
                           ৳ {data?.addToCartProduct?.price?.latestPrice}{" "}
                         </h2>
                         <h2 className="text-sm line-through text-gray-500">
@@ -126,7 +125,7 @@ function Cart() {
                       <div className="flex items-center">
                         <button
                           onClick={() => handleIncrementOrder(data?._id)}
-                          className="h-8 w-8 bg-gray-300 hover:bg-slate-400 hover:text-white transition rounded-l-full"
+                          className="h-6 md:h-8 w-6 md:w-8 bg-gray-300 hover:bg-slate-400 hover:text-white transition rounded-l-full"
                         >
                           +
                         </button>
@@ -134,11 +133,11 @@ function Cart() {
                           type="number"
                           value={data?.orderCount}
                           id="Line2Qty"
-                          className="h-8 w-12 rounded border-gray-200 bg-gray-100  p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                          className="h-6 md:h-8 w-8 md:w-11 rounded border-gray-200 bg-gray-100  p-0 text-center text-xs text-gray-600 [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
                         />
                         <button
                           onClick={() => handleDecrementOrder(data?._id)}
-                          className="h-8 w-8 bg-gray-300 hover:bg-slate-400 hover:text-white transition rounded-r-full"
+                          className="h-6 md:h-8 w-6 md:w-8 bg-gray-300 hover:bg-slate-400 hover:text-white transition rounded-r-full"
                         >
                           -
                         </button>
@@ -161,17 +160,17 @@ function Cart() {
             </div>
           )}
         </div>
-        <div className="col-span-2 border h-[420px]  border-gray-400 p-4">
+        <div className="lg:col-span-2 col-span-1 border h-[420px]  border-gray-400 p-4">
           <div className="">
-            <h3 className="text-gray-400 text-sm font-medium">Location</h3>
+            <h3 className="text-gray-400 text-xs md:text-sm font-medium">Location</h3>
             <div className="flex items-center gap-2 pt-2 text-gray-600">
               <IoLocationOutline className="text-xl" />
-              <h4> Add Shipping Address</h4>
+              <h4 className="text-sm md:text-base"> Add Shipping Address</h4>
             </div>
           </div>
           <hr className="my-6 border-gray-400" />
           <div className="">
-            <h2 className="text-gray-500 font-semibold text-lg">
+            <h2 className="text-gray-500 font-semibold text-base md:text-lg">
               Order Summary
             </h2>
             <div className="mt-2">
