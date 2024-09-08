@@ -171,7 +171,7 @@ export function PlaceholdersAndVanishInput({
 
   return (
     <form
-      className={`w-full relative max-w-3xl mx-auto bg-white h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 ${
+      className={`w-full relative max-w-3xl mx-auto bg-white h-10 md:h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 ${
         value && "bg-gray-50"
       }`}
       onSubmit={handleSubmit}
@@ -201,7 +201,7 @@ export function PlaceholdersAndVanishInput({
       <button
         disabled={!value}
         type="submit"
-        className="absolute right-2 top-1/2 z-50 -translate-y-1/2 p-2 px-4 text-white rounded-full disabled:bg-gray-200 disabled:text-gray-500 bg-[#36A853]  transition duration-200 flex items-center justify-center"
+        className="absolute text-xs md:text-sm right-1 md:right-2 top-1/2 z-50 -translate-y-1/2 p-2 px-4 text-white rounded-full disabled:bg-[#36A853]  bg-[#36A853]  transition duration-200 flex items-center justify-center"
       >
         Search
       </button>

@@ -92,10 +92,10 @@ function ProductDetails() {
         <Spinner />
       ) : (
         <div className="mt-28 max-w-7xl mx-auto">
-          <div className="grid grid-cols-8 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-8 gap-6 mx-4">
             <div
               id="megnifyImg_Area"
-              className="border border-gray-300 overflow-hidden relative col-span-2  flex items-center justify-center "
+              className="border border-gray-300 overflow-hidden relative col-span-1 md:col-span-2  flex items-center justify-center "
             >
               <img
                 id="megnify_Img"
@@ -103,29 +103,29 @@ function ProductDetails() {
                 alt=""
               />
             </div>
-            <div className=" col-span-4 flex justify-between">
+            <div className=" col-span-1 md:col-span-4 flex justify-between">
               <div className="">
-                <h2 className="text-2xl font-medium">
+                <h2 className="text-xl lg:text-2xl font-medium">
                   {productDetailsData?.productName}
                 </h2>
-                <div className="flex items-center gap-3 pt-3">
+                <div className="flex items-center gap-3 pt-3 flex-wrap">
                   <Rate
-                    className="text-orange-400"
+                    className="text-orange-400 text-base lg:text-lg"
                     defaultValue={productDetailsData?.rating}
                   ></Rate>
                   <p className="text-sm">({productDetailsData?.rating})</p>
                   <p className="text-sm">18 Reviews</p>
                 </div>
                 <div className="pt-3">
-                  <h3>
+                  <h3 className="text-sm lg:text-base">
                     Category :{" "}
                     <span className="text-green-600">
                       {productDetailsData?.categoryName}
                     </span>
                   </h3>
                 </div>
-                <div className=" flex items-center gap-5 pt-5">
-                  <h1 className="text-3xl font-medium text-[#36A853]">
+                <div className=" flex items-center gap-5 pt-5 flex-wrap">
+                  <h1 className="text-2xl lg:text-3xl font-medium text-[#36A853]">
                     {" "}
                     ৳ {productDetailsData?.price.latestPrice}
                   </h1>
@@ -133,7 +133,7 @@ function ProductDetails() {
                     {" "}
                     ৳ {productDetailsData?.price.oldPrice}
                   </h1>
-                  <p className="bg-red-600 text-white px-2 py-1 rounded-full rounded-r-none font-semibold">
+                  <p className="bg-red-600 text-white px-2 py-1 text-sm lg:text-base rounded-full rounded-r-none font-semibold">
                     {productDetailsData?.price?.off} % Off
                   </p>
                 </div>
@@ -181,8 +181,8 @@ function ProductDetails() {
                 <FaRegHeart className="text-2xl text-gray-500" />
               </div>
             </div>
-            <div className=" col-span-2 bg-gray-50 p-4">
-              <div className="flex items-center justify-between text-sm font-medium text-gray-500">
+            <div className=" col-span-1 md:col-span-2 bg-gray-50 p-4">
+              <div className="flex items-center justify-between text-xs lg:text-sm font-medium text-gray-500">
                 <p>Devlivery Options</p>
                 <BiErrorAlt />
               </div>
@@ -190,17 +190,17 @@ function ProductDetails() {
               <div className="mt-4 space-y-3">
                 <div className="flex items-center gap-3">
                   <IoLocationOutline className="text-2xl" />
-                  <p>Barishal, Barishal - Agailjhara, Gaila</p>
+                  <p className="text-sm lg:text-base">Barishal, Barishal - Agailjhara, Gaila</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <BsCashCoin className="text-xl" />
-                  <p>Cash on Delivery Available</p>
+                  <p className="text-sm lg:text-base">Cash on Delivery Available</p>
                 </div>
               </div>
               <div className="py-6">
                 <hr />
               </div>
-              <div className="flex items-center justify-between text-sm font-medium text-gray-500">
+              <div className="flex items-center justify-between  font-medium text-gray-500 text-xs lg:text-sm">
                 <p>Return & Warranty </p>
                 <BiErrorAlt />
               </div>
@@ -208,11 +208,11 @@ function ProductDetails() {
               <div className="mt-4 space-y-3">
                 <div className="flex items-center gap-3">
                   <MdOutlineKeyboardReturn className="text-xl" />
-                  <p>7 Days Return</p>
+                  <p className="text-sm lg:text-base">7 Days Return</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <RiAwardLine className="text-xl" />
-                  <p>Warranty not available</p>
+                  <p className="text-sm lg:text-base">Warranty not available</p>
                 </div>
               </div>
             </div>
@@ -221,7 +221,7 @@ function ProductDetails() {
           <hr className="my-6 border-gray-200 md:my-10 dark:border-gray-500" />
 
           {/* ***************Added releted products*************** */}
-          <div className="">
+          <div className="hidden">
             <div className="">
               <h2 className="text-xl">Products related to this item</h2>
             </div>
@@ -309,7 +309,7 @@ function ProductDetails() {
           </div>
 
           {/****************** Reviews and Ratings ******************/}
-          <div className="mt-6">
+          <div className="mt-6 mx-4">
             <div className="">
               <h2 className="text-xl">Reviews and Ratings</h2>
               <p className="pt-2 max-w-2xl text-gray-500 text-sm">
@@ -319,14 +319,14 @@ function ProductDetails() {
               </p>
             </div>
 
-            <div className="flex justify-between mt-12">
+            <div className="flex justify-between mt-12  flex-wrap gap-4  ">
               <div className="space-y-2">
                 <h2 className="text-lg 0">Rate this Product</h2>
                 <button className=" py-1 hover:bg-gray-100 transition px-3 border-2 border-[#36a853] text-[#36a853]">
                   Write Review
                 </button>
               </div>
-              <div className="flex gap-8">
+              <div className="flex gap-8 flex-wrap">
                 <div className="space-y-1">
                   <h1 className="text-3xl ">{productDetailsData?.rating}</h1>
                   <Rate

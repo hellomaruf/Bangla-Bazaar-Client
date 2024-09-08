@@ -42,11 +42,12 @@ function Nav() {
 
   // input search placeholder************
   const placeholders = [
-    "Search Fresh Groceries....",
-    "Search Organic Foods....",
-    "Where is Andrew Laeddis Hiding?",
-    "Write a Javascript method to reverse a string",
-    "How to assemble your own PC?",
+    "Fresh Meat",
+    "Fruits",
+    "Fresh Vegetables",
+    "HealthCare Products",
+    "Snacks",
+    "Drinks",
   ];
   function signInOpen() {
     setIsOpenSignIn(true);
