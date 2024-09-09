@@ -14,6 +14,7 @@ import Orders from "../Pages/Orders";
 import WishList from "../Pages/WishList";
 import BestSellingPro from "../Pages/BestSellingPro";
 import Rating from "../Pages/Rating";
+import SignIn from "../Pages/Authentication/SignIn";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -77,4 +78,8 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: '/signin',
+    element:<SignIn/>
+  }
 ]);
