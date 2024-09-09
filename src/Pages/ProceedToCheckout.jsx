@@ -6,12 +6,11 @@ import { AuthContaxt } from "../Services/AuthProvider";
 
 function ProceedToCheckout() {
   const { user } = useContext(AuthContaxt);
-  console.log(user);
+
 
   const { sumOfLatestPrice } = useTotalPrice();
   const [payInfo, setPayInfo] = useState(null);
   const { cartData } = useCart();
-  console.log(cartData);
   const productName = cartData?.map(
     (item) => item?.addToCartProduct?.productName
   );
@@ -61,34 +60,34 @@ function ProceedToCheckout() {
 
   return (
     <div className="mt-28 max-w-7xl mx-auto">
-      <div className="grid grid-cols-6 gap-5 items-start">
-        <div className="col-span-4 border p-6 border-gray-400">
+      <div className="grid grid-cols-1 lg:grid-cols-6 gap-5 items-start mx-4">
+        <div className="col-span-1 lg:col-span-4 border p-6 border-gray-400">
           {payInfo ? (
             <div className="">
               <div className="mb-5">
-                <h2 className="text-lg font-medium">Shipping & Billing</h2>
+                <h2 className="text-md md:text-lg font-medium">Shipping & Billing</h2>
               </div>
               <div className="space-y-2">
-                <div className="flex items-center justify-between">
+                <div className="flex text-sm md:text-base items-center justify-between">
                   <h3>Name :</h3>
                   <p>{payInfo?.name}</p>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex text-sm md:text-base items-center justify-between">
                   <h3>Email :</h3>
                   <p>{payInfo?.email}</p>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex text-sm md:text-base items-center justify-between">
                   <h3>Phone :</h3>
                   <p>{payInfo?.phoneNumber}</p>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex text-sm md:text-base items-center justify-between">
                   <h3>Address :</h3>
                   <p>
                     {payInfo?.address},{payInfo?.colony}
                   </p>
                 </div>
                 <div className="flex">
-                  <h4 className="bg-green-500 text-white text-sm rounded-full px-3">
+                  <h4 className="bg-green-500 text-xs md:text-base text-white  rounded-full px-3">
                     HOME
                   </h4>
                 </div>
@@ -194,7 +193,7 @@ function ProceedToCheckout() {
                   className="mt-1 w-full py-3 px-4 rounded-md border border-gray-300 bg-white text-sm text-gray-700 outline-none focus:border-[#36A853]"
                 />
               </div>
-              <div className="flex">
+              <div className="flex ">
                 <button className="btn bg-[#36A853] text-white">
                   Save Details
                 </button>
@@ -202,9 +201,9 @@ function ProceedToCheckout() {
             </form>
           )}
         </div>
-        <div className="col-span-2 border h-[250px] border-gray-400 p-4 ">
+        <div className="col-span-1 lg:col-span-2 border h-[250px] border-gray-400 p-4 ">
           <div className="">
-            <h2 className="text-gray-500 font-semibold text-lg">
+            <h2 className="text-gray-500 font-semibold text-md md:text-lg">
               Order Summary
             </h2>
             <div className="mt-2">
@@ -219,7 +218,7 @@ function ProceedToCheckout() {
               <div className="flex items-center justify-between">
                 <h5 className="text-gray-500">Shipping Fee</h5>
                 <h6 className="text-lg font-medium text-gray-500">
-                  {/* ৳ {cartData?.length > 0 ? 90 : 0} */} 90
+                  {/* ৳ {cartData?.length > 0 ? 90 : 0} */}  ৳ 90
                 </h6>
               </div>
             </div>
