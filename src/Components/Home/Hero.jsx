@@ -10,8 +10,10 @@ function Hero() {
           backgroundImage: `url(${heroImg})`,
         }}
       >
-        <div className=" flex items-center min-h-[500px] max-w-7xl  mx-auto 
-         ">
+        <div
+          className=" flex items-center min-h-[500px] max-w-7xl  mx-auto 
+         "
+        >
           <div className="mx-4 ">
             <FlipWords
               className="max-w-xl text-4xl md:text-5xl font-bold pb-2 z-0"
@@ -22,16 +24,14 @@ function Hero() {
               Delivered with Love
             </h1>
             <p className="mb-5 text-gray-600 max-w-2xl">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Experience the convenience of shopping for fresh, quality
+              groceries from the comfort of your home. At BanglaBazar, we
+              deliver the finest products straight to your doorstep!
             </p>
             <button className="btn bg-[#3aa753] text-white">Get Started</button>
           </div>
         </div>
       </div>
-   
-  
     </div>
   );
 }
