@@ -151,8 +151,8 @@ function Cart() {
           {cartData?.length < 1 && (
             <div className=" py-10">
               <div className="flex flex-col items-center justify-center ">
-                <img className="w-[270px]" src={emptycart} alt="" />
-                <h3 className="text-2xl mt-4 text-gray-600 font-semibold">
+                <img className="w-[200px] md:w-[270px]" src={emptycart} alt="" />
+                <h3 className="text-xl md:text-2xl mt-4 text-gray-600 font-semibold">
                   Your Basket is lonely
                 </h3>
                 <h5 className="text-gray-500">Add some items to cheer it up</h5>
