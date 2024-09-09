@@ -94,7 +94,7 @@ function SearchProducts() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="">
+        <div className="mx-4">
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
@@ -103,7 +103,7 @@ function SearchProducts() {
               disableOnInteraction: false,
             }}
             modules={[Autoplay]}
-            className="mySwiper mb-6"
+            className="mySwiper mb-6 "
           >
             <SwiperSlide>
               <img className="w-full" src={img1} alt="" />
@@ -120,75 +120,75 @@ function SearchProducts() {
               {filteredData?.length} items found for <strong>{query}</strong>
             </h5>
           </div>
-          <div className="grid grid-cols-9 gap-3">
+          <div className="grid grid-cols-1 lg:grid-cols-9 gap-3 ">
             {/************************ Filtering ************************/}
-            <div className="col-span-7">
-              <div className="grid grid-cols-4 gap-4 h-full">
+            <div className="lg:col-span-7 order-2 lg:order-1">
+              <div className="grid grid-cols-2 md:grid-cols-4  gap-4 h-full">
                 {filteredData?.map((data, index) => (
-                  <div
-                    key={index}
-                    className="overflow-hidden relative group h-full"
-                  >
-                    <a
-                      href="#"
-                      className="group relative block overflow-hidden  border h-full border-gray-200"
-                    >
-                      <img
-                        src={data?.productImg}
-                        alt=""
-                        className=" w-full object-cover transition duration-500 group-hover:scale-105 h-52 p-4 "
-                      />
-
-                      <div className="relative bg-white p-6 space-y-1">
-                        <div className=" flex items-center gap-4">
-                          <p className="mt-1.5 text-sm text-gray-500 line-through">
-                            ৳ {data?.price?.oldPrice}
-                          </p>
-                          <p className="mt-1.5  text-gray-900">
-                            ৳ {data?.price?.latestPrice}
-                          </p>
-                          <p className="mt-1.5 text-sm text-red-500">
-                            {data?.price?.off} %
-                          </p>
-                        </div>
-
-                        <h3 className=" text-base font-medium text-gray-900">
-                          {data?.productName}
-                        </h3>
-                        <div className="flex items-center gap-2">
-                          <Rate
-                            style={{ fontSize: "16px" }}
-                            className="text-orange-400"
-                            defaultValue={data?.rating}
-                          />{" "}
-                          <p className="text-sm">({data?.rating})</p>
-                        </div>
-                      </div>
-                    </a>
-                    {/* Overlay section */}
-                    <div className="left-0 absolute  text-white top-[100%] duration-500 opacity-0 group-hover:opacity-100 group-hover:top-0  w-full h-full bg-[#36a853]/50 group-hover:backdrop-blur-md">
-                      <div className="flex items-center justify-center gap-2 absolute top-[40%] left-1/3">
-                        <Slide direction="down" duration={1000}>
-                          <button className="bg-white rounded-full text-gray-900 h-10 w-10 flex items-center justify-center">
-                            <FiShoppingCart className="" />
-                          </button>
-                          <button className="bg-white rounded-full text-gray-900 h-10 w-10 flex items-center justify-center">
-                            <FaRegHeart className="" />
-                          </button>
-                        </Slide>
-                      </div>
-                      <Link
-                        to={`/productDetails/${data?._id}`}
-                        className=" bg-[#36a853] absolute  w-full text-white text-sm py-2 cursor-pointer text-center bottom-0"
-                      >
-                        Details
-                      </Link>
-                    </div>
-                  </div>
+                   <div key={index} className="overflow-hidden relative group h-full">
+                   <Link
+                     to={`/productDetails/${data?._id}`}
+                     className="group relative block overflow-hidden h-full  border border-gray-200"
+                   >
+                     <img
+                       src={data?.productImg}
+                       alt=""
+                       className=" w-full object-cover transition duration-500 group-hover:scale-105 h-52 p-4 "
+                     />
+     
+                     <div className="relative bg-white p-6 space-y-1">
+                       <div className=" flex items-center gap-4 ">
+                         <p className="mt-1.5 text-xs md:text-sm text-gray-500 line-through ">
+                           ৳ {data?.price?.oldPrice}
+                         </p>
+                         <p className="mt-1.5 text-xs md:text-sm text-gray-900">
+                           ৳ {data?.price?.latestPrice}
+                         </p>
+                       </div>
+                         <p className="mt-1.5 text-xs md:text-sm text-red-500">
+                           {data?.price?.off} %
+                         </p>
+     
+                       <h3 className=" text-sm lg:text-base font-medium text-gray-900 py-2">
+                         {data?.productName}
+                       </h3>
+                       <div className="flex items-center gap-2 flex-wrap">
+                         <Rate
+                           style={{ fontSize: "12px" }}
+                           className="text-orange-400"
+                           defaultValue={data?.rating}
+                         />{" "}
+                         <p className="text-xs md:text-sm">({data?.rating})</p>
+                       </div>
+                     </div>
+                   </Link>
+                   {/* Overlay section */}
+                   <div className="left-0 hidden md:flex  absolute  text-white top-[100%] duration-500 opacity-0 group-hover:opacity-100 group-hover:top-0  w-full h-full bg-[#36a853]/50 group-hover:backdrop-blur-md">
+                     <div className="flex items-center justify-center gap-2 absolute top-[40%] left-1/3">
+                       <Slide direction="down" duration={1000}>
+                         <button
+                          //  onClick={() => handleCart(data)}
+                           className="bg-white hover:bg-[#36a853] hover:border-2 hover:text-white hover:border-white transition rounded-full text-gray-900 h-10 w-10 flex items-center justify-center"
+                         >
+                           <FiShoppingCart className="" />
+                         </button>
+                         <button className="bg-white hover:bg-[#36a853] hover:border-2 hover:text-white hover:border-white transition rounded-full text-gray-900 h-10 w-10 flex items-center justify-center">
+                           <FaRegHeart className="" />
+                         </button>
+                       </Slide>
+                     </div>
+                     <Link
+                       to={`/productDetails/${data?._id}`}
+                       className=" bg-[#36a853] hover:bg-[#2f9047] transition absolute  w-full text-white text-sm py-2 cursor-pointer text-center bottom-0"
+                     >
+                       Details
+                     </Link>
+                   </div>
+                 </div>
                 ))}
               </div>
             </div>
-            <div className="col-span-2 p-4 border">
+            <div className="lg:col-span-2 p-4 border order-1 lg:order-1">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-[12px] font-semibold text-gray-500">
                   Filtering
