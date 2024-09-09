@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { AuthContaxt } from "../../Services/AuthProvider";
 import useCart from "../../Hooks/useCart";
 import snacks_banner from "../../assets/Imgs/Snacks-banner.webp";
-import snacks_banner1 from "../../assets/Imgs/Snacks-banner1.webp";
+import snacks_banner1 from "../../assets/Imgs/Snacks-banner2.webp";
 
 function Products() {
   const categoryName = useParams();
@@ -68,7 +68,7 @@ function Products() {
         <div className="">
           {/* {productData[0]?.categoryName === "Snacks" && (
           )} */}
-            <div className="grid grid-cols-2 mx-4 mb-6 ">
+            <div className="grid grid-cols-2 mx-4 mb-6 gap-1 ">
               <img src={snacks_banner} alt="" />
               <img src={snacks_banner1} alt="" />
             </div>

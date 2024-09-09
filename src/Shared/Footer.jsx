@@ -1,7 +1,7 @@
 import logo from "../assets/Imgs/BanglaBazar.png";
 function Footer() {
   return (
-    <footer className=" border-y-4 border-[#36A853] mt-10">
+    <footer className=" border-y-2 bg-gray-50 border-[#36A853] mt-10">
       <div className="container px-6 py-12 mx-auto max-w-7xl">
         {/* <div className="md:flex  md:-mx-3 md:items-center md:justify-between">
           <h1 className="text-xl font-semibold tracking-tight text-gray-800 md:mx-3 xl:text-2xl ">
@@ -17,9 +17,9 @@ function Footer() {
             </a>
           </div>
         </div> */}
-        <a href="#">
-          {/* <img class="w-auto h-7" src="https://merakiui.com/images/full-logo.svg" alt=""> */}
-          <img className="w-48" src={logo} alt="" />
+        <a className="" href="#">
+      
+          <img className="w-48 bg-white py-1 border-2 border-[#36A853] px-4 rounded-full" src={logo} alt="" />
         </a>
         {/* <hr className="my-6 border-gray-200 md:my-10 dark:border-gray-700" /> */}
         <div className="grid grid-cols-1 gap-6 my-14 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
