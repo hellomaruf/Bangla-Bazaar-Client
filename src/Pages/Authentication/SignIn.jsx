@@ -1,45 +1,71 @@
+// import { TextField } from "@material-ui/core";
 import logo from "../../assets/Imgs/BanglaBazar.png";
+import { styled } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
 
 function SignIn() {
   const handleSignInUser = () => {};
+  const CustomTextField = styled(TextField)(() => ({
+    "& .MuiInputLabel-root": {
+      color: "gray", // Default label color
+      fontSize: ".9rem",
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#36A853", // Label color when focused
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#36A853", // Default border color
+      },
+      "&:hover fieldset": {
+        borderColor: "#36A853", // Hover border color
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#36A853", // Focused border color
+      },
+    },
+  }));
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="w-full relative">
-        {/* <div className="h-96 w-96 bg-[#36A853] rounded-full z-0  blur-3xl -top-52 -left-52 opacity-40 absolute "></div> */}
         {/* <div className="h-96 w-96 bg-[#36A853] rounded-full z-0  blur-3xl -bottom-52 -right-52 opacity-40 absolute "></div> */}
+        {/* <div className="h-96 w-96 bg-[#36A853] rounded-full z-0  blur-3xl -top-52 -left-52 opacity-40 absolute "></div> */}
 
-        <div className="w-full max-w-sm p-6 m-auto mx-auto backdrop-blur-xl border bg-gray-50 bg-opacity-60 rounded-lg  ">
+        <div className="w-full max-w-sm p-6 m-auto mx-auto backdrop-blur-xl border bg-gray-100 bg-opacity-60 rounded-lg  ">
           <div className="flex justify-center mx-auto ">
-            <img className="w-40 bg-white p-2 rounded-full border-2 border-[#36A853]" src={logo} alt="" />
+            <img
+              className=" bg-white p-2 rounded-full border-2 border-[#36A853] w-[180px]"
+              src={logo}
+              alt=""
+            />
           </div>
 
           <form onSubmit={handleSignInUser} className="mt-6">
-            <div>
-              <label className="block text-sm text-gray-800 ">Email</label>
-              <input
-                type="text"
+            <div className=" mt-4">
+              <CustomTextField
+                className="w-full bg-white "
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                type="email"
                 name="email"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
+                required
               />
             </div>
-
             <div className="mt-4">
-              <div className="flex items-center justify-between">
-                <label className="block text-sm text-gray-800">Password</label>
-                <a href="#" className="text-xs text-gray-600 hover:underline">
-                  Forget Password?
-                </a>
-              </div>
-
-              <input
+              <CustomTextField
+                className="w-full bg-white "
+                id="outlined-basic"
+                label="Password"
+                variant="outlined"
                 type="password"
                 name="password"
-                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
+                required
               />
             </div>
 
             <div className="mt-6">
-              <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+              <button className="w-full btn px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
                 Sign In
               </button>
             </div>
