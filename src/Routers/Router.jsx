@@ -15,6 +15,7 @@ import WishList from "../Pages/WishList";
 import BestSellingPro from "../Pages/BestSellingPro";
 import Rating from "../Pages/Rating";
 import SignIn from "../Pages/Authentication/SignIn";
+import SignUp from "../Pages/Authentication/SignUp";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -69,17 +70,21 @@ export const router = createBrowserRouter([
         element: <WishList />,
       },
       {
-        path: '/best-selling-product',
-        element:<BestSellingPro/>
+        path: "/best-selling-product",
+        element: <BestSellingPro />,
       },
       {
-        path: '/rating',
-        element:<Rating/>
-      }
+        path: "/rating",
+        element: <Rating />,
+      },
     ],
   },
   {
-    path: '/signin',
-    element:<SignIn/>
-  }
+    path: "/signin",
+    element: <SignIn />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
 ]);
