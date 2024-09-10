@@ -2,10 +2,31 @@
 import logo from "../../assets/Imgs/BanglaBazar.png";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
-import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { AuthContaxt } from "../../Services/AuthProvider";
 
 function SignIn() {
-  const handleSignInUser = () => {};
+  const { signInUser } = useContext(AuthContaxt);
+
+  const handleSignInUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signInUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+        if (res.user) {
+          toast.success("Successfully SignIn!");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+  };
   const CustomTextField = styled(TextField)(() => ({
     "& .MuiInputLabel-root": {
       color: "gray", // Default label color
@@ -29,7 +50,6 @@ function SignIn() {
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="w-full relative mx-4">
-    
         {/* <div className="h-96 w-96 bg-[#36A853] rounded-full z-0  blur-3xl -bottom-52 -right-52 opacity-40 absolute "></div> */}
         {/* <div className="h-96 w-96 bg-[#36A853] rounded-full z-0  blur-3xl -top-52 -left-52 opacity-40 absolute "></div> */}
 
@@ -102,7 +122,10 @@ function SignIn() {
           <p className="mt-8 text-xs font-light text-center text-gray-400">
             {" "}
             Dont have an account?{" "}
-            <Link to={'/signup'}  className="font-medium text-[#36A853]  hover:underline">
+            <Link
+              to={"/signup"}
+              className="font-medium text-[#36A853]  hover:underline"
+            >
               Create One
             </Link>
           </p>
