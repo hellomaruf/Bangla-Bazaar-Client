@@ -3,7 +3,7 @@ import { Rate } from "antd";
 import axios from "axios";
 import { FaRegHeart } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { BsBookmarks } from "react-icons/bs";
 import { BiErrorAlt } from "react-icons/bi";
 import { FiShoppingCart } from "react-icons/fi";
@@ -27,7 +27,9 @@ function ProductDetails() {
   const { refetch } = useCart();
   const { id } = useParams();
   const { user } = useContext(AuthContaxt);
-  console.log(user?.displayName);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
 
   const { data: productDetailsData, isLoading } = useQuery({
     queryKey: ["productDetailsData"],
@@ -53,38 +55,42 @@ function ProductDetails() {
   });
 
   const handleCart = async () => {
-    const userEmail = user?.email;
-    const userName = user?.displayName;
-    const addToCartProduct = productDetailsData;
-    const orderCount = 1;
-    const totalLatestPrice = productDetailsData?.price?.latestPrice;
-    const addToCartProductInfo = {
-      userEmail,
-      userName,
-      addToCartProduct,
-      orderCount,
-      totalLatestPrice,
-    };
-    console.log(addToCartProductInfo);
-    await axios
-      .post(
-        `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
-        addToCartProductInfo
-      )
-      .then((res) => {
-        if (res.data) {
-          toast(
-            `${productDetailsData?.productName} Added in Cart Successfully!`,
-            {
-              duration: 6000,
-            }
-          );
-          refetch();
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (!user) {
+      return navigate("/signin", { state: { from: location } });
+    } else {
+      const userEmail = user?.email;
+      const userName = user?.displayName;
+      const addToCartProduct = productDetailsData;
+      const orderCount = 1;
+      const totalLatestPrice = productDetailsData?.price?.latestPrice;
+      const addToCartProductInfo = {
+        userEmail,
+        userName,
+        addToCartProduct,
+        orderCount,
+        totalLatestPrice,
+      };
+      console.log(addToCartProductInfo);
+      await axios
+        .post(
+          `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
+          addToCartProductInfo
+        )
+        .then((res) => {
+          if (res.data) {
+            toast(
+              `${productDetailsData?.productName} Added in Cart Successfully!`,
+              {
+                duration: 6000,
+              }
+            );
+            refetch();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   return (
     <div className="">
@@ -190,11 +196,15 @@ function ProductDetails() {
               <div className="mt-4 space-y-3">
                 <div className="flex items-center gap-3">
                   <IoLocationOutline className="text-2xl" />
-                  <p className="text-sm lg:text-base">Barishal, Barishal - Agailjhara, Gaila</p>
+                  <p className="text-sm lg:text-base">
+                    Barishal, Barishal - Agailjhara, Gaila
+                  </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <BsCashCoin className="text-xl" />
-                  <p className="text-sm lg:text-base">Cash on Delivery Available</p>
+                  <p className="text-sm lg:text-base">
+                    Cash on Delivery Available
+                  </p>
                 </div>
               </div>
               <div className="py-6">

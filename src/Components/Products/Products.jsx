@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import Spinner from "../../Utils/Spinner";
 import { Rate } from "antd";
 import { FiShoppingCart } from "react-icons/fi";
@@ -17,6 +17,8 @@ function Products() {
   const categoryName = useParams();
   const { user } = useContext(AuthContaxt);
   const { refetch } = useCart();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { data: productData, isLoading } = useQuery({
     queryKey: ["productData"],
     queryFn: async () => {
@@ -26,38 +28,42 @@ function Products() {
       return data;
     },
   });
+
   // console.log(productData);
   const handleCart = async (data) => {
-    console.log(data);
-    const userEmail = user?.email;
-    const userName = user?.displayName;
-    const addToCartProduct = data;
-    const orderCount = 1;
-    const totalLatestPrice = data?.price?.latestPrice;
-    const addToCartProductInfo = {
-      userEmail,
-      userName,
-      addToCartProduct,
-      orderCount,
-      totalLatestPrice,
-    };
+    if (!user) {
+      return navigate("/signin", { state: { from: location } });
+    } else {
+      const userEmail = user?.email;
+      const userName = user?.displayName;
+      const addToCartProduct = data;
+      const orderCount = 1;
+      const totalLatestPrice = data?.price?.latestPrice;
+      const addToCartProductInfo = {
+        userEmail,
+        userName,
+        addToCartProduct,
+        orderCount,
+        totalLatestPrice,
+      };
 
-    await axios
-      .post(
-        `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
-        addToCartProductInfo
-      )
-      .then((res) => {
-        if (res.data) {
-          toast(`${data?.productName} Added in Cart Successfully!`, {
-            duration: 6000,
-          });
-          refetch();
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      await axios
+        .post(
+          `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
+          addToCartProductInfo
+        )
+        .then((res) => {
+          if (res.data) {
+            toast(`${data?.productName} Added in Cart Successfully!`, {
+              duration: 6000,
+            });
+            refetch();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
@@ -68,10 +74,10 @@ function Products() {
         <div className="">
           {/* {productData[0]?.categoryName === "Snacks" && (
           )} */}
-            <div className="grid grid-cols-2 mx-4 mb-6 gap-1 ">
-              <img src={snacks_banner} alt="" />
-              <img src={snacks_banner1} alt="" />
-            </div>
+          <div className="grid grid-cols-2 mx-4 mb-6 gap-1 ">
+            <img src={snacks_banner} alt="" />
+            <img src={snacks_banner1} alt="" />
+          </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mx-4 gap-2 md:gap-4">
             {productData?.map((data, index) => (

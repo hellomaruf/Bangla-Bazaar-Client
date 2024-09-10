@@ -4,11 +4,16 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContaxt } from "../../Services/AuthProvider";
 
 function SignIn() {
   const { signInUser, googleLogin } = useContext(AuthContaxt);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  console.log(location.state?.from?.pathname);
+  
+  const navigate = useNavigate();
 
   const handleSignInUser = (e) => {
     e.preventDefault();
@@ -20,6 +25,7 @@ function SignIn() {
         console.log(res.user);
         if (res.user) {
           toast.success("Successfully SignIn!");
+          navigate(from);
         }
       })
       .catch((error) => {
