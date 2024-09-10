@@ -9,6 +9,8 @@ import upload from "../../assets/Imgs/upload.png";
 import logo from "../../assets/Imgs/BanglaBazar.png";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
+import { Link } from "react-router-dom";
+
 
 function SignUp() {
   const [avatarURL, setAvatarURL] = useState(upload);
@@ -26,7 +28,7 @@ function SignUp() {
     setAvatarURL(cachedURL);
     setImage(uploadedFile);
   };
-  console.log(image);
+
 
   // user sing up
   const handleSignUp = async (e) => {
@@ -67,10 +69,11 @@ function SignUp() {
       });
   };
 
+
   const CustomTextField = styled(TextField)(() => ({
     "& .MuiInputLabel-root": {
       color: "gray", // Default label color
-      fontSize: ".9rem",
+      // fontSize: ".9rem",
     },
     "& .MuiInputLabel-root.Mui-focused": {
       color: "#36A853", // Label color when focused
@@ -87,8 +90,9 @@ function SignUp() {
       },
     },
   }));
+
   return (
-    <div className="h-screen flex items-center justify-center">
+    <div className="h-screen flex items-center justify-center mx-4">
       <div className="w-full max-w-sm p-6 m-auto mx-auto backdrop-blur-xl border bg-gray-100 bg-opacity-60 rounded-lg  ">
         <div className="flex justify-center mx-auto ">
           <img
@@ -134,7 +138,7 @@ function SignUp() {
             />
           </div>
 
-          <div className="mt-4">
+          <div className="mt-4 relative">
             <CustomTextField
               className="w-full bg-white "
               id="outlined-basic"
@@ -144,6 +148,7 @@ function SignUp() {
               name="password"
               required
             />
+         
           </div>
 
           <div className="mt-6">
@@ -156,9 +161,12 @@ function SignUp() {
         <p className="mt-8 text-xs font-light text-center text-gray-400">
           {" "}
           Dont have an account?{" "}
-          <a href="#" className="font-medium text-[#36A853]  hover:underline">
+          <Link
+            to={"/signin"}
+            className="font-medium text-[#36A853]  hover:underline"
+          >
             Sign In
-          </a>
+          </Link>
         </p>
       </div>
     </div>
