@@ -6,9 +6,11 @@ import { AuthContaxt } from "../../Services/AuthProvider";
 import toast from "react-hot-toast";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
+import { CgSpinnerTwo } from "react-icons/cg";
 
 function SignInModal({ isOpenSignIn, signInClose }) {
   let [isOpenSignUp, setIsOpenSignUp] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { signInUser } = useContext(AuthContaxt);
   const { googleLogin } = useContext(AuthContaxt);
 
@@ -42,15 +44,19 @@ function SignInModal({ isOpenSignIn, signInClose }) {
   }
 
   const handleSignInUser = (e) => {
+    setLoading(true);
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(email, password);
+
     signInUser(email, password)
       .then((res) => {
         console.log(res.user);
         if (res.user) {
           toast.success("Successfully SignIn!");
+          setLoading(false);
         }
       })
       .catch((error) => {
@@ -134,9 +140,12 @@ function SignInModal({ isOpenSignIn, signInClose }) {
 
                   <div className="mt-6">
                     <button
-                      onClick={signInClose}
+                      // onClick={signInClose}
                       className="w-full btn px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
                     >
+                      {loading && (
+                        <CgSpinnerTwo className="text-xl animate-spin" />
+                      )}
                       Sign In
                     </button>
                   </div>

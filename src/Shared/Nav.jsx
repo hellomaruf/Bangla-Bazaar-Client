@@ -36,7 +36,7 @@ function Nav() {
   const { cartLength } = useCart();
   const { userData } = useUser();
   let [isOpenSignIn, setIsOpenSignIn] = useState(false);
-  const { user, logout, setUser } = useContext(AuthContaxt);
+  const { user, logout } = useContext(AuthContaxt);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -59,7 +59,7 @@ function Nav() {
 
   const handleLogout = () => {
     logout();
-    setUser("");
+    // setUser("");
     toast.success("Successfully Logout!");
   };
 
@@ -73,6 +73,8 @@ function Nav() {
       navigate(`/search/${query}`);
     }
   };
+
+  console.log('user',user);
 
   return (
     <div>

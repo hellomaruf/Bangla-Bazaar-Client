@@ -8,12 +8,14 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
+import { CgSpinnerTwo } from "react-icons/cg";
 
 function SignUpModal({ isOpenSignUp, signUpClose }) {
   const [avatarURL, setAvatarURL] = useState(upload);
   const [image, setImage] = useState(Object);
   const { createNewUser, updateUserProfile } = useContext(AuthContaxt);
   const fileUploadRef = useRef();
+  const [loading, setLoading] = useState(false);
   const handleUploadImg = (e) => {
     e.preventDefault();
     fileUploadRef.current.click();
@@ -29,6 +31,7 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
 
   // user sing up
   const handleSignUp = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -49,11 +52,13 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
         updateUserProfile(name, photo);
         if (res.user) {
           toast.success("Successfully SignUp!");
+          setLoading(false);
           console.log(res.user);
         }
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
 
     await axios
@@ -105,7 +110,11 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
               {/* SignInForm */}
               <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg ">
                 <div className="flex justify-center mx-auto">
-                  <img className="bg-white p-2 rounded-full border-2 border-[#36A853] w-[180px]" src={logo} alt="" />
+                  <img
+                    className="bg-white p-2 rounded-full border-2 border-[#36A853] w-[180px]"
+                    src={logo}
+                    alt=""
+                  />
                 </div>
 
                 <form onSubmit={handleSignUp} className="mt-6">
@@ -177,6 +186,9 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
                     href="#"
                     className="font-medium text-[#36A853]  hover:underline"
                   >
+                    {loading && (
+                      <CgSpinnerTwo className="text-xl animate-spin" />
+                    )}
                     Sign In
                   </a>
                 </p>
