@@ -140,7 +140,7 @@ function Nav() {
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="">
                 <div className="flex items-center ">
-                  {userData ? (
+                  {user ? (
                     <div className="flex items-center gap-3 border-2 py-1 px-3 rounded-xl border-gray-300 hover:bg-gray-100 transition">
                       <h4>{user && userData?.name}</h4>
                       <div className="w-10 rounded-full ">
@@ -226,12 +226,10 @@ function Nav() {
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="">
               <div className="flex items-center ">
-                {userData ? (
+                {userData && (
                   <div className="mx-2 cursor-pointer">
                     <CiMenuKebab className=" text-2xl" />
                   </div>
-                ) : (
-                  <Spinner2 />
                 )}
               </div>
             </div>
@@ -292,7 +290,14 @@ function Nav() {
             </ul>
           </div>
         </div>
-
+        {!user && (
+          <button
+            onClick={signInOpen}
+            className=" bg-[#3AA652] text-white ml-3 lg:hidden text-sm py-2 px-3 flex gap-1 rounded-md "
+          >
+            Sign In <RiLogoutCircleLine className="text-base" />
+          </button>
+        )}
       </div>
 
       <div className="drawer z-10">
@@ -366,9 +371,6 @@ function Nav() {
           </ul>
         </div>
       </div>
-
-    
-      
     </div>
   );
 }
