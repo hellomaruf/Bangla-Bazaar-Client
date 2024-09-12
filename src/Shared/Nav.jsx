@@ -59,7 +59,7 @@ function Nav() {
 
   const handleLogout = () => {
     logout();
-    setUser(null);
+    setUser("");
     toast.success("Successfully Logout!");
   };
 

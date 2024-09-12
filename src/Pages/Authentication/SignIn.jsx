@@ -12,7 +12,7 @@ function SignIn() {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   console.log(location.state?.from?.pathname);
-  
+
   const navigate = useNavigate();
 
   const handleSignInUser = (e) => {
@@ -56,14 +56,16 @@ function SignIn() {
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((res) => {
-        console.log(res.user);
-        toast.success("Successfully SignIn!");
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error.message);
-      });
+      navigate(from)
+      // .then((res) => {
+      //   console.log(res.user);
+      //   toast.success("Successfully SignIn!");
+      //   navigate(from);
+      // })
+      // .catch((error) => {
+      //   console.log(error);
+      //   toast.error(error.message);
+      // });
   };
 
   return (
