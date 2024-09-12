@@ -4,9 +4,34 @@ import SignUpModal from "./SignUpModal";
 import { useContext, useState } from "react";
 import { AuthContaxt } from "../../Services/AuthProvider";
 import toast from "react-hot-toast";
+import { styled } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+
 function SignInModal({ isOpenSignIn, signInClose }) {
   let [isOpenSignUp, setIsOpenSignUp] = useState(false);
   const { signInUser } = useContext(AuthContaxt);
+  const { googleLogin } = useContext(AuthContaxt);
+
+  const CustomTextField = styled(TextField)(() => ({
+    "& .MuiInputLabel-root": {
+      color: "gray", // Default label color
+      // fontSize: ".9rem",
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#36A853", // Label color when focused
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#36A853", // Default border color
+      },
+      "&:hover fieldset": {
+        borderColor: "#36A853", // Hover border color
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#36A853", // Focused border color
+      },
+    },
+  }));
 
   function signUpOpen() {
     setIsOpenSignUp(true);
@@ -27,6 +52,17 @@ function SignInModal({ isOpenSignIn, signInClose }) {
         if (res.user) {
           toast.success("Successfully SignIn!");
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+  };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((res) => {
+        console.log(res.user);
+        toast.success("Successfully SignIn!");
       })
       .catch((error) => {
         console.log(error);
@@ -56,45 +92,50 @@ function SignInModal({ isOpenSignIn, signInClose }) {
               {/* SignInForm */}
               <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg ">
                 <div className="flex justify-center mx-auto">
-                  <img className="w-40" src={logo} alt="" />
+                  <img
+                    className="bg-white p-2 rounded-full border-2 border-[#36A853] w-[180px]"
+                    src={logo}
+                    alt=""
+                  />
                 </div>
 
                 <form onSubmit={handleSignInUser} className="mt-6">
                   <div>
-                    <label className="block text-sm text-gray-800 ">
+                    {/* <label className="block text-sm text-gray-800 ">
                       Email
                     </label>
                     <input
                       type="text"
                       name="email"
                       className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
+                    /> */}
+                    <CustomTextField
+                      className="w-full bg-white "
+                      id="outlined-basic"
+                      label="Email"
+                      variant="outlined"
+                      type="email"
+                      name="email"
+                      required
                     />
                   </div>
 
                   <div className="mt-4">
-                    <div className="flex items-center justify-between">
-                      <label className="block text-sm text-gray-800">
-                        Password
-                      </label>
-                      <a
-                        href="#"
-                        className="text-xs text-gray-600 hover:underline"
-                      >
-                        Forget Password?
-                      </a>
-                    </div>
-
-                    <input
+                    <CustomTextField
+                      className="w-full bg-white "
+                      id="outlined-basic"
+                      label="Password"
+                      variant="outlined"
                       type="password"
                       name="password"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
+                      required
                     />
                   </div>
 
                   <div className="mt-6">
                     <button
                       onClick={signInClose}
-                      className="w-full px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                      className="w-full btn px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       Sign In
                     </button>
@@ -116,8 +157,9 @@ function SignInModal({ isOpenSignIn, signInClose }) {
 
                 <div className="flex items-center mt-6 -mx-2">
                   <button
+                    onClick={handleGoogleLogin}
                     type="button"
-                    className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
+                    className="flex btn items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
                   >
                     <svg
                       className="w-4 h-4 mx-2 fill-current"
