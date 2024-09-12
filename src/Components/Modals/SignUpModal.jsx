@@ -6,6 +6,8 @@ import { AuthContaxt } from "../../Services/AuthProvider";
 import { ImageUpload } from "../../Utils/imgUpload";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { styled } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
 
 function SignUpModal({ isOpenSignUp, signUpClose }) {
   const [avatarURL, setAvatarURL] = useState(upload);
@@ -63,6 +65,28 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
         console.log(error);
       });
   };
+
+  const CustomTextField = styled(TextField)(() => ({
+    "& .MuiInputLabel-root": {
+      color: "gray", // Default label color
+      // fontSize: ".9rem",
+    },
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "#36A853", // Label color when focused
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#36A853", // Default border color
+      },
+      "&:hover fieldset": {
+        borderColor: "#36A853", // Hover border color
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#36A853", // Focused border color
+      },
+    },
+  }));
+
   return (
     <div>
       <Dialog
@@ -81,7 +105,7 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
               {/* SignInForm */}
               <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg ">
                 <div className="flex justify-center mx-auto">
-                  <img className="w-40" src={logo} alt="" />
+                  <img className="bg-white p-2 rounded-full border-2 border-[#36A853] w-[180px]" src={logo} alt="" />
                 </div>
 
                 <form onSubmit={handleSignUp} className="mt-6">
@@ -101,49 +125,45 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
                       className="hidden"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm text-gray-800 ">Name</label>
-                    <input
+                  <div className="mt-4">
+                    <CustomTextField
+                      className="w-full bg-white "
+                      id="outlined-basic"
+                      label="Name"
+                      variant="outlined"
                       type="text"
                       name="name"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
+                      required
                     />
                   </div>
                   <div className="mt-4">
-                    <label className="block text-sm text-gray-800 ">
-                      Email
-                    </label>
-                    <input
-                      type="text"
+                    <CustomTextField
+                      className="w-full bg-white "
+                      id="outlined-basic"
+                      label="Email"
+                      variant="outlined"
+                      type="email"
                       name="email"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
+                      required
                     />
                   </div>
 
                   <div className="mt-4">
-                    <div className="flex items-center justify-between">
-                      <label className="block text-sm text-gray-800">
-                        Password
-                      </label>
-                      <a
-                        href="#"
-                        className="text-xs text-gray-600 hover:underline"
-                      >
-                        Forget Password?
-                      </a>
-                    </div>
-
-                    <input
+                    <CustomTextField
+                      className="w-full bg-white "
+                      id="outlined-basic"
+                      label="Password"
+                      variant="outlined"
                       type="password"
                       name="password"
-                      className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg   dark:border-gray-600 outline-none focus:border-2 focus:border-[#36A853]"
+                      required
                     />
                   </div>
 
                   <div className="mt-6">
                     <button
                       onClick={signUpClose}
-                      className="w-full px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                      className="w-full btn px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       Sign Up
                     </button>
