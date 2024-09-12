@@ -140,8 +140,9 @@ function SignInModal({ isOpenSignIn, signInClose }) {
 
                   <div className="mt-6">
                     <button
+                      disabled = {loading}
                       // onClick={signInClose}
-                      className="w-full btn px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                      className="w-full disabled:bg-gray-400 disabled:text-gray-200 btn px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
                     >
                       {loading && (
                         <CgSpinnerTwo className="text-xl animate-spin" />

@@ -171,9 +171,13 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
 
                   <div className="mt-6">
                     <button
-                      onClick={signUpClose}
-                      className="w-full btn px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+                      // onClick={signUpClose}
+                      disabled={loading}
+                      className="w-full disabled:text-gray-200 disabled:bg-gray-400 btn px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
                     >
+                      {loading && (
+                        <CgSpinnerTwo className="text-xl animate-spin" />
+                      )}
                       Sign Up
                     </button>
                   </div>
@@ -186,9 +190,6 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
                     href="#"
                     className="font-medium text-[#36A853]  hover:underline"
                   >
-                    {loading && (
-                      <CgSpinnerTwo className="text-xl animate-spin" />
-                    )}
                     Sign In
                   </a>
                 </p>
