@@ -16,7 +16,10 @@ function Home() {
   return (
     <div className="custom-scrollbar">
       {user ? (
-        <Hero2 />
+        <div className="">
+          <Hero2 />
+          <Categoris />
+        </div>
       ) : (
         <div className="">
           <Hero />

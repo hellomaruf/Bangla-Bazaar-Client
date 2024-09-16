@@ -13,7 +13,7 @@ import img3 from "../../assets/Imgs/delivery-man.png";
 
 function Hero2() {
   return (
-    <div className="mt-24 mx-4">
+    <div className="mt-28 mx-4">
       <div className="grid grid-cols-8 gap-4 max-w-7xl mx-auto ">
         <div className="col-span-6">
           <Swiper
