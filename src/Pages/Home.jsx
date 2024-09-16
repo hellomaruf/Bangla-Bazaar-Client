@@ -9,6 +9,8 @@ import Stats from "../Components/Home/Stats";
 import "../Style/customScroll.css";
 import { AuthContaxt } from "../Services/AuthProvider";
 import Hero2 from "../Components/Home/Hero2";
+import BestOffersProducts from "../Components/Home/BestOffersProducts";
+import Baner from "../Components/Home/Baner";
 
 function Home() {
   const { user } = useContext(AuthContaxt);
@@ -19,6 +21,8 @@ function Home() {
         <div className="">
           <Hero2 />
           <Categoris />
+          <Baner/>
+          <BestOffersProducts />
         </div>
       ) : (
         <div className="">
