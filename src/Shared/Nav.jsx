@@ -16,7 +16,6 @@ import { LuBell } from "react-icons/lu";
 import { IoMdLogOut } from "react-icons/io";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegLightbulb, FaRegStar } from "react-icons/fa";
 import { AiOutlineProduct } from "react-icons/ai";
@@ -60,7 +59,6 @@ function Nav() {
   const handleLogout = () => {
     logout();
     setUser(null);
-    toast.success("Successfully Logout!");
   };
 
   const handleChange = (e) => {
