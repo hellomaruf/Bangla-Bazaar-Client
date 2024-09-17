@@ -18,16 +18,15 @@ function BestOffersProducts() {
       return data;
     },
   });
-  console.log(allProduct);
+
   const productsWithMoreThan20Off = allProduct?.filter(
     (product) => parseInt(product.price.off) > 23
   );
-  console.log(productsWithMoreThan20Off);
 
   return (
     <div>
       <div className="">
-        <div className=" max-w-7xl mx-auto h-full border-2 rounded-lg p-6">
+        <div className=" max-w-7xl mx-auto h-full  rounded-lg pt-6">
           <div className="">
             <h3 className="text-2xl font-semibold text-gray-700">
               Best Offer View Up to{" "}

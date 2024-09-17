@@ -11,6 +11,7 @@ import { AuthContaxt } from "../Services/AuthProvider";
 import Hero2 from "../Components/Home/Hero2";
 import BestOffersProducts from "../Components/Home/BestOffersProducts";
 import Baner from "../Components/Home/Baner";
+import TopRatedProducts from "../Components/Home/TopRatedProducts";
 
 function Home() {
   const { user } = useContext(AuthContaxt);
@@ -23,6 +24,7 @@ function Home() {
           <Categoris />
           <Baner/>
           <BestOffersProducts />
+          <TopRatedProducts/>
         </div>
       ) : (
         <div className="">
