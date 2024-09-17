@@ -12,6 +12,7 @@ import Hero2 from "../Components/Home/Hero2";
 import BestOffersProducts from "../Components/Home/BestOffersProducts";
 import Baner from "../Components/Home/Baner";
 import TopRatedProducts from "../Components/Home/TopRatedProducts";
+import Baner2 from "../Components/Home/Baner2";
 
 function Home() {
   const { user } = useContext(AuthContaxt);
@@ -24,7 +25,8 @@ function Home() {
           <Categoris />
           <Baner/>
           <BestOffersProducts />
-          <TopRatedProducts/>
+          <TopRatedProducts />
+          <Baner2/>
         </div>
       ) : (
         <div className="">
