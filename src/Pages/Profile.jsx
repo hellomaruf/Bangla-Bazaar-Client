@@ -255,7 +255,7 @@ function Profile() {
                 disabled={loading}
                 className={`btn disabled:bg-gray-400 w-full sm:w-auto ${
                   loading && "disabled:cursor-not-allowed"
-                }  disabled:text-gray-200 bg-[#36A853] text-white `}
+                }  disabled:text-gray-200 bg-[#36A853] hover:bg-[#2d9547] text-white `}
               >
                 {loading && <CgSpinnerTwo className="text-xl animate-spin" />}
                 Save Changes

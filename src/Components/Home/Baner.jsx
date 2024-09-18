@@ -3,7 +3,7 @@ import banner from "../../assets/Imgs/Baner.png";
 function Baner() {
   return (
     <div className="mx-4">
-      <div className="mx-auto max-w-7xl w-full my-10 ">
+      <div className="mx-auto max-w-7xl w-full mb-8 mt-3 ">
         <img className="w-full rounded-lg" src={banner} alt="" />
       </div>
     </div>
