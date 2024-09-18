@@ -11,7 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import img1 from "../../assets/Imgs/bennar.webp";
+import img1 from "../../assets/Imgs/Baner.png";
 import { Autoplay } from "swiper/modules";
 import Slider from "@material-ui/core/Slider";
 import { styled } from "@material-ui/core";

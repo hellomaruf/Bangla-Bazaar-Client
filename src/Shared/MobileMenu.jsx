@@ -9,12 +9,12 @@ function MobileMenu() {
 
   return (
     <div className="">
-      <div className="fixed bottom-0 w-full bg-white  flex justify-around py-3 shadow-lg z-50">
+      <div className="fixed bottom-0 w-full bg-white border-t-2 border-[#36a853]  flex justify-around py-3 shadow-lg z-50">
         <NavLink
           to={"/"}
           className={({ isActive }) =>
             isActive
-              ? "text-[#3AA753] flex-grow text-center "
+              ? "text-[#3AA753] font-medium flex-grow text-center "
               : " flex-grow text-center "
           }
         >
@@ -26,7 +26,7 @@ function MobileMenu() {
           to={"/orders"}
           className={({ isActive }) =>
             isActive
-              ? "text-[#3AA753] flex-grow text-center "
+              ? "text-[#3AA753] font-medium flex-grow text-center "
               : " flex-grow text-center "
           }
         >
@@ -41,7 +41,7 @@ function MobileMenu() {
           to={"/cart"}
           className={({ isActive }) =>
             isActive
-              ? "text-[#3AA753] flex-grow text-center "
+              ? "text-[#3AA753] font-medium flex-grow text-center "
               : " flex-grow text-center "
           }
         >
@@ -70,7 +70,7 @@ function MobileMenu() {
           to={"profile"}
           className={({ isActive }) =>
             isActive
-              ? "text-[#3AA753] flex-grow text-center "
+              ? "text-[#3AA753] font-medium flex-grow text-center "
               : " flex-grow text-center "
           }
         >
