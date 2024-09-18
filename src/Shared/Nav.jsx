@@ -72,7 +72,6 @@ function Nav() {
     }
   };
 
-  console.log("user", user);
 
   return (
     <div>

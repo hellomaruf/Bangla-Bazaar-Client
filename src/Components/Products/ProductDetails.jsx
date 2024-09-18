@@ -29,7 +29,6 @@ function ProductDetails() {
   const { user } = useContext(AuthContaxt);
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
 
   const { data: productDetailsData, isLoading } = useQuery({
     queryKey: ["productDetailsData"],
@@ -40,7 +39,6 @@ function ProductDetails() {
       return data;
     },
   });
-  console.log(productDetailsData?.price?.latestPrice);
 
   const { data: relatedProducts } = useQuery({
     queryKey: ["relatedProducts"],
@@ -70,7 +68,6 @@ function ProductDetails() {
         orderCount,
         totalLatestPrice,
       };
-      console.log(addToCartProductInfo);
       await axios
         .post(
           `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
@@ -88,7 +85,7 @@ function ProductDetails() {
           }
         })
         .catch((error) => {
-          console.log(error);
+          toast.error(error?.message)
         });
     }
   };

@@ -22,7 +22,6 @@ function SearchProducts() {
   const [filteredData, setFilteredData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  console.log(filteredData);
 
   const CustomSlider = styled(Slider)({
     color: "#36A853", // This sets the color for both the track and thumb

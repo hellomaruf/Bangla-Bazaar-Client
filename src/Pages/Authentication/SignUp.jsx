@@ -24,7 +24,7 @@ function SignUp() {
   const handleDisplayUploadedImg = () => {
     const uploadedFile = fileUploadRef.current.files[0];
     const cachedURL = URL.createObjectURL(uploadedFile);
-    console.log(cachedURL, uploadedFile);
+    
     setAvatarURL(cachedURL);
     setImage(uploadedFile);
   };
@@ -38,8 +38,6 @@ function SignUp() {
     const email = form.email.value;
     const password = form.password.value;
     const photo = await ImageUpload(image);
-
-    console.log(name, email, password, photo);
     const userInfo = {
       name,
       email,
@@ -52,11 +50,11 @@ function SignUp() {
         updateUserProfile(name, photo);
         if (res.user) {
           toast.success("Successfully SignUp!");
-          console.log(res.user);
+         
         }
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error?.message)
       });
 
     await axios

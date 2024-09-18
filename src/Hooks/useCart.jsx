@@ -6,7 +6,6 @@ import { AuthContaxt } from "../Services/AuthProvider";
 function useCart() {
   const { user } = useContext(AuthContaxt);
   const email = user?.email;
-  console.log(email, import.meta.env.VITE_LOCALHOST_URL);
 
   const { data: cartData, refetch } = useQuery({
     queryKey: ["cartData"],
@@ -17,7 +16,6 @@ function useCart() {
       return data;
     },
   });
-  console.log(cartData);
   const cartLength = cartData?.length;
   return { cartData, cartLength, refetch };
 }

@@ -54,18 +54,18 @@ function SignInModal({ isOpenSignIn, signInClose }) {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
 
     signInUser(email, password)
       .then((res) => {
-        console.log(res.user);
+  
         if (res.user) {
           toast.success("Successfully SignIn!");
           setLoading(false);
         }
       })
       .catch((error) => {
-        console.log(error);
+       
         toast.error(error.message);
       });
   };
@@ -94,7 +94,7 @@ function SignInModal({ isOpenSignIn, signInClose }) {
         .post(`${import.meta.env.VITE_LOCALHOST_URL}/users`, userInfo)
         .then((res) => {
           console.log(res.data);
-          console.log("user is updated");
+        
         })
         .catch((error) => {
           console.log(error);

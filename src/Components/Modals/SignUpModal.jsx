@@ -23,11 +23,11 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
   const handleDisplayUploadedImg = () => {
     const uploadedFile = fileUploadRef.current.files[0];
     const cachedURL = URL.createObjectURL(uploadedFile);
-    console.log(cachedURL, uploadedFile);
+  
     setAvatarURL(cachedURL);
     setImage(uploadedFile);
   };
-  console.log(image);
+
 
   // user sing up
   const handleSignUp = async (e) => {
@@ -39,7 +39,6 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
     const password = form.password.value;
     const photo = await ImageUpload(image);
 
-    console.log(name, email, password, photo);
     const userInfo = {
       name,
       email,
@@ -53,11 +52,12 @@ function SignUpModal({ isOpenSignUp, signUpClose }) {
         if (res.user) {
           toast.success("Successfully SignUp!");
           setLoading(false);
-          console.log(res.user);
+     
         }
       })
       .catch((error) => {
-        console.log(error);
+     
+        toast.error(error?.message)
         setLoading(false);
       });
 

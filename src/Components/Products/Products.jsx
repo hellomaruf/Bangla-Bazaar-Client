@@ -29,7 +29,7 @@ function Products() {
     },
   });
 
-  // console.log(productData);
+
   const handleCart = async (data) => {
     if (!user) {
       return navigate("/signin", { state: { from: location } });
@@ -61,7 +61,7 @@ function Products() {
           }
         })
         .catch((error) => {
-          console.log(error);
+          toast.error(error?.message)
         });
     }
   };

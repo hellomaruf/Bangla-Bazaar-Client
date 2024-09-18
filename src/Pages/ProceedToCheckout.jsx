@@ -17,7 +17,7 @@ function ProceedToCheckout() {
   const productImg = cartData?.map(
     (item) => item?.addToCartProduct?.productImg
   );
-  // console.log(productName);
+ 
 
   const handlePaymentInfo = (e) => {
     e.preventDefault();
@@ -46,7 +46,7 @@ function ProceedToCheckout() {
     axios
       .post(`${import.meta.env.VITE_LOCALHOST_URL}/create-payment`, payInfo)
       .then((res) => {
-        console.log(res.data);
+       
         const redirectURL = res.data.paymentUrl;
         if (redirectURL) {
           window.location.replace(redirectURL);
@@ -56,7 +56,7 @@ function ProceedToCheckout() {
         console.log(error);
       });
   };
-  console.log(payInfo);
+ 
 
   return (
     <div className="mt-28 max-w-7xl mx-auto">

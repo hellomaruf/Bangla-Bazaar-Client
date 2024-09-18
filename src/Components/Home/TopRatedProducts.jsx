@@ -17,7 +17,6 @@ function TopRatedProducts() {
     },
   });
 
-  console.log(allProduct);
 
   const snacks = allProduct?.filter(
     (product) => product.categoryName === "Snacks"

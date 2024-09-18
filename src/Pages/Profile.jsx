@@ -27,7 +27,7 @@ function Profile() {
   const handleDisplayUploadedImg = () => {
     const uploadedFile = fileUploadRef.current.files[0];
     const cachedURL = URL.createObjectURL(uploadedFile);
-    console.log(cachedURL, uploadedFile);
+  
     setAvatarURL(cachedURL);
     setImage(uploadedFile);
   };
@@ -46,7 +46,7 @@ function Profile() {
     const phoneNum = form.number.value;
     const dateOfBirth = form.date.value;
     const photo = await ImageUpload(image);
-    console.log(photo);
+  
 
     const userUpdateInfo = {
       name,
@@ -56,14 +56,14 @@ function Profile() {
       dateOfBirth,
       gender,
     };
-    console.log(userUpdateInfo);
+   
     axios
       .patch(
         `${import.meta.env.VITE_LOCALHOST_URL}/update-profile`,
         userUpdateInfo
       )
       .then((res) => {
-        console.log(res.data);
+        
         if (res.data.modifiedCount === 1) {
           toast.success("Your Profile Update Successfully!");
           refetch();
