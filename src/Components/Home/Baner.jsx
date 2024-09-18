@@ -1,4 +1,4 @@
-import banner from "../../assets/Imgs/bennar.webp";
+import banner from "../../assets/Imgs/Baner.png";
 
 function Baner() {
   return (
