@@ -6,15 +6,13 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContaxt } from "../../Services/AuthProvider";
+import axios from "axios";
 
 function SignIn() {
-  const { signInUser, googleLogin } = useContext(AuthContaxt);
+  const { signInUser, googleLogin, user } = useContext(AuthContaxt);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  console.log(location.state?.from?.pathname);
-
   const navigate = useNavigate();
-
   const handleSignInUser = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -54,18 +52,41 @@ function SignIn() {
     },
   }));
 
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin = async () => {
     googleLogin()
-      navigate(from)
       // .then((res) => {
+      //   if (res.user) {
+      //     toast.success("Successfully SignIn!");
+      //     navigate(from);
+      //   }
       //   console.log(res.user);
-      //   toast.success("Successfully SignIn!");
-      //   navigate(from);
       // })
       // .catch((error) => {
       //   console.log(error);
       //   toast.error(error.message);
       // });
+    navigate(from);
+    if (user) {
+      const name = user?.displayName;
+      const email = user?.email;
+      const photo = user?.photoURL;
+      const userInfo = {
+        name,
+        email,
+        photo,
+        role: "user",
+      };
+      await axios
+        .post(`${import.meta.env.VITE_LOCALHOST_URL}/users`, userInfo)
+        .then((res) => {
+          console.log(res.data);
+          console.log('user is updated');
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (

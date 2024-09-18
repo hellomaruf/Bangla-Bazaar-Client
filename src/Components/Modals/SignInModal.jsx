@@ -7,12 +7,17 @@ import toast from "react-hot-toast";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import { CgSpinnerTwo } from "react-icons/cg";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function SignInModal({ isOpenSignIn, signInClose }) {
   let [isOpenSignUp, setIsOpenSignUp] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { signInUser } = useContext(AuthContaxt);
-  const { googleLogin } = useContext(AuthContaxt);
+  const { signInUser, googleLogin, user } = useContext(AuthContaxt);
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
 
   const CustomTextField = styled(TextField)(() => ({
     "& .MuiInputLabel-root": {
@@ -64,16 +69,37 @@ function SignInModal({ isOpenSignIn, signInClose }) {
         toast.error(error.message);
       });
   };
-  const handleGoogleLogin = () => {
-    googleLogin()
-      .then((res) => {
-        console.log(res.user);
-        toast.success("Successfully SignIn!");
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error(error.message);
-      });
+  const handleGoogleLogin = async () => {
+    googleLogin();
+    // .then((res) => {
+    //   console.log(res.user);
+    //   toast.success("Successfully SignIn!");
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    //   toast.error(error.message);
+    // });
+    navigate(from);
+    if (user) {
+      const name = user?.displayName;
+      const email = user?.email;
+      const photo = user?.photoURL;
+      const userInfo = {
+        name,
+        email,
+        photo,
+        role: "user",
+      };
+      await axios
+        .post(`${import.meta.env.VITE_LOCALHOST_URL}/users`, userInfo)
+        .then((res) => {
+          console.log(res.data);
+          console.log("user is updated");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   return (
     <div>
@@ -140,7 +166,7 @@ function SignInModal({ isOpenSignIn, signInClose }) {
 
                   <div className="mt-6">
                     <button
-                      disabled = {loading}
+                      disabled={loading}
                       // onClick={signInClose}
                       className="w-full disabled:bg-gray-400 disabled:text-gray-200 btn px-6 py-2.5 text-sm font-medium tracking-wide bg-[#36A853] text-white capitalize transition-colors duration-300 transform  rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
                     >
