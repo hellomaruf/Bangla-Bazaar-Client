@@ -194,7 +194,7 @@ function ProceedToCheckout() {
                 />
               </div>
               <div className="flex ">
-                <button className="btn bg-[#36A853] text-white">
+                <button className="btn bg-[#36A853] hover:bg-[#2d9547] text-white">
                   Save Details
                 </button>
               </div>
@@ -232,7 +232,7 @@ function ProceedToCheckout() {
             <button
               onClick={handleCreatePayment}
               disabled={!payInfo}
-              className="btn w-full mt-4  text-white border-2 bg-[#36A853] hover:text-white hover:border-white border-[#36A853] "
+              className="btn w-full mt-4  text-white border-2 bg-[#36A853] hover:bg-[#2d9547] hover:text-white hover:border-white border-[#36A853] "
             >
               Proceed to Pay
             </button>

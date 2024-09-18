@@ -3,10 +3,10 @@ import logo from "../assets/Imgs/BanglaBazar.png";
 import fruitslogo from "../assets/Imgs/fruitlogo.png";
 import vegetable from "../assets/Imgs/vegetable.png";
 import dishclean from "../assets/Imgs/dish-soap.png";
-import toiletclean from "../assets/Imgs/toilet.png";
 import tea from "../assets/Imgs/green-tea.png";
 import drink from "../assets/Imgs/drink.png";
 import heathCare from "../assets/Imgs/cardiogram.png";
+import cooking from "../assets/Imgs/cooking.png";
 import meat from "../assets/Imgs/meat.png";
 import { useContext, useState } from "react";
 import SignInModal from "../Components/Modals/SignInModal";
@@ -129,7 +129,7 @@ function Nav() {
           ) : (
             <button
               onClick={signInOpen}
-              className="btn text-white bg-[#3aa753]"
+              className="btn text-white bg-[#3aa753] hover:bg-[#2d9547]"
             >
               Sign In
               <RiLogoutCircleLine className="text-xl" />
@@ -317,27 +317,27 @@ function Nav() {
             </div>
             <div className="mt-4">
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <Link to={"/products/Fresh Fruits"} className="">
+                <Link to={"/products/Fruits"} className="">
                   <img className="w-6" src={fruitslogo} alt="" />
                   <a className="text-base">Fresh Fruits</a>
                 </Link>
               </li>
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <Link to={"/products/Fresh Vegetables"} className="">
+                <Link to={"/products/Vegetables"} className="">
                   <img className="w-6" src={vegetable} alt="" />
                   <a className="text-base">Fresh Vegetables</a>
                 </Link>
               </li>
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <Link to={"/products/Dish Washing"} className="">
+                <Link to={"/products/DishWash"} className="">
                   <img className="w-6" src={dishclean} alt="" />
                   <a className="text-base">Dish Washing</a>
                 </Link>
               </li>
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">
-                <Link to={"/products/Toilet Cleaners"} className="">
-                  <img className="w-6" src={toiletclean} alt="" />
-                  <a className="text-base">Toilet Cleaners</a>
+                <Link to={"/products/Kitchen"} className="">
+                  <img className="w-6" src={cooking} alt="" />
+                  <a className="text-base">Kitchen</a>
                 </Link>
               </li>
               <li className=" hover:bg-gradient-to-r from-[#fff] via-[#fff] to-[#dedede]  rounded-lg">

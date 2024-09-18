@@ -28,7 +28,7 @@ function Hero() {
               groceries from the comfort of your home. At BanglaBazar, we
               deliver the finest products straight to your doorstep!
             </p>
-            <button className="btn bg-[#3aa753] text-white">Get Started</button>
+            <button className="btn bg-[#3aa753] hover:bg-[#2d9547] text-white">Get Started</button>
           </div>
         </div>
       </div>

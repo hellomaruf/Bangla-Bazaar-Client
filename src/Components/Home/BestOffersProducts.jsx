@@ -28,7 +28,7 @@ function BestOffersProducts() {
       <div className="mx-4">
         <div className=" max-w-7xl mx-auto h-full  rounded-lg pt-6">
           <div className="">
-            <h3 className="text-xl lg:text-2xl font-semibold text-gray-700">
+            <h3 className="text-xl lg:text-2xl  text-gray-700">
               Best Offer View Up to{" "}
               <span className="bg-[#36a853] text-white p-1 text-xl rounded-lg">
                 23% Off
