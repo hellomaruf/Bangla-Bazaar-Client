@@ -1,14 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { Rate } from "antd";
 import axios from "axios";
-import { Slide } from "react-awesome-reveal";
-import { FaRegHeart } from "react-icons/fa";
-import { FiShoppingCart } from "react-icons/fi";
+// import { Slide } from "react-awesome-reveal";
+// import { FaRegHeart } from "react-icons/fa";
+// import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
+
 function BestOffersProducts() {
+
   const { data: allProduct } = useQuery({
     queryKey: ["allProduct"],
     queryFn: async () => {
@@ -22,6 +24,44 @@ function BestOffersProducts() {
   const productsWithMoreThan20Off = allProduct?.filter(
     (product) => parseInt(product.price.off) > 23
   );
+
+  // const handleCart = async (data) => {
+  //   console.log(data, user);
+    
+  //   if (!user) {
+  //     return navigate("/signin", { state: { from: location } });
+  //   } else {
+  //     const userEmail = user?.email;
+  //     const userName = user?.displayName;
+  //     const addToCartProduct = data;
+  //     const orderCount = 1;
+  //     const totalLatestPrice = data?.price?.latestPrice;
+  //     const addToCartProductInfo = {
+  //       userEmail,
+  //       userName,
+  //       addToCartProduct,
+  //       orderCount,
+  //       totalLatestPrice,
+  //     };
+
+  //     await axios
+  //       .post(
+  //         `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
+  //         addToCartProductInfo
+  //       )
+  //       .then((res) => {
+  //         if (res.data) {
+  //           toast(`${data?.productName} Added in Cart Successfully!`, {
+  //             duration: 6000,
+  //           });
+  //           refetch();
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         toast.error(error?.message);
+  //       });
+  //   }
+  // };
 
   return (
     <div>
@@ -103,11 +143,11 @@ function BestOffersProducts() {
                       </div>
                     </Link>
                     {/* Overlay section */}
-                    <div className="left-0 hidden md:flex  absolute  text-white top-[100%] duration-500 opacity-0 group-hover:opacity-100 group-hover:top-0  w-full h-full bg-[#36a853]/50 group-hover:backdrop-blur-md">
+                    {/* <div className="left-0 hidden md:flex  absolute  text-white top-[100%] duration-500 opacity-0 group-hover:opacity-100 group-hover:top-0  w-full h-full bg-[#36a853]/50 group-hover:backdrop-blur-md">
                       <div className="flex items-center justify-center gap-2 absolute top-[40%] left-1/3">
                         <Slide direction="down" duration={1000}>
                           <button
-                            // onClick={() => handleCart(data)}
+                            onClick={() => handleCart(data)}
                             className="bg-white hover:bg-[#36a853] hover:border-2 hover:text-white hover:border-white transition rounded-full text-gray-900 h-10 w-10 flex items-center justify-center"
                           >
                             <FiShoppingCart className="" />
@@ -123,7 +163,7 @@ function BestOffersProducts() {
                       >
                         Details
                       </Link>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </SwiperSlide>

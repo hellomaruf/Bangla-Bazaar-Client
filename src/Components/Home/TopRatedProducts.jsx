@@ -1,12 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import { Rate } from "antd";
 import axios from "axios";
+import { useContext } from "react";
 import { Slide } from "react-awesome-reveal";
 import { FaRegHeart } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContaxt } from "../../Services/AuthProvider";
+import toast from "react-hot-toast";
+import useCart from "../../Hooks/useCart";
 
 function TopRatedProducts() {
+  const { user } = useContext(AuthContaxt)
+  const {refetch} = useCart()
+  
+  const navigate = useNavigate()
   const { data: allProduct } = useQuery({
     queryKey: ["allProduct"],
     queryFn: async () => {
@@ -27,6 +35,44 @@ function TopRatedProducts() {
   const fruits = allProduct?.filter(
     (product) => product.categoryName === "Fruits"
   );
+
+  const handleCart = async (data) => {
+    console.log(data);
+    
+    if (!user) {
+      return navigate("/signin", { state: { from: location } });
+    } else {
+      const userEmail = user?.email;
+      const userName = user?.displayName;
+      const addToCartProduct = data;
+      const orderCount = 1;
+      const totalLatestPrice = data?.price?.latestPrice;
+      const addToCartProductInfo = {
+        userEmail,
+        userName,
+        addToCartProduct,
+        orderCount,
+        totalLatestPrice,
+      };
+
+      await axios
+        .post(
+          `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
+          addToCartProductInfo
+        )
+        .then((res) => {
+          if (res.data) {
+            toast(`${data?.productName} Added in Cart Successfully!`, {
+              duration: 6000,
+            });
+            refetch();
+          }
+        })
+        .catch((error) => {
+          toast.error(error?.message)
+        });
+    }
+  };
 
   return (
     <div className="mx-4">
@@ -82,7 +128,7 @@ function TopRatedProducts() {
                   <div className="flex items-center justify-center gap-2 absolute top-[40%] left-1/3">
                     <Slide direction="down" duration={1000}>
                       <button
-                        // onClick={() => handleCart(data)}
+                        onClick={() => handleCart(data)}
                         className="bg-white hover:bg-[#36a853] hover:border-2 hover:text-white hover:border-white transition rounded-full text-gray-900 h-10 w-10 flex items-center justify-center"
                       >
                         <FiShoppingCart className="" />
@@ -151,7 +197,7 @@ function TopRatedProducts() {
                   <div className="flex items-center justify-center gap-2 absolute top-[40%] left-1/3">
                     <Slide direction="down" duration={1000}>
                       <button
-                        // onClick={() => handleCart(data)}
+                        onClick={() => handleCart(data)}
                         className="bg-white hover:bg-[#36a853] hover:border-2 hover:text-white hover:border-white transition rounded-full text-gray-900 h-10 w-10 flex items-center justify-center"
                       >
                         <FiShoppingCart className="" />
@@ -220,7 +266,7 @@ function TopRatedProducts() {
                   <div className="flex items-center justify-center gap-2 absolute top-[40%] left-1/3">
                     <Slide direction="down" duration={1000}>
                       <button
-                        // onClick={() => handleCart(data)}
+                        onClick={() => handleCart(data)}
                         className="bg-white hover:bg-[#36a853] hover:border-2 hover:text-white hover:border-white transition rounded-full text-gray-900 h-10 w-10 flex items-center justify-center"
                       >
                         <FiShoppingCart className="" />
