@@ -1,6 +1,6 @@
 # BanglaBazar - Online Grocery Store
 
-<img src="./public/logo.png" alt="BanglaBazar Logo" width="200" height="200">
+<img src="./public/logo.png" alt="BanglaBazar Logo" width="100" height="200">
 
 BanglaBazar is an e-commerce website offering a wide range of grocery products such as fresh vegetables, fruits, snacks, kitchen supplies, and more. The platform provides users with a seamless shopping experience with features like search, product sorting, a shopping cart, and user authentication.
 
