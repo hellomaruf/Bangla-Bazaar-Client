@@ -37,7 +37,7 @@ function TopRatedProducts() {
   );
 
   const handleCart = async (data) => {
-    console.log(data);
+   
     
     if (!user) {
       return navigate("/signin", { state: { from: location } });

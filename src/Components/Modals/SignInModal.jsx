@@ -71,14 +71,6 @@ function SignInModal({ isOpenSignIn, signInClose }) {
   };
   const handleGoogleLogin = async () => {
     googleLogin();
-    // .then((res) => {
-    //   console.log(res.user);
-    //   toast.success("Successfully SignIn!");
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    //   toast.error(error.message);
-    // });
     navigate(from);
     if (user) {
       const name = user?.displayName;

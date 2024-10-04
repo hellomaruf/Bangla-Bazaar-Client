@@ -7,13 +7,8 @@ import img6 from "../../assets/Imgs/meat.webp";
 import img8 from "../../assets/Imgs/kitchen-appliances.webp";
 import img9 from "../../assets/Imgs/toilet-cleaners.webp";
 import img10 from "../../assets/Imgs/plain-biscuits.webp";
-// import { IoIosArrowBack } from "react-icons/io";
-// import { IoIosArrowForward } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
-// import required modules
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css/navigation";
 import { Link } from "react-router-dom";

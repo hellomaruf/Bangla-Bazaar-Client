@@ -1,9 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Rate } from "antd";
 import axios from "axios";
-// import { Slide } from "react-awesome-reveal";
-// import { FaRegHeart } from "react-icons/fa";
-// import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -25,43 +22,7 @@ function BestOffersProducts() {
     (product) => parseInt(product.price.off) > 23
   );
 
-  // const handleCart = async (data) => {
-  //   console.log(data, user);
-    
-  //   if (!user) {
-  //     return navigate("/signin", { state: { from: location } });
-  //   } else {
-  //     const userEmail = user?.email;
-  //     const userName = user?.displayName;
-  //     const addToCartProduct = data;
-  //     const orderCount = 1;
-  //     const totalLatestPrice = data?.price?.latestPrice;
-  //     const addToCartProductInfo = {
-  //       userEmail,
-  //       userName,
-  //       addToCartProduct,
-  //       orderCount,
-  //       totalLatestPrice,
-  //     };
-
-  //     await axios
-  //       .post(
-  //         `${import.meta.env.VITE_LOCALHOST_URL}/cartData`,
-  //         addToCartProductInfo
-  //       )
-  //       .then((res) => {
-  //         if (res.data) {
-  //           toast(`${data?.productName} Added in Cart Successfully!`, {
-  //             duration: 6000,
-  //           });
-  //           refetch();
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         toast.error(error?.message);
-  //       });
-  //   }
-  // };
+ 
 
   return (
     <div>

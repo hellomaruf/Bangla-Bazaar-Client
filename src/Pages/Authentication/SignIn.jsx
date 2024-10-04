@@ -80,7 +80,6 @@ function SignIn() {
         .post(`${import.meta.env.VITE_LOCALHOST_URL}/users`, userInfo)
         .then((res) => {
           console.log(res.data);
-          console.log('user is updated');
 
         })
         .catch((error) => {
